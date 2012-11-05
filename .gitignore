@@ -1,2 +1,4 @@
 .DS_Store
 target/
+
+src/test/java/com/github/jkschoen/jsma/examples/UserConfig.java
