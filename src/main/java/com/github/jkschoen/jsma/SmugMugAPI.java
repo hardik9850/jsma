@@ -23,6 +23,7 @@ public class SmugMugAPI {
 	private AlbumTemplatesAPI albumtemplates;
 	private CategoriesAPI categories;
 	private CommunitiesAPI communities;
+	private CouponsAPI coupons;
 	private ImageAPI images;
 	
 	public SmugMugAPI(String appName, String consumerSecret, String cosumerKey) {
@@ -119,6 +120,13 @@ public class SmugMugAPI {
 			this.communities = new CommunitiesAPI(this);
 		}
 		return this.communities;
+	}
+	
+	public CouponsAPI coupons(){
+		if (this.coupons == null){
+			this.coupons = new CouponsAPI(this);
+		}
+		return this.coupons;
 	}
 
 	public ImageAPI images(){
