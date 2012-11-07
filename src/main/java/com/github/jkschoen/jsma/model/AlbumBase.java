@@ -92,10 +92,10 @@ public abstract class AlbumBase {
 	@XmlElement(name="ProofDays")
 	private Integer proofDays;
 	
-	@XmlElement(name="ProtectedRightClick")
+	@XmlElement(name="Protected")
 	private Boolean protectedRightClick;
 	
-	@XmlElement(name="PublicAlbum")
+	@XmlElement(name="Public")
 	private Boolean publicAlbum;
 	
 	@XmlElement(name="Share")
