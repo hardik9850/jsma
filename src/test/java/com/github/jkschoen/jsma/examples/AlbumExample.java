@@ -60,7 +60,7 @@ public class AlbumExample {
 	}
 	
 	public static List<Album> get(SmugMugAPI smugmug) throws SmugMugException{
-		List<Album> albums = smugmug.albums().get();
+		List<Album> albums = smugmug.albums().get(false, null, null, null, null, false, false, false, false);
 		System.out.println("SmugMug albums in account:");
 		for (Album album : albums) {
 			System.out.println("  "+album.toString());
@@ -69,7 +69,7 @@ public class AlbumExample {
 	}
 	
 	public static void getInfo(SmugMugAPI smugmug, Album album) throws SmugMugException{
-		Album found = smugmug.albums().getInfo(album.getId(), album.getKey());
+		Album found = smugmug.albums().getInfo(album.getId(), album.getKey(), null, null, false, false, false);
 		System.out.println("Getting the details of Album:");
 		System.out.println("  Find  => "+album.toString());
 		System.out.println("  Found => "+found.toString());
@@ -78,13 +78,13 @@ public class AlbumExample {
 	public static Album createAlbum(SmugMugAPI smugmug) throws SmugMugException{
 		Album album = new Album();
 		album.setTitle("Test");
-		smugmug.albums().create(album);
+		smugmug.albums().create(album, null, false, null, false, false);
 		System.out.println("  Created  => "+album.toString());
 		return album;
 	}
 	
 	public static void deleteAlbum(SmugMugAPI smugmug, Album album) throws SmugMugException {
-		smugmug.albums().delete(album.getId(), album.getKey());
+		smugmug.albums().delete(album.getId(), album.getKey(), false, false);
 		System.out.println("Album Deleted!");
 	}
 }
