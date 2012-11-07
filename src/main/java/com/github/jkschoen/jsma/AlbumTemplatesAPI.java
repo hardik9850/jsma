@@ -69,65 +69,6 @@ public class AlbumTemplatesAPI extends AlbumBaseAPI{
 	 *   <li>XLarges (Pro accounts only)</li>
 	 * </ul>
 	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  changeSettings(albumTemplate, false, false)
-	 * 
-	 * @param albumTemplate the album template to pull settings from
-	 * @return
-	 * @throws SmugMugException 
-	 */
-	public boolean changeSettings(AlbumTemplate albumTemplate) throws SmugMugException{
-		return changeSettings(albumTemplate, false, false);
-	}
-	
-	/**
-	 * Change the settings of an album template.
-	 * 
-	 * <ul>
-	 *   <li>AlbumTemplateName</li>
-	 *   <li>Backprinting (Pro accounts only)</li>
-	 *   <li>CanRank</li>
-	 *   <li>Clean</li>
-	 *   <li>Comments</li>
-	 *   <li>CommunityID</li>
-	 *   <li>EXIF</li>
-	 *   <li>External</li>
-	 *   <li>FamilyEdit</li>
-	 *   <li>Filenames</li>
-	 *   <li>FriendEdit</li>
-	 *   <li>Geography</li>
-	 *   <li>Header (Power & Pro accounts only)</li>
-	 *   <li>HideOwner</li>
-	 *   <li>InterceptShipping (Pro accounts only)</li>
-	 *   <li>Larges (Pro accounts only)</li>
-	 *   <li>Originals</li>
-	 *   <li>PackagingBranding (Pro accounts only)</li>
-	 *   <li>Password</li>
-	 *   <li>PasswordHint</li>
-	 *   <li>Printable</li>
-	 *   <li>PrintmarkID (Pro accounts only)</li>
-	 *   <li>ProofDays (Pro accounts only)</li>
-	 *   <li>Protected</li>
-	 *   <li>Public</li>
-	 *   <li>Share</li>
-	 *   <li>SmugSearchable</li>
-	 *   <li>SortDirection</li>
-	 *   <li>SortMethod</li>
-	 *   <li>SquareThumbs</li>
-	 *   <li>TemplateID</li>
-	 *   <li>UnsharpAmount (Power & Pro accounts only)</li>
-	 *   <li>UnsharpRadius (Power & Pro accounts only)</li>
-	 *   <li>UnsharpSigma (Power & Pro accounts only)</li>
-	 *   <li>UnsharpThreshold (Power & Pro accounts only)</li>
-	 *   <li>WatermarkID (Pro accounts only)</li>
-	 *   <li>Watermarking (Pro accounts only)</li>
-	 *   <li>WorldSearchable</li>
-	 *   <li>X2Larges</li>
-	 *   <li>X3Larges</li>
-	 *   <li>XLarges (Pro accounts only)</li>
-	 * </ul>
-	 * 
 	 * @param albumTemplate the album template to pull settings from
 	 * @param pretty Return a more human friendly response.
 	 * @param strict Enable strict error handling.
@@ -145,23 +86,6 @@ public class AlbumTemplatesAPI extends AlbumBaseAPI{
 		logger.debug("changeSettings() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		//if it does not throw an exception than it worked, so return true
 		return true;
-	}
-	
-	/**
-	 * Create an album template.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  create(albumTemplate, false, false)
-	 * 
-	 * @param albumTemplate the Album Template to be created
-	 * @param pretty Return a more human friendly response.
-	 * @param strict Enable strict error handling.
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public AlbumTemplate create(AlbumTemplate albumTemplate) throws SmugMugException{
-		return create(albumTemplate, false, false);
 	}
 
 	/**
@@ -189,21 +113,6 @@ public class AlbumTemplatesAPI extends AlbumBaseAPI{
 	/**
 	 * Delete an album template.
 	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  delete(albumTemplateId, false, false)
-	 *  
-	 * @param albumTemplateId The id for a specific albumtemplate.
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public boolean delete(int albumTemplateId) throws SmugMugException {
-		return delete(albumTemplateId, false, false);
-	}
-	
-	/**
-	 * Delete an album template.
-	 * 
 	 * @param albumTemplateId The id for a specific albumtemplate.
 	 * @param pretty Return a more human friendly response.
 	 * @param strict Enable strict error handling.
@@ -219,20 +128,6 @@ public class AlbumTemplatesAPI extends AlbumBaseAPI{
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.albumtemplates.delete", params, null, pretty, false, strict, false);
 		logger.debug("delete() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		return true;
-	}
-	
-	/**
-	 * Retrieve a list of album templates.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  get(false, false)
-	 * 
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public List<AlbumTemplate> get() throws SmugMugException {
-		return get(false, false);
 	}
 	
 	/**

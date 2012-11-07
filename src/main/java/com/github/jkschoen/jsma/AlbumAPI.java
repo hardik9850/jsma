@@ -32,22 +32,6 @@ public class AlbumAPI extends AlbumBaseAPI{
 	/**
 	 * Applies a watermark to the images of an album.
 	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  applyWatermark(albumId, watermarkId, false, false)
-	 *  
-	 * @param albumId (required) The id for a specific album.
-	 * @param watermarkId (required) The id for a specific watermark.
-	 * @return returns true if watermark was set
-	 * @throws SmugMugException
-	 */
-	public boolean applyWatermark(int albumId, int watermarkId) throws SmugMugException {
-		return applyWatermark(albumId, watermarkId, false, false);
-	}
-	
-	/**
-	 * Applies a watermark to the images of an album.
-	 * 
 	 * @param albumId (required) The id for a specific album.
 	 * @param watermarkId (required) The id for a specific watermark.
 	 * @param pretty return formatted JSON that is easier to read
@@ -64,28 +48,6 @@ public class AlbumAPI extends AlbumBaseAPI{
 		logger.debug("applyWatermark() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		//if it does not throw an exception than it worked, so return true
 		return true;
-	}
-	
-	/**
-	 * Browse to an album.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  browse(albumId, albumKey, null, false)
-	 *  
-	 * Confession time, I am not sure what this actually does on the SmugMug side.
-	 * If you do, feel free to update this javadoc, or create an example in the Test
-	 * package to show me. 
-	 * 
-	 * @param albumId (required) The id for a specific album.
-	 * @param albumKey (required) The key for a specific album.
-	 * @param password The password for the album.
-	 * @param pretty return formatted JSON that is easier to read
-	 * @return true if successfully browsed to album
-	 * @throws SmugMugException
-	 */
-	public boolean browse(int albumId, String albumKey) throws SmugMugException {
-		return browse(albumId, albumKey, null, false);
 	}
 	
 	//TODO: Find out what the use case for browse is.
@@ -115,127 +77,6 @@ public class AlbumAPI extends AlbumBaseAPI{
 		logger.debug("browse() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		//if it does not throw an exception than it worked, so return true
 		return true;
-	}
-	
-	/**
-	 * Change the settings of an album.
-	 * 
-	 * <ul>
-	 *   <li>AlbumID</li>
-	 *   <li>AlbumTemplateName</li>
-	 *   <li>Backprinting (Pro accounts only)</li>
-	 *   <li>CanRank</li>
-	 *   <li>Clean</li>
-	 *   <li>Comments</li>
-	 *   <li>CommunityID</li>
-	 *   <li>EXIF</li>
-	 *   <li>External</li>
-	 *   <li>FamilyEdit</li>
-	 *   <li>Filenames</li>
-	 *   <li>FriendEdit</li>
-	 *   <li>Geography</li>
-	 *   <li>Header (Power & Pro accounts only)</li>
-	 *   <li>HideOwner</li>
-	 *   <li>InterceptShipping (Pro accounts only)</li>
-	 *   <li>Larges (Pro accounts only)</li>
-	 *   <li>Originals</li>
-	 *   <li>PackagingBranding (Pro accounts only)</li>
-	 *   <li>Password</li>
-	 *   <li>PasswordHint</li>
-	 *   <li>Printable</li>
-	 *   <li>PrintmarkID (Pro accounts only)</li>
-	 *   <li>ProofDays (Pro accounts only)</li>
-	 *   <li>Protected</li>
-	 *   <li>Public</li>
-	 *   <li>Share</li>
-	 *   <li>SmugSearchable</li>
-	 *   <li>SortDirection</li>
-	 *   <li>SortMethod</li>
-	 *   <li>SquareThumbs</li>
-	 *   <li>TemplateID</li>
-	 *   <li>UnsharpAmount (Power & Pro accounts only)</li>
-	 *   <li>UnsharpRadius (Power & Pro accounts only)</li>
-	 *   <li>UnsharpSigma (Power & Pro accounts only)</li>
-	 *   <li>UnsharpThreshold (Power & Pro accounts only)</li>
-	 *   <li>WatermarkID (Pro accounts only)</li>
-	 *   <li>Watermarking (Pro accounts only)</li>
-	 *   <li>WorldSearchable</li>
-	 *   <li>X2Larges</li>
-	 *   <li>X3Larges</li>
-	 *   <li>XLarges (Pro accounts only)</li>
-	 * </ul>
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  changeSettings(album, null, false, null, false, false)
-	 *  
-	 * @param album the album details to be changed
-	 * @return 
-	 * @throws SmugMugException
-	 */
-	public boolean changeSettings(Album album) throws SmugMugException {
-		return changeSettings(album, null, false, null, false, false);
-	}
-	
-	/**
-	 * Change the settings of an album.
-	 * 
-	 * <ul>
-	 *   <li>AlbumID</li>
-	 *   <li>AlbumTemplateName</li>
-	 *   <li>Backprinting (Pro accounts only)</li>
-	 *   <li>CanRank</li>
-	 *   <li>Clean</li>
-	 *   <li>Comments</li>
-	 *   <li>CommunityID</li>
-	 *   <li>EXIF</li>
-	 *   <li>External</li>
-	 *   <li>FamilyEdit</li>
-	 *   <li>Filenames</li>
-	 *   <li>FriendEdit</li>
-	 *   <li>Geography</li>
-	 *   <li>Header (Power & Pro accounts only)</li>
-	 *   <li>HideOwner</li>
-	 *   <li>InterceptShipping (Pro accounts only)</li>
-	 *   <li>Larges (Pro accounts only)</li>
-	 *   <li>Originals</li>
-	 *   <li>PackagingBranding (Pro accounts only)</li>
-	 *   <li>Password</li>
-	 *   <li>PasswordHint</li>
-	 *   <li>Printable</li>
-	 *   <li>PrintmarkID (Pro accounts only)</li>
-	 *   <li>ProofDays (Pro accounts only)</li>
-	 *   <li>Protected</li>
-	 *   <li>Public</li>
-	 *   <li>Share</li>
-	 *   <li>SmugSearchable</li>
-	 *   <li>SortDirection</li>
-	 *   <li>SortMethod</li>
-	 *   <li>SquareThumbs</li>
-	 *   <li>TemplateID</li>
-	 *   <li>UnsharpAmount (Power & Pro accounts only)</li>
-	 *   <li>UnsharpRadius (Power & Pro accounts only)</li>
-	 *   <li>UnsharpSigma (Power & Pro accounts only)</li>
-	 *   <li>UnsharpThreshold (Power & Pro accounts only)</li>
-	 *   <li>WatermarkID (Pro accounts only)</li>
-	 *   <li>Watermarking (Pro accounts only)</li>
-	 *   <li>WorldSearchable</li>
-	 *   <li>X2Larges</li>
-	 *   <li>X3Larges</li>
-	 *   <li>XLarges (Pro accounts only)</li>
-	 * </ul>
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  changeSettings(album, albumTemplateId, false, null, false, false)
-	 *  
-	 * @param album the album details to be changed
-	 * @param albumTemplateId the album template id of the template to pull settings from
-	 * @return 
-	 * @throws SmugMugException
-	 */
-	public boolean changeSettings(Album album, int albumTemplateId) throws SmugMugException {
-		return changeSettings(album, albumTemplateId, false, null, false, false);
 	}
 	
 	/**
@@ -424,127 +265,6 @@ public class AlbumAPI extends AlbumBaseAPI{
 	 *   <li>XLarges (Pro accounts only)</li>
 	 * </ul>
 	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  create(album, null, false, null, false, false)
-	 *  
-	 * @param album the album details to be created
-	 * @return the created album
-	 * @throws SmugMugException
-	 */
-	public Album create(Album album) throws SmugMugException {
-		return create(album, null, false, null, false, false);
-	}
-	
-	/**
-	 * Create an album.
-	 * 
-	 * <ul>
-	 *   <li>AlbumID</li>
-	 *   <li>AlbumTemplateName</li>
-	 *   <li>Backprinting (Pro accounts only)</li>
-	 *   <li>CanRank</li>
-	 *   <li>Clean</li>
-	 *   <li>Comments</li>
-	 *   <li>CommunityID</li>
-	 *   <li>EXIF</li>
-	 *   <li>External</li>
-	 *   <li>FamilyEdit</li>
-	 *   <li>Filenames</li>
-	 *   <li>FriendEdit</li>
-	 *   <li>Geography</li>
-	 *   <li>Header (Power & Pro accounts only)</li>
-	 *   <li>HideOwner</li>
-	 *   <li>InterceptShipping (Pro accounts only)</li>
-	 *   <li>Larges (Pro accounts only)</li>
-	 *   <li>Originals</li>
-	 *   <li>PackagingBranding (Pro accounts only)</li>
-	 *   <li>Password</li>
-	 *   <li>PasswordHint</li>
-	 *   <li>Printable</li>
-	 *   <li>PrintmarkID (Pro accounts only)</li>
-	 *   <li>ProofDays (Pro accounts only)</li>
-	 *   <li>Protected</li>
-	 *   <li>Public</li>
-	 *   <li>Share</li>
-	 *   <li>SmugSearchable</li>
-	 *   <li>SortDirection</li>
-	 *   <li>SortMethod</li>
-	 *   <li>SquareThumbs</li>
-	 *   <li>TemplateID</li>
-	 *   <li>UnsharpAmount (Power & Pro accounts only)</li>
-	 *   <li>UnsharpRadius (Power & Pro accounts only)</li>
-	 *   <li>UnsharpSigma (Power & Pro accounts only)</li>
-	 *   <li>UnsharpThreshold (Power & Pro accounts only)</li>
-	 *   <li>WatermarkID (Pro accounts only)</li>
-	 *   <li>Watermarking (Pro accounts only)</li>
-	 *   <li>WorldSearchable</li>
-	 *   <li>X2Larges</li>
-	 *   <li>X3Larges</li>
-	 *   <li>XLarges (Pro accounts only)</li>
-	 * </ul>
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  create(album, albumTemplateId, false, null, false, false)
-	 *  
-	 * @param album the album details to be created
-	 * @param albumTemplateId the album template id of the template to pull settings from
-	 * @return the created album
-	 * @throws SmugMugException
-	 */
-	public Album create(Album album, int albumTemplateId) throws SmugMugException {
-		return create(album, albumTemplateId, false, null, false, false);
-	}
-	
-	/**
-	 * Create an album.
-	 * 
-	 * <ul>
-	 *   <li>AlbumID</li>
-	 *   <li>AlbumTemplateName</li>
-	 *   <li>Backprinting (Pro accounts only)</li>
-	 *   <li>CanRank</li>
-	 *   <li>Clean</li>
-	 *   <li>Comments</li>
-	 *   <li>CommunityID</li>
-	 *   <li>EXIF</li>
-	 *   <li>External</li>
-	 *   <li>FamilyEdit</li>
-	 *   <li>Filenames</li>
-	 *   <li>FriendEdit</li>
-	 *   <li>Geography</li>
-	 *   <li>Header (Power & Pro accounts only)</li>
-	 *   <li>HideOwner</li>
-	 *   <li>InterceptShipping (Pro accounts only)</li>
-	 *   <li>Larges (Pro accounts only)</li>
-	 *   <li>Originals</li>
-	 *   <li>PackagingBranding (Pro accounts only)</li>
-	 *   <li>Password</li>
-	 *   <li>PasswordHint</li>
-	 *   <li>Printable</li>
-	 *   <li>PrintmarkID (Pro accounts only)</li>
-	 *   <li>ProofDays (Pro accounts only)</li>
-	 *   <li>Protected</li>
-	 *   <li>Public</li>
-	 *   <li>Share</li>
-	 *   <li>SmugSearchable</li>
-	 *   <li>SortDirection</li>
-	 *   <li>SortMethod</li>
-	 *   <li>SquareThumbs</li>
-	 *   <li>TemplateID</li>
-	 *   <li>UnsharpAmount (Power & Pro accounts only)</li>
-	 *   <li>UnsharpRadius (Power & Pro accounts only)</li>
-	 *   <li>UnsharpSigma (Power & Pro accounts only)</li>
-	 *   <li>UnsharpThreshold (Power & Pro accounts only)</li>
-	 *   <li>WatermarkID (Pro accounts only)</li>
-	 *   <li>Watermarking (Pro accounts only)</li>
-	 *   <li>WorldSearchable</li>
-	 *   <li>X2Larges</li>
-	 *   <li>X3Larges</li>
-	 *   <li>XLarges (Pro accounts only)</li>
-	 * </ul>
-	 * 
 	 * @param album the album details to be created
 	 * @param albumTemplateId the album template id of the template to pull settings from
 	 * @param unique Create an album if one of the same name doesn't already exist in the current hierarchy.
@@ -575,21 +295,6 @@ public class AlbumAPI extends AlbumBaseAPI{
 	/**
 	 * Delete an album.
 	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  delete (albumId, albumKey, false, false)
-	 * 
-	 * @param albumId (required) The id for a specific album.
-	 * @param albumKey (required) The key for a specific album.
-	 * @throws SmugMugException
-	 */
-	public boolean delete(int albumId, String albumKey) throws SmugMugException {
-		return delete (albumId, albumKey, false, false);
-	}
-	
-	/**
-	 * Delete an album.
-	 * 
 	 * @param albumId (required) The id for a specific album.
 	 * @param albumKey (required) The key for a specific album.
 	 * @param pretty return formatted JSON that is easier to read
@@ -608,21 +313,6 @@ public class AlbumAPI extends AlbumBaseAPI{
 		logger.debug("delete() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		return true;
 	}
-	
-	/**
-	 * Retrieve a list of albums for a given user. 
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  get(true, null, null, null, null, false, false, false, false)
-	 * 
-	 * @return list of albums
-	 * @throws SmugMugException
-	 */
-	public List<Album> get() throws SmugMugException {
-		return get(true, null, null, null, null, false, false, false, false);
-	}
-	
 	
 	/**
 	 * Retrieve a list of albums for a given user.
@@ -662,22 +352,6 @@ public class AlbumAPI extends AlbumBaseAPI{
 	/**
 	 * Retrieve the information for an album.
 	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  getInfo(albumId, albumKey, null, null, false, false, false)
-	 *  
-	 * @param albumId (required) The id for a specific album.
-	 * @param albumKey (required) The key for a specific album.
-	 * @return the album details
-	 * @throws SmugMugException
-	 */
-	public Album getInfo(int albumId, String albumKey) throws SmugMugException {
-		return getInfo(albumId, albumKey, null, null, false, false, false);
-	}
-	
-	/**
-	 * Retrieve the information for an album.
-	 * 
 	 * @param albumId (required) The id for a specific album.
 	 * @param albumKey (required) The key for a specific album.
 	 * @param password The password for the album.
@@ -709,23 +383,6 @@ public class AlbumAPI extends AlbumBaseAPI{
 	/**
 	 * Retrieve the statistics for an album.
 	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  getStats(albumId, month, year, false, false, false)
-	 * 
-	 * @param albumId The id for a specific album.
-	 * @param month The month to retrieve statistics for.
-	 * @param year The year to retrieve statistics for.
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public AlbumStats getStats(int albumId, int month, int year) throws SmugMugException {
-		return getStats(albumId, month, year, false, false, false);
-	}
-	
-	/**
-	 * Retrieve the statistics for an album.
-	 * 
 	 * @param albumId The id for a specific album.
 	 * @param month The month to retrieve statistics for.
 	 * @param year The year to retrieve statistics for.
@@ -751,21 +408,6 @@ public class AlbumAPI extends AlbumBaseAPI{
 	/**
 	 * Remove a watermark from the images of an album.
 	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  removeWatermark(albumId, false, false)
-	 * 
-	 * @param albumId The id for a specific album.
-	 * @return true if the watermarks are removed
-	 * @throws SmugMugException
-	 */
-	public boolean removeWatermark(int albumId) throws SmugMugException {
-		return removeWatermark(albumId, false, false);
-	}
-	
-	/**
-	 * Remove a watermark from the images of an album.
-	 * 
 	 * @param albumId The id for a specific album.
 	 * @param pretty return formatted JSON that is easier to read
 	 * @param strict Enable strict error handling.
@@ -782,21 +424,7 @@ public class AlbumAPI extends AlbumBaseAPI{
 		return true;
 	}
 	
-	/**
-	 * Unknown!!
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  removeWatermark(albumId, false, false)
-	 * 
-	 * @param albumId The id for a specific album.
-	 * @return 
-	 * @throws SmugMugException
-	 */
-	public boolean reSort(int albumId) throws SmugMugException {
-		return reSort(albumId, false, false);
-	}
-	
+	//TODO: Find out the use case for reSort
 	/**
 	 * Unknown!!
 	 * 
@@ -816,7 +444,6 @@ public class AlbumAPI extends AlbumBaseAPI{
 		return true;
 	}
 
-	
 	private void setAlbumParameters(Map<String, String> params, Album album) {
 		if(album.getCategory() != null){
 			params.put("CategoryID", album.getCategory().getId().toString());

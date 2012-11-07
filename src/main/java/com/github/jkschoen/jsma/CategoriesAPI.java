@@ -25,37 +25,6 @@ public class CategoriesAPI {
 	/**
 	 * Create a category.
 	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  create(category, false, null, false, false)
-	 * 
-	 * @param category the category to be created
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public Category create(Category category) throws SmugMugException{
-		return create(category, false, null, false, false);
-	}
-	
-	/**
-	 * Create a category.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  create(category, unique, null, false, false)
-	 * 
-	 * @param category the category to be created
-	 * @param unique Create a category if one of the same name doesn't already exist in the current hierarchy.
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public Category create(Category category, boolean unique) throws SmugMugException{
-		return create(category, unique, null, false, false);
-	}
-	
-	/**
-	 * Create a category.
-	 * 
 	 * @param category the category to be created
 	 * @param unique Create a category if one of the same name doesn't already exist in the current hierarchy.
 	 * @param extras A comma separated string of additional attributes to return in the response.
@@ -84,21 +53,6 @@ public class CategoriesAPI {
 	/**
 	 * Delete a category.
 	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  delete(categoryId, false, false)
-	 * 
-	 * @param categoryId The id for a specific category.
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public boolean delete(int categoryId) throws SmugMugException {
-		return delete(categoryId, false, false);
-	}
-	
-	/**
-	 * Delete a category.
-	 * 
 	 * @param categoryId The id for a specific category.
 	 * @param pretty Return a more human friendly response.
 	 * @param strict Enable strict error handling.
@@ -114,20 +68,6 @@ public class CategoriesAPI {
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.categories.delete", params, null, pretty, false, strict, false);
 		logger.debug("delete() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		return true;
-	}
-	
-	/**
-	 * Retrieve a list of categories for a given user.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  get(null, null, false, false)
-	 * 
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public List<Category> get() throws SmugMugException{
-		return get(null, null, false, false);
 	}
 	
 	/**

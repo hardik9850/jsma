@@ -34,22 +34,6 @@ public class ImageAPI {
 	/**
 	 * Applies a watermark to the image.
 	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  applyWatermark(imageId, watermarkId, false, false)
-	 *  
-	 * @param imageId (required) The id for a specific album.
-	 * @param watermarkId (required) The id for a specific watermark.
-	 * @return returns true if watermark was set
-	 * @throws SmugMugException
-	 */
-	public boolean applyWatermark(int imageId, int watermarkId) throws SmugMugException {
-		return applyWatermark(imageId, watermarkId, false, false);
-	}
-	
-	/**
-	 * Applies a watermark to the image.
-	 * 
 	 * @param imageId (required) The id for a specific album.
 	 * @param watermarkId (required) The id for a specific watermark.
 	 * @param pretty return formatted JSON that is easier to read
@@ -71,22 +55,6 @@ public class ImageAPI {
 	/**
 	 * Change the position of an image within an album.
 	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  changePosition(imageId, position, false, false)
-	 * 
-	 * @param imageId (required) The id for a specific album.
-	 * @param position (required) The position of the image (or video) within the album.
-	 * @return true id the position is changed
-	 * @throws SmugMugException
-	 */
-	public boolean changePosition(int imageId, int position) throws SmugMugException {
-		return changePosition(imageId, position, false, false);
-	}
-	
-	/**
-	 * Change the position of an image within an album.
-	 * 
 	 * @param imageId (required) The id for a specific album.
 	 * @param position (required) The position of the image (or video) within the album.
 	 * @param pretty return formatted JSON that is easier to read
@@ -103,34 +71,6 @@ public class ImageAPI {
 		logger.debug("changePosition() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		//if it does not throw an exception than it worked, so return true
 		return true;
-	}
-
-
-	/**
-	 * Change the settings of an image.
-	 * 
-	 * Changable settings:
-	 * <ul>
-	 * 	<li>Album</li>
-	 * 	<li>Altitude</li>
-	 * 	<li>Caption</li>
-	 * 	<li>FileName</li>
-	 * 	<li>Hidden</li>
-	 * 	<li>Keywords</li>
-	 * 	<li>Latitude</li>
-	 * 	<li>Longitude</li>
-	 * </ul>
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  changeSettings(image, null, false, false, false)
-	 * 
-	 * @param image the new image settings.
-	 * @return true if the settngs are successfully changed.
-	 * @throws SmugMugException
-	 */
-	public boolean changeSettings(Image image) throws SmugMugException{
-		return changeSettings(image, null, false, false, false);
 	}
 	
 	/**
@@ -190,23 +130,6 @@ public class ImageAPI {
 		logger.debug("changeSettings() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		//if it does not throw an exception than it worked, so return true
 		return true;
-	}
-	
-	/**
-	 * Collect an image into an album.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  collect(albumId, imageId, imageKey, null, false, false)
-	 * 
-	 * @param albumId The id for a specific album.
-	 * @param imageId The id for a specific image.
-	 * @param imageKey The key for a specific image.
-	 * @return return the collected image
-	 * @throws SmugMugException
-	 */
-	public Image collect(int albumId, int imageId, String imageKey) throws SmugMugException {
-		return collect(albumId, imageId, imageKey, null, false, false);
 	}
 	
 	/**
@@ -294,23 +217,6 @@ public class ImageAPI {
 		logger.debug("commentGet() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		return requestToken.getComments();
 	}
-	
-	/**
-	 * Crop an image.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  crop(imageId, height, width, null, null, false, false)
-	 * 
-	 * @param imageId (required) The id for a specific image.
-	 * @param height (required) The height of the crop.
-	 * @param width (required) The width of the crop.
-	 * @return
-	 * @throws SmugMugException  
-	 */
-	public boolean crop(int imageId, int height, int width) throws SmugMugException {
-		return crop(imageId, height, width, null, null, false, false);
-	}
 
 	/**
 	 * Crop an image.
@@ -348,21 +254,6 @@ public class ImageAPI {
 	/**
 	 * Delete an image.
 	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  delete(imageId, null, false, false)
-	 * 
-	 * @param imageId (required) The id for a specific image.
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public boolean delete(int imageId) throws SmugMugException {
-		return delete(imageId, null, false, false);
-	}
-
-	/**
-	 * Delete an image.
-	 * 
 	 * @param imageId (required) The id for a specific image.
 	 * @param albumId The id for a specific album.
 	 * @param pretty Return a more human friendly response.
@@ -383,22 +274,6 @@ public class ImageAPI {
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.images.delete", params, null, pretty, false, strict, false);
 		logger.debug("delete() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		return true;
-	}
-	
-	/**
-	 * Retrieve a list of images for an album.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  get(albumId, albumKey, null, null, null, null, null, false, false, false, false)
-	 * 
-	 * @param albumId The id for a specific album.
-	 * @param albumKey The key for a specific album.
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public Album get(int albumId, String albumKey) throws SmugMugException {
-		return get(albumId, albumKey, null, null, null, null, null, false, false, false, false);
 	}
 
 	/**
@@ -441,22 +316,6 @@ public class ImageAPI {
 		logger.debug("get() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		return requestToken.getAlbum();
 	}
-
-	/**
-	 * Retrieve the EXIF data for an image.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  getEXIF(imageId, imageKey, null, null, false, false)
-	 * 
-	 * @param imageId (required) The id for a specific image.
-	 * @param imageKey (required) The key for a specific image.
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public ImageEXIF getEXIF(int imageId, String imageKey) throws SmugMugException {
-		return getEXIF(imageId, imageKey, null, null, false, false);
-	}
 	
 	/**
 	 * Retrieve the EXIF data for an image.
@@ -486,22 +345,6 @@ public class ImageAPI {
 		ImageEXIFResponse requestToken = SMResponse.callMethod(this.smugmug,ImageEXIFResponse.class, "smugmug.images.getEXIF", params, null, pretty, false, strict, false);
 		logger.debug("getEXIF() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		return requestToken.getImage();
-	}
-
-	/**
-	 * Retrieve the information for an image.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  getInfo(imageId, imageKey, null, null, null, false, false, false)
-	 * 
-	 * @param imageId (required) The id for a specific image.
-	 * @param imageKey (required) The key for a specific image.
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public Image getInfo(int imageId, String imageKey) throws SmugMugException {
-		return getInfo(imageId, imageKey, null, null, null, false, false, false);
 	}
 	
 	/**
@@ -538,23 +381,6 @@ public class ImageAPI {
 		logger.debug("getInfo() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		return requestToken.getImage();
 	}
-	
-	/**
-	 * Retrieve the statistics for an image.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  getStats(imageId, month, year, false, false)
-	 * 
-	 * @param imageId The id for a specific image.
-	 * @param month The month to retrieve statistics for.
-	 * @param year The year to retrieve statistics for.
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public ImageStats getStats(int imageId, int month, int year) throws SmugMugException {
-		return getStats(imageId, month, year, false, false);
-	}
 
 	/**
 	 * Retrieve the statistics for an image.
@@ -578,22 +404,6 @@ public class ImageAPI {
 		ImageStatsResponse requestToken = SMResponse.callMethod(this.smugmug,ImageStatsResponse.class, "smugmug.images.getStats", params, null, pretty, false, strict, false);
 		logger.debug("getStats() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		return requestToken.getStats();
-	}
-	
-	/**
-	 * Retrieve the URLs for an image.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  getURLs(imageId, imageKey, null, null, null, false, false, false)
-	 * 
-	 * @param imageId (required) The id for a specific image.
-	 * @param imageKey (required) The key for a specific image.
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public Image getURLs(int imageId, String imageKey) throws SmugMugException {
-		return getURLs(imageId, imageKey, null, null, null, false, false, false);
 	}
 	
 	/**
@@ -630,21 +440,6 @@ public class ImageAPI {
 		logger.debug("getURLs() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		return requestToken.getImage();
 	}
-	
-	/**
-	 * Remove a watermark from an image.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  removeWatermark(imageId, false, false)
-	 * 
-	 * @param imageId The id for a specific album.
-	 * @return true if the watermark is removed
-	 * @throws SmugMugException
-	 */
-	public boolean removeWatermark(int imageId) throws SmugMugException {
-		return removeWatermark(imageId, false, false);
-	}
 
 	/**
 	 * Remove a watermark from an image.
@@ -663,63 +458,6 @@ public class ImageAPI {
 		logger.debug("removeWatermark() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		//if it does not throw an exception than it worked, so return true
 		return true;
-	}
-	
-	/**
-	 * Rotates an image.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  rotate(imageId, degrees, null, false, false)
-	 * 
-	 * @param imageId The id for a specific image.
-	 * @param degrees The degrees of rotation.
-	 *        Values:
-	 *        90 - Left
-	 *        180 - Down
-	 *        270 - Right
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public boolean rotate(int imageId, Integer degrees) throws SmugMugException {
-		return rotate(imageId, degrees, null, false, false);
-	}
-	
-	/**
-	 * Rotates an image.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  rotate(imageId, null, flip, false, false)
-	 * 
-	 * @param imageId The id for a specific image.
-	 * @param flip Mirror the image in the horizontal direction.
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public boolean rotate(int imageId, Boolean flip) throws SmugMugException {
-		return rotate(imageId, null, flip, false, false);
-	}
-	
-	/**
-	 * Rotates an image.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  rotate(imageId, degrees, flip, false, false)
-	 * 
-	 * @param imageId The id for a specific image.
-	 * @param degrees The degrees of rotation.
-	 *        Values:
-	 *        90 - Left
-	 *        180 - Down
-	 *        270 - Right
-	 * @param flip Mirror the image in the horizontal direction.
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public boolean rotate(int imageId, Integer degrees, Boolean flip) throws SmugMugException {
-		return rotate(imageId, degrees, flip, false, false);
 	}
 	
 	/**
@@ -751,51 +489,6 @@ public class ImageAPI {
 		logger.debug("rotate() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		//if it does not throw an exception than it worked, so return true
 		return true;
-	}
-	
-	/**
-	 * Upload an image from a URL to an album.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  uploadFromURL(albumId, downloadURL, null, null, false, false)
-	 * 
-	 * @param albumId (required) The id for a specific album.
-	 * @param downloadURL (required) The URL for the image.
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public Image uploadFromURL(int albumId, String downloadURL) throws SmugMugException {
-		return uploadFromURL(albumId, downloadURL, null, null, false, false);
-	}
-	
-	/**
-	 * Upload an image from a URL to an album.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  uploadFromURL(albumId, downloadURL, imageSettings, null, false, false)
-	 * 
-	 * @param albumId (required) The id for a specific album.
-	 * @param downloadURL (required) The URL for the image.
-	 * @param imageSettings various settings that can be set for the image
-	 *        Changable settings:
-	 *        <ul>
-	 *        	<li>Altitude</li>
-	 *          <li>ByteCount</li>
-	 *        	<li>Caption</li>
-	 *        	<li>FileName</li>
-	 *        	<li>Hidden</li>
-	 *        	<li>Keywords</li>
-	 *        	<li>Latitude</li>
-	 *        	<li>Longitude</li>
-	 *          <li>MD5Sum</li>
-	 *        </ul>
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public Image uploadFromURL(int albumId, String downloadURL, Image imageSettings) throws SmugMugException {
-		return uploadFromURL(albumId, downloadURL, imageSettings, null, false, false);
 	}
 	
 	/**
@@ -859,23 +552,6 @@ public class ImageAPI {
 		ImageResponse requestToken = SMResponse.callMethod(this.smugmug,ImageResponse.class, "smugmug.images.uploadFromURL", params, null, pretty, false, strict, false);
 		logger.debug("uploadFromURL() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		return requestToken.getImage();
-	}
-	
-	/**
-	 * Crop the thumbnail of an image.
-	 * 
-	 * It uses the default values found in the API. The results of this call 
-	 * is the same as making the call:
-	 *  zoomThumbnail(imageId, height, width, null, null, false, false)
-	 * 
-	 * @param imageId The id for a specific image.
-	 * @param height The height of the crop.
-	 * @param width The width of the crop.
-	 * @return
-	 * @throws SmugMugException
-	 */
-	public boolean zoomThumbnail(int imageId, int height, int width) throws SmugMugException{
-		return zoomThumbnail(imageId, height, width, null, null, false, false);
 	}
 
 	/**
