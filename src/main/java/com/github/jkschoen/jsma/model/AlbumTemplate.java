@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AlbumTemplates extends AlbumBase{
+public class AlbumTemplate extends AlbumBase{
 	
 	@XmlElement(name="AlbumTemplateName")
 	private String albumTemplateName;
 
-	public AlbumTemplates() {
+	public AlbumTemplate() {
 		super();
 	}
 
@@ -43,7 +43,7 @@ public class AlbumTemplates extends AlbumBase{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AlbumTemplates other = (AlbumTemplates) obj;
+		AlbumTemplate other = (AlbumTemplate) obj;
 		if (albumTemplateName == null) {
 			if (other.albumTemplateName != null)
 				return false;

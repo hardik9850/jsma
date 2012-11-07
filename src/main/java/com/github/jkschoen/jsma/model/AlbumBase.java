@@ -11,6 +11,9 @@ public abstract class AlbumBase {
 	@XmlElement(name="id")
 	private Integer id;
 	
+	@XmlElement(name="AlbumTemplateID")
+	private Integer albumTemplateID; 
+	
 	@XmlElement(name="BackPrinting")
 	private String backPrinting;
 	
@@ -110,8 +113,8 @@ public abstract class AlbumBase {
 	@XmlElement(name="SquareThumbds")
 	private Boolean squareThumbs;
 	
-	@XmlElement(name="Template")
-	private Template template;
+	@XmlElement(name="TemplateID")
+	private Integer template;
 	
 	@XmlElement(name="UnsharpAmount")
 	private Float unsharpAmount;
@@ -158,6 +161,14 @@ public abstract class AlbumBase {
 	 */
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public Integer getAlbumTemplateID() {
+		return albumTemplateID;
+	}
+
+	public void setAlbumTemplateID(Integer albumTemplateID) {
+		this.albumTemplateID = albumTemplateID;
 	}
 
 	/**
@@ -474,6 +485,10 @@ public abstract class AlbumBase {
 		return packagingBranding;
 	}
 
+	public void setPackagingBranding(Boolean packagingBranding) {
+		this.packagingBranding = packagingBranding;
+	}
+
 	/**
 	 * Sets whether to enable packaging branding for orders from this album.
 	 * (owner, pro accounts only)
@@ -694,15 +709,29 @@ public abstract class AlbumBase {
 
 	/**
 	 * The style template applied to this album.
+	 * The id of a specific style template.
+	 * 
+     * Values:
+     * 0 - Viewer Choice (default)
+     * 3 - SmugMug
+     * 4 - Traditional
+     * 7 - All Thumbs
+     * 8 - Slideshow
+     * 9 - Journal (Old)
+     * 10 - SmugMug Small
+     * 11 - Filmstrip
+     * 12 - Critique
+     * 16 - Journal
+     * 17 - Thumbnails
 	 */
-	public Template getTemplate() {
+	public Integer getTemplate() {
 		return template;
 	}
 
 	/**
 	 * Sets the style template applied to this album.
 	 */
-	public void setTemplate(Template template) {
+	public void setTemplate(Integer template) {
 		this.template = template;
 	}
 

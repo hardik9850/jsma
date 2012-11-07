@@ -20,7 +20,7 @@ import com.github.jkschoen.jsma.response.AlbumStatsResponse;
 import com.github.jkschoen.jsma.response.AlbumsResponse;
 import com.github.jkschoen.jsma.response.SMResponse;
 
-public class AlbumAPI {
+public class AlbumAPI extends AlbumBaseAPI{
 	static final Logger logger = LoggerFactory.getLogger(AlbumAPI.class);
 	
 	private SmugMugAPI smugmug;
@@ -120,20 +120,110 @@ public class AlbumAPI {
 	/**
 	 * Change the settings of an album.
 	 * 
+	 * <ul>
+	 *   <li>AlbumID</li>
+	 *   <li>AlbumTemplateName</li>
+	 *   <li>Backprinting (Pro accounts only)</li>
+	 *   <li>CanRank</li>
+	 *   <li>Clean</li>
+	 *   <li>Comments</li>
+	 *   <li>CommunityID</li>
+	 *   <li>EXIF</li>
+	 *   <li>External</li>
+	 *   <li>FamilyEdit</li>
+	 *   <li>Filenames</li>
+	 *   <li>FriendEdit</li>
+	 *   <li>Geography</li>
+	 *   <li>Header (Power & Pro accounts only)</li>
+	 *   <li>HideOwner</li>
+	 *   <li>InterceptShipping (Pro accounts only)</li>
+	 *   <li>Larges (Pro accounts only)</li>
+	 *   <li>Originals</li>
+	 *   <li>PackagingBranding (Pro accounts only)</li>
+	 *   <li>Password</li>
+	 *   <li>PasswordHint</li>
+	 *   <li>Printable</li>
+	 *   <li>PrintmarkID (Pro accounts only)</li>
+	 *   <li>ProofDays (Pro accounts only)</li>
+	 *   <li>Protected</li>
+	 *   <li>Public</li>
+	 *   <li>Share</li>
+	 *   <li>SmugSearchable</li>
+	 *   <li>SortDirection</li>
+	 *   <li>SortMethod</li>
+	 *   <li>SquareThumbs</li>
+	 *   <li>TemplateID</li>
+	 *   <li>UnsharpAmount (Power & Pro accounts only)</li>
+	 *   <li>UnsharpRadius (Power & Pro accounts only)</li>
+	 *   <li>UnsharpSigma (Power & Pro accounts only)</li>
+	 *   <li>UnsharpThreshold (Power & Pro accounts only)</li>
+	 *   <li>WatermarkID (Pro accounts only)</li>
+	 *   <li>Watermarking (Pro accounts only)</li>
+	 *   <li>WorldSearchable</li>
+	 *   <li>X2Larges</li>
+	 *   <li>X3Larges</li>
+	 *   <li>XLarges (Pro accounts only)</li>
+	 * </ul>
+	 * 
 	 * It uses the default values found in the API. The results of this call 
 	 * is the same as making the call:
 	 *  changeSettings(album, null, false, null, false, false)
 	 *  
 	 * @param album the album details to be changed
-	 * @return the created album
+	 * @return 
 	 * @throws SmugMugException
 	 */
-	public Album changeSettings(Album album) throws SmugMugException {
+	public boolean changeSettings(Album album) throws SmugMugException {
 		return changeSettings(album, null, false, null, false, false);
 	}
 	
 	/**
 	 * Change the settings of an album.
+	 * 
+	 * <ul>
+	 *   <li>AlbumID</li>
+	 *   <li>AlbumTemplateName</li>
+	 *   <li>Backprinting (Pro accounts only)</li>
+	 *   <li>CanRank</li>
+	 *   <li>Clean</li>
+	 *   <li>Comments</li>
+	 *   <li>CommunityID</li>
+	 *   <li>EXIF</li>
+	 *   <li>External</li>
+	 *   <li>FamilyEdit</li>
+	 *   <li>Filenames</li>
+	 *   <li>FriendEdit</li>
+	 *   <li>Geography</li>
+	 *   <li>Header (Power & Pro accounts only)</li>
+	 *   <li>HideOwner</li>
+	 *   <li>InterceptShipping (Pro accounts only)</li>
+	 *   <li>Larges (Pro accounts only)</li>
+	 *   <li>Originals</li>
+	 *   <li>PackagingBranding (Pro accounts only)</li>
+	 *   <li>Password</li>
+	 *   <li>PasswordHint</li>
+	 *   <li>Printable</li>
+	 *   <li>PrintmarkID (Pro accounts only)</li>
+	 *   <li>ProofDays (Pro accounts only)</li>
+	 *   <li>Protected</li>
+	 *   <li>Public</li>
+	 *   <li>Share</li>
+	 *   <li>SmugSearchable</li>
+	 *   <li>SortDirection</li>
+	 *   <li>SortMethod</li>
+	 *   <li>SquareThumbs</li>
+	 *   <li>TemplateID</li>
+	 *   <li>UnsharpAmount (Power & Pro accounts only)</li>
+	 *   <li>UnsharpRadius (Power & Pro accounts only)</li>
+	 *   <li>UnsharpSigma (Power & Pro accounts only)</li>
+	 *   <li>UnsharpThreshold (Power & Pro accounts only)</li>
+	 *   <li>WatermarkID (Pro accounts only)</li>
+	 *   <li>Watermarking (Pro accounts only)</li>
+	 *   <li>WorldSearchable</li>
+	 *   <li>X2Larges</li>
+	 *   <li>X3Larges</li>
+	 *   <li>XLarges (Pro accounts only)</li>
+	 * </ul>
 	 * 
 	 * It uses the default values found in the API. The results of this call 
 	 * is the same as making the call:
@@ -141,15 +231,60 @@ public class AlbumAPI {
 	 *  
 	 * @param album the album details to be changed
 	 * @param albumTemplateId the album template id of the template to pull settings from
-	 * @return the created album
+	 * @return 
 	 * @throws SmugMugException
 	 */
-	public Album changeSettings(Album album, int albumTemplateId) throws SmugMugException {
+	public boolean changeSettings(Album album, int albumTemplateId) throws SmugMugException {
 		return changeSettings(album, albumTemplateId, false, null, false, false);
 	}
 	
 	/**
 	 * Change the settings of an album.
+	 * 
+	 * <ul>
+	 *   <li>AlbumID</li>
+	 *   <li>AlbumTemplateName</li>
+	 *   <li>Backprinting (Pro accounts only)</li>
+	 *   <li>CanRank</li>
+	 *   <li>Clean</li>
+	 *   <li>Comments</li>
+	 *   <li>CommunityID</li>
+	 *   <li>EXIF</li>
+	 *   <li>External</li>
+	 *   <li>FamilyEdit</li>
+	 *   <li>Filenames</li>
+	 *   <li>FriendEdit</li>
+	 *   <li>Geography</li>
+	 *   <li>Header (Power & Pro accounts only)</li>
+	 *   <li>HideOwner</li>
+	 *   <li>InterceptShipping (Pro accounts only)</li>
+	 *   <li>Larges (Pro accounts only)</li>
+	 *   <li>Originals</li>
+	 *   <li>PackagingBranding (Pro accounts only)</li>
+	 *   <li>Password</li>
+	 *   <li>PasswordHint</li>
+	 *   <li>Printable</li>
+	 *   <li>PrintmarkID (Pro accounts only)</li>
+	 *   <li>ProofDays (Pro accounts only)</li>
+	 *   <li>Protected</li>
+	 *   <li>Public</li>
+	 *   <li>Share</li>
+	 *   <li>SmugSearchable</li>
+	 *   <li>SortDirection</li>
+	 *   <li>SortMethod</li>
+	 *   <li>SquareThumbs</li>
+	 *   <li>TemplateID</li>
+	 *   <li>UnsharpAmount (Power & Pro accounts only)</li>
+	 *   <li>UnsharpRadius (Power & Pro accounts only)</li>
+	 *   <li>UnsharpSigma (Power & Pro accounts only)</li>
+	 *   <li>UnsharpThreshold (Power & Pro accounts only)</li>
+	 *   <li>WatermarkID (Pro accounts only)</li>
+	 *   <li>Watermarking (Pro accounts only)</li>
+	 *   <li>WorldSearchable</li>
+	 *   <li>X2Larges</li>
+	 *   <li>X3Larges</li>
+	 *   <li>XLarges (Pro accounts only)</li>
+	 * </ul>
 	 * 
 	 * @param album the album details to be changed
 	 * @param albumTemplateId the album template id of the template to pull settings from
@@ -157,15 +292,15 @@ public class AlbumAPI {
 	 * @param extras array of extra fields to be populated.
 	 * @param pretty return formatted JSON that is easier to read
 	 * @param strict Enable strict error handling.
-	 * @return the created album
+	 * @return 
 	 * @throws SmugMugException
 	 */
-	public Album changeSettings(Album album, Integer albumTemplateId, boolean unique, String[] extras, boolean pretty, boolean strict) throws SmugMugException {
+	public boolean changeSettings(Album album, Integer albumTemplateId, boolean unique, String[] extras, boolean pretty, boolean strict) throws SmugMugException {
 		logger.debug("changeSettings() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
 		if(albumTemplateId != null){
-			params.put("AlbumTemplateID", albumTemplateId.toString());
+			params.put("AlbumID", albumTemplateId.toString());
 		}
 		if(unique){
 			params.put("Unique", "true");
@@ -174,9 +309,9 @@ public class AlbumAPI {
 		
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.albums.changeSettings", params, extras, pretty, false, strict, false);
 		logger.debug("changeSettings() result: "+(requestToken == null ? "null" : requestToken.toString()));
-		return album;
+		return true;
 	}
-	
+
 	/**
 	 * Add a comment to an album.
 	 * 
@@ -244,6 +379,51 @@ public class AlbumAPI {
 	/**
 	 * Create an album.
 	 * 
+	 * <ul>
+	 *   <li>AlbumID</li>
+	 *   <li>AlbumTemplateName</li>
+	 *   <li>Backprinting (Pro accounts only)</li>
+	 *   <li>CanRank</li>
+	 *   <li>Clean</li>
+	 *   <li>Comments</li>
+	 *   <li>CommunityID</li>
+	 *   <li>EXIF</li>
+	 *   <li>External</li>
+	 *   <li>FamilyEdit</li>
+	 *   <li>Filenames</li>
+	 *   <li>FriendEdit</li>
+	 *   <li>Geography</li>
+	 *   <li>Header (Power & Pro accounts only)</li>
+	 *   <li>HideOwner</li>
+	 *   <li>InterceptShipping (Pro accounts only)</li>
+	 *   <li>Larges (Pro accounts only)</li>
+	 *   <li>Originals</li>
+	 *   <li>PackagingBranding (Pro accounts only)</li>
+	 *   <li>Password</li>
+	 *   <li>PasswordHint</li>
+	 *   <li>Printable</li>
+	 *   <li>PrintmarkID (Pro accounts only)</li>
+	 *   <li>ProofDays (Pro accounts only)</li>
+	 *   <li>Protected</li>
+	 *   <li>Public</li>
+	 *   <li>Share</li>
+	 *   <li>SmugSearchable</li>
+	 *   <li>SortDirection</li>
+	 *   <li>SortMethod</li>
+	 *   <li>SquareThumbs</li>
+	 *   <li>TemplateID</li>
+	 *   <li>UnsharpAmount (Power & Pro accounts only)</li>
+	 *   <li>UnsharpRadius (Power & Pro accounts only)</li>
+	 *   <li>UnsharpSigma (Power & Pro accounts only)</li>
+	 *   <li>UnsharpThreshold (Power & Pro accounts only)</li>
+	 *   <li>WatermarkID (Pro accounts only)</li>
+	 *   <li>Watermarking (Pro accounts only)</li>
+	 *   <li>WorldSearchable</li>
+	 *   <li>X2Larges</li>
+	 *   <li>X3Larges</li>
+	 *   <li>XLarges (Pro accounts only)</li>
+	 * </ul>
+	 * 
 	 * It uses the default values found in the API. The results of this call 
 	 * is the same as making the call:
 	 *  create(album, null, false, null, false, false)
@@ -258,6 +438,51 @@ public class AlbumAPI {
 	
 	/**
 	 * Create an album.
+	 * 
+	 * <ul>
+	 *   <li>AlbumID</li>
+	 *   <li>AlbumTemplateName</li>
+	 *   <li>Backprinting (Pro accounts only)</li>
+	 *   <li>CanRank</li>
+	 *   <li>Clean</li>
+	 *   <li>Comments</li>
+	 *   <li>CommunityID</li>
+	 *   <li>EXIF</li>
+	 *   <li>External</li>
+	 *   <li>FamilyEdit</li>
+	 *   <li>Filenames</li>
+	 *   <li>FriendEdit</li>
+	 *   <li>Geography</li>
+	 *   <li>Header (Power & Pro accounts only)</li>
+	 *   <li>HideOwner</li>
+	 *   <li>InterceptShipping (Pro accounts only)</li>
+	 *   <li>Larges (Pro accounts only)</li>
+	 *   <li>Originals</li>
+	 *   <li>PackagingBranding (Pro accounts only)</li>
+	 *   <li>Password</li>
+	 *   <li>PasswordHint</li>
+	 *   <li>Printable</li>
+	 *   <li>PrintmarkID (Pro accounts only)</li>
+	 *   <li>ProofDays (Pro accounts only)</li>
+	 *   <li>Protected</li>
+	 *   <li>Public</li>
+	 *   <li>Share</li>
+	 *   <li>SmugSearchable</li>
+	 *   <li>SortDirection</li>
+	 *   <li>SortMethod</li>
+	 *   <li>SquareThumbs</li>
+	 *   <li>TemplateID</li>
+	 *   <li>UnsharpAmount (Power & Pro accounts only)</li>
+	 *   <li>UnsharpRadius (Power & Pro accounts only)</li>
+	 *   <li>UnsharpSigma (Power & Pro accounts only)</li>
+	 *   <li>UnsharpThreshold (Power & Pro accounts only)</li>
+	 *   <li>WatermarkID (Pro accounts only)</li>
+	 *   <li>Watermarking (Pro accounts only)</li>
+	 *   <li>WorldSearchable</li>
+	 *   <li>X2Larges</li>
+	 *   <li>X3Larges</li>
+	 *   <li>XLarges (Pro accounts only)</li>
+	 * </ul>
 	 * 
 	 * It uses the default values found in the API. The results of this call 
 	 * is the same as making the call:
@@ -274,6 +499,51 @@ public class AlbumAPI {
 	
 	/**
 	 * Create an album.
+	 * 
+	 * <ul>
+	 *   <li>AlbumID</li>
+	 *   <li>AlbumTemplateName</li>
+	 *   <li>Backprinting (Pro accounts only)</li>
+	 *   <li>CanRank</li>
+	 *   <li>Clean</li>
+	 *   <li>Comments</li>
+	 *   <li>CommunityID</li>
+	 *   <li>EXIF</li>
+	 *   <li>External</li>
+	 *   <li>FamilyEdit</li>
+	 *   <li>Filenames</li>
+	 *   <li>FriendEdit</li>
+	 *   <li>Geography</li>
+	 *   <li>Header (Power & Pro accounts only)</li>
+	 *   <li>HideOwner</li>
+	 *   <li>InterceptShipping (Pro accounts only)</li>
+	 *   <li>Larges (Pro accounts only)</li>
+	 *   <li>Originals</li>
+	 *   <li>PackagingBranding (Pro accounts only)</li>
+	 *   <li>Password</li>
+	 *   <li>PasswordHint</li>
+	 *   <li>Printable</li>
+	 *   <li>PrintmarkID (Pro accounts only)</li>
+	 *   <li>ProofDays (Pro accounts only)</li>
+	 *   <li>Protected</li>
+	 *   <li>Public</li>
+	 *   <li>Share</li>
+	 *   <li>SmugSearchable</li>
+	 *   <li>SortDirection</li>
+	 *   <li>SortMethod</li>
+	 *   <li>SquareThumbs</li>
+	 *   <li>TemplateID</li>
+	 *   <li>UnsharpAmount (Power & Pro accounts only)</li>
+	 *   <li>UnsharpRadius (Power & Pro accounts only)</li>
+	 *   <li>UnsharpSigma (Power & Pro accounts only)</li>
+	 *   <li>UnsharpThreshold (Power & Pro accounts only)</li>
+	 *   <li>WatermarkID (Pro accounts only)</li>
+	 *   <li>Watermarking (Pro accounts only)</li>
+	 *   <li>WorldSearchable</li>
+	 *   <li>X2Larges</li>
+	 *   <li>X3Larges</li>
+	 *   <li>XLarges (Pro accounts only)</li>
+	 * </ul>
 	 * 
 	 * @param album the album details to be created
 	 * @param albumTemplateId the album template id of the template to pull settings from
@@ -293,9 +563,8 @@ public class AlbumAPI {
 		}
 		if(unique){
 			params.put("Unique", "true");
-		}
-		this.setAlbumParameters(params, album);		
-		
+		}		
+		this.setAlbumParameters(params, album);
 		AlbumResponse requestToken = SMResponse.callMethod(this.smugmug,AlbumResponse.class, "smugmug.albums.create", params, extras, pretty, false, strict, false);
 		logger.debug("create() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		album.setId(requestToken.getAlbum().getId());
@@ -546,121 +815,23 @@ public class AlbumAPI {
 		//if it does not throw an exception than it worked, so return true
 		return true;
 	}
+
 	
-	private void setAlbumParameters(Map<String, String> params, Album album){
-		if(album.getBackPrinting() != null){
-			params.put("Backprinting", album.getBackPrinting());
-		}
-		if(album.getBoutiquePackaging() != null){
-			params.put("BoutiquePackaging", album.getBoutiquePackaging().toString());
-		}
-		if(album.getCanRank() != null){
-			params.put("CanRank", (album.getCanRank() ? "true" : "false"));
-		}
+	private void setAlbumParameters(Map<String, String> params, Album album) {
 		if(album.getCategory() != null){
 			params.put("CategoryID", album.getCategory().getId().toString());
-		}
-		if(album.getClean() != null){
-			params.put("Clean", (album.getClean() ? "true" : "false"));
-		}
-		if(album.getColorCorrection() != null){
-			params.put("ColorCorrection", album.getColorCorrection().toString());
-		}
-		if(album.getComments() != null){
-			params.put("Comments", (album.getComments() ? "true" : "false"));
-		}
-		if(album.getCommunity() != null){
-			params.put("CommunityID", album.getCommunity().getId().toString());
 		}
 		if(album.getDescription() != null){
 			params.put("Description", album.getDescription());
 		}
-		if(album.getExif() != null){
-			params.put("EXIF", (album.getExif() ? "true" : "false"));
-		}
-		if(album.getExternal() != null){
-			params.put("External", (album.getExternal() ? "true" : "false"));
-		}
-		if(album.getFamilyEdit() != null){
-			params.put("FamilyEdit", (album.getFamilyEdit() ? "true" : "false"));
-		}
-		if(album.getFilenames() != null){
-			params.put("Filenames", (album.getFilenames() ? "true" : "false"));
-		}
-		if(album.getFriendEdit() != null){
-			params.put("FriendEdit", (album.getFriendEdit() ? "true" : "false"));
-		}
-		if(album.getGeography() != null){
-			params.put("Geography", (album.getGeography() ? "true" : "false"));
-		}
-		if(album.getHeader() != null){
-			params.put("Header", (album.getHeader() ? "true" : "false"));
-		}
-		if(album.getHideOwner() != null){
-			params.put("HideOwner", (album.getHideOwner() ? "true" : "false"));
-		}
-		if(album.getInterceptShipping() != null){
-			params.put("InterceptShipping", album.getInterceptShipping().toString());
-		}
 		if(album.getKeywords() != null){
 			params.put("Keywords", album.getKeywords());
-		}
-		if(album.getLarges() != null){
-			params.put("Larges", (album.getLarges() ? "true" : "false"));
 		}
 		if(album.getNiceName() != null){
 			params.put("NiceName", album.getNiceName());
 		}
-		if(album.getOriginals() != null){
-			params.put("Originals", (album.getOriginals() ? "true" : "false"));
-		}
-		if(album.getPackagingBranding() != null){
-			params.put("PackagingBranding", (album.getPackagingBranding() ? "true" : "false"));
-		}
-		if(album.getPassword() != null){
-			params.put("Password", album.getPassword());
-		}
-		if(album.getPasswordHint() != null){
-			params.put("PasswordHint", album.getPasswordHint());
-		}
-		if(album.getPosition() != null){
-			params.put("Position", album.getPosition().toString());
-		}
-		if(album.getPrintable() != null){
-			params.put("Printable", (album.getPrintable() ? "true" : "false"));
-		}
-		if(album.getPrintmark() != null){
-			params.put("PrintmarkID", album.getPrintmark().getId().toString());
-		}
-		if(album.getProofDays() != null){
-			params.put("ProofDays", album.getProofDays().toString());
-		}
-		if(album.getProtectedRightClick() != null){
-			params.put("Protected", (album.getProtectedRightClick() ? "true" : "false"));
-		}
-		if(album.getPublicAlbum() != null){
-			params.put("Public", (album.getPublicAlbum() ? "true" : "false"));
-		}
-		if(album.getShare() != null){
-			params.put("Share", (album.getShare() ? "true" : "false"));
-		}
-		if(album.getSmugSearchable() != null){
-			params.put("SmugSearchable", (album.getSmugSearchable() ? "true" : "false"));
-		}
-		if(album.getSortDirection() != null){
-			params.put("SortDirection", (album.getSortDirection() ? "true" : "false"));
-		}
-		if(album.getSortMethod() != null){
-			params.put("SortMethod", album.getSortMethod());
-		}
-		if(album.getSquareThumbs() != null){
-			params.put("SquareThumbs", (album.getSquareThumbs() ? "true" : "false"));
-		}
 		if(album.getSubCategory() != null){
 			params.put("SubCategoryID", album.getSubCategory().getId().toString());
-		}
-		if(album.getTemplate() != null){
-			params.put("TemplateID", album.getTemplate().getId().toString());
 		}
 		if(album.getTheme() != null){
 			params.put("ThemeID", album.getTheme().getId().toString());
@@ -668,38 +839,6 @@ public class AlbumAPI {
 		if(album.getTitle() != null){
 			params.put("Title", album.getTitle());
 		}
-		if(album.getUnsharpAmount() != null){
-			params.put("UnsharpAmount", album.getUnsharpAmount().toString());
-		}
-		if(album.getUnsharpRadius() != null){
-			params.put("UnsharpRadius", album.getUnsharpRadius().toString());
-		}
-		if(album.getUnsharpSigma() != null){
-			params.put("UnsharpSigma", album.getUnsharpSigma().toString());
-		}
-		if(album.getUnsharpThreshold() != null){
-			params.put("UnsharpThreshold", album.getUnsharpThreshold().toString());
-		}
-		if(album.getUploadKey() != null){
-			params.put("UploadKey", album.getUploadKey());
-		}
-		if(album.getWatermark() != null){
-			params.put("WatermarkID", album.getWatermark().getId().toString());
-		}
-		if(album.getWatermarking() != null){
-			params.put("Watermarking", (album.getWatermarking() ? "true" : "false"));
-		}
-		if(album.getWorldSearchable() != null){
-			params.put("WorldSearchable", (album.getWorldSearchable() ? "true" : "false"));
-		}
-		if(album.getX2Larges() != null){
-			params.put("X2Larges", (album.getX2Larges() ? "true" : "false"));
-		}
-		if(album.getX3Larges() != null){
-			params.put("X3Larges", (album.getX3Larges() ? "true" : "false"));
-		}
-		if(album.getxLarges() != null){
-			params.put("XLarges", (album.getxLarges() ? "true" : "false"));
-		}
+		this.setAlbumBaseParameters(params, album);
 	}
 }
