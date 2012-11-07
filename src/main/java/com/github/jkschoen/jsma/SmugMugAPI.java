@@ -20,6 +20,8 @@ public class SmugMugAPI {
 	private AccountsAPI accounts;
 	private AlbumAPI album;
 	private AuthAPI auth;
+	private AlbumTemplatesAPI albumtemplates;
+	private CategoriesAPI categories;
 	private ImageAPI images;
 	
 	public SmugMugAPI(String appName, String consumerSecret, String cosumerKey) {
@@ -95,6 +97,20 @@ public class SmugMugAPI {
 			this.auth = new AuthAPI(this);
 		}
 		return this.auth;
+	}
+
+	public AlbumTemplatesAPI albumtemplates(){
+		if (this.albumtemplates == null){
+			this.albumtemplates = new AlbumTemplatesAPI(this);
+		}
+		return this.albumtemplates;
+	}
+	
+	public CategoriesAPI categories(){
+		if (this.categories == null){
+			this.categories = new CategoriesAPI(this);
+		}
+		return this.categories;
 	}
 
 	public ImageAPI images(){
