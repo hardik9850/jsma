@@ -97,7 +97,7 @@ public class ImageAPI {
 	 * @return true if the settngs are successfully changed.
 	 * @throws SmugMugException
 	 */
-	public boolean changeSettings(Image image, String[] extras, boolean pretty, boolean sandboxed, boolean strict) throws SmugMugException{
+	public Image changeSettings(Image image, String[] extras, boolean pretty, boolean sandboxed, boolean strict) throws SmugMugException{
 		logger.debug("changeSettings() called");
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("ImageID", Integer.toString(image.getId()));
@@ -126,10 +126,10 @@ public class ImageAPI {
 			params.put("Longitude", image.getLongitude().toString());
 		}
 		
-		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.images.changeSettings", params, extras, pretty, sandboxed, strict, false);
+		ImageResponse requestToken = SMResponse.callMethod(this.smugmug,ImageResponse.class, "smugmug.images.changeSettings", params, extras, pretty, sandboxed, strict, false);
 		logger.debug("changeSettings() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		//if it does not throw an exception than it worked, so return true
-		return true;
+		return requestToken.getImage();
 	}
 	
 	/**
