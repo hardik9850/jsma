@@ -24,6 +24,10 @@ public class SmugMugAPI {
 	private CategoriesAPI categories;
 	private CommunitiesAPI communities;
 	private CouponsAPI coupons;
+	private FamilyAPI family;
+	private FansAPI fans;
+	private FeaturedAPI featured;
+	private FriendsAPI friends;
 	private ImageAPI images;
 	
 	public SmugMugAPI(String appName, String consumerSecret, String cosumerKey) {
@@ -128,7 +132,35 @@ public class SmugMugAPI {
 		}
 		return this.coupons;
 	}
+	
+	public FamilyAPI family(){
+		if (this.family == null){
+			this.family = new FamilyAPI(this);
+		}
+		return this.family;
+	}
+	
+	public FansAPI fans(){
+		if (this.fans == null){
+			this.fans = new FansAPI(this);
+		}
+		return this.fans;
+	}
 
+	public FeaturedAPI featured(){
+		if (this.featured == null){
+			this.featured = new FeaturedAPI(this);
+		}
+		return this.featured;
+	}
+	
+	public FriendsAPI friends(){
+		if (this.friends == null){
+			this.friends = new FriendsAPI(this);
+		}
+		return this.friends;
+	}
+	
 	public ImageAPI images(){
 		if (this.images == null){
 			this.images = new ImageAPI(this);
