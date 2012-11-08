@@ -29,6 +29,8 @@ public class SmugMugAPI {
 	private FeaturedAPI featured;
 	private FriendsAPI friends;
 	private ImageAPI images;
+	private PrintMarksAPI printmarks;
+	private ServiceAPI service;
 	
 	public SmugMugAPI(String appName, String consumerSecret, String cosumerKey) {
 		this.appName = appName;
@@ -168,4 +170,17 @@ public class SmugMugAPI {
 		return this.images;
 	}
 	
+	public PrintMarksAPI printmarks(){
+		if (this.printmarks == null){
+			this.printmarks = new PrintMarksAPI(this);
+		}
+		return this.printmarks;
+	}
+	
+	public ServiceAPI service(){
+		if (this.service == null){
+			this.service = new ServiceAPI(this);
+		}
+		return this.service;
+	}
 }

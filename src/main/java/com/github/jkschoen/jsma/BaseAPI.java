@@ -25,6 +25,20 @@ public abstract class BaseAPI {
 		return string;
 	}
 	
+	protected <T> T process(T original, T result, String[] fields, boolean heavy) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException{
+		if (heavy){
+			//that means it has everything so no need to do anything else
+			return result;
+		}
+		if (fields != null && fields.length > 0){
+			//means that they asked for extra fields, so set it to the original
+			setExtras(original, result, fields);
+			return original;
+		}
+		//nothing special to do, so return the original
+		return original;
+	}
+	
 	/**
 	 * This is handy for create/change methods to have the ability to
 	 * request a list of extra fields to be returned. This will loop 
