@@ -4,7 +4,7 @@ import java.util.Map;
 
 import com.github.jkschoen.jsma.model.AlbumBase;
 
-public class AlbumBaseAPI {
+public class AlbumBaseAPI extends BaseAPI{
 
 	protected void setAlbumBaseParameters(Map<String, String> params, AlbumBase album){
 		if(album.getAlbumTemplateID() != null){

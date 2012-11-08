@@ -13,7 +13,7 @@ import com.github.jkschoen.jsma.response.CategoriesResponse;
 import com.github.jkschoen.jsma.response.CategoryResponse;
 import com.github.jkschoen.jsma.response.SMResponse;
 
-public class CategoriesAPI {
+public class CategoriesAPI extends BaseAPI{
 	static final Logger logger = LoggerFactory.getLogger(CategoriesAPI.class);
 	
 	private SmugMugAPI smugmug;
@@ -32,8 +32,12 @@ public class CategoriesAPI {
 	 * @param strict Enable strict error handling.
 	 * @return
 	 * @throws SmugMugException
+	 * @throws IllegalAccessException 
+	 * @throws IllegalArgumentException 
+	 * @throws SecurityException 
+	 * @throws NoSuchFieldException 
 	 */
-	public Category create(Category category, boolean unique, String[] extras, boolean pretty, boolean strict) throws SmugMugException{
+	public Category create(Category category, boolean unique, String[] extras, boolean pretty, boolean strict) throws SmugMugException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException{
 		logger.debug("create() called");
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("Name", category.getName());
@@ -47,6 +51,9 @@ public class CategoriesAPI {
 		CategoryResponse requestToken = SMResponse.callMethod(this.smugmug,CategoryResponse.class, "smugmug.categories.create", params, null, pretty, false, strict, false);
 		logger.debug("create() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		category.setId(requestToken.getCategory().getId());
+		if(category != null){
+			this.setExtras(category, requestToken.getCategory(), extras);
+		}
 		return category;
 	}
 	

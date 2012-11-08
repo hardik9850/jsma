@@ -22,7 +22,7 @@ import com.github.jkschoen.jsma.response.ImageResponse;
 import com.github.jkschoen.jsma.response.ImageStatsResponse;
 import com.github.jkschoen.jsma.response.SMResponse;
 
-public class ImageAPI {
+public class ImageAPI extends BaseAPI{
 	static final Logger logger = LoggerFactory.getLogger(ImageAPI.class);
 	
 	private SmugMugAPI smugmug;
@@ -96,8 +96,12 @@ public class ImageAPI {
 	 * @param strict Enable strict error handling.
 	 * @return true if the settngs are successfully changed.
 	 * @throws SmugMugException
+	 * @throws IllegalAccessException 
+	 * @throws IllegalArgumentException 
+	 * @throws SecurityException 
+	 * @throws NoSuchFieldException 
 	 */
-	public Image changeSettings(Image image, String[] extras, boolean pretty, boolean sandboxed, boolean strict) throws SmugMugException{
+	public Image changeSettings(Image image, String[] extras, boolean pretty, boolean sandboxed, boolean strict) throws SmugMugException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException{
 		logger.debug("changeSettings() called");
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("ImageID", Integer.toString(image.getId()));
@@ -129,6 +133,9 @@ public class ImageAPI {
 		ImageResponse requestToken = SMResponse.callMethod(this.smugmug,ImageResponse.class, "smugmug.images.changeSettings", params, extras, pretty, sandboxed, strict, false);
 		logger.debug("changeSettings() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		//if it does not throw an exception than it worked, so return true
+		if(image != null){
+			this.setExtras(image, requestToken.getImage(), extras);
+		}
 		return requestToken.getImage();
 	}
 	
@@ -165,8 +172,12 @@ public class ImageAPI {
 	 * @param pretty return formatted JSON that is easier to read
 	 * @param strict Enable strict error handling.
 	 * @return the added comment
+	 * @throws IllegalAccessException 
+	 * @throws IllegalArgumentException 
+	 * @throws SecurityException 
+	 * @throws NoSuchFieldException 
 	 */
-	public Comment commentAdd(Comment comment, int imageId, String imageKey, String[] extras, boolean pretty, boolean strict) throws SmugMugException{
+	public Comment commentAdd(Comment comment, int imageId, String imageKey, String[] extras, boolean pretty, boolean strict) throws SmugMugException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException{
 		logger.debug("commentAdd() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
@@ -180,6 +191,9 @@ public class ImageAPI {
 		AlbumCommentResponse requestToken = SMResponse.callMethod(this.smugmug,AlbumCommentResponse.class, "smugmug.images.comment.add", params, extras, pretty, false, strict, false);
 		logger.debug("commentAdd() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		comment.setId(requestToken.getComment().getId());
+		if(comment != null){
+			this.setExtras(comment, requestToken.getComment(), extras);
+		}
 		return comment;
 	}
 	

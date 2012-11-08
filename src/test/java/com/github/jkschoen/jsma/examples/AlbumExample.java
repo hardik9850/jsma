@@ -31,7 +31,7 @@ public class AlbumExample {
 	private static String OAUTH_TOKEN_SECRET=UserConfig.OAUTH_TOKEN_SECRET;
 
 	public static void main(String[] args) throws IOException,
-			URISyntaxException, SmugMugException {
+			URISyntaxException, SmugMugException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		SmugMugAPI smugmug = new SmugMugAPI(
 				APP_NAME,
 				CONSUMER_SECRET,
@@ -75,7 +75,7 @@ public class AlbumExample {
 		System.out.println("  Found => "+found.toString());
 	}
 	
-	public static Album createAlbum(SmugMugAPI smugmug) throws SmugMugException{
+	public static Album createAlbum(SmugMugAPI smugmug) throws SmugMugException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException{
 		Album album = new Album();
 		album.setTitle("Test");
 		smugmug.albums().create(album, null, false, null, false, false);

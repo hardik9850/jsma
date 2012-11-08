@@ -135,8 +135,12 @@ public class AlbumAPI extends AlbumBaseAPI{
 	 * @param strict Enable strict error handling.
 	 * @return 
 	 * @throws SmugMugException
+	 * @throws IllegalAccessException 
+	 * @throws IllegalArgumentException 
+	 * @throws SecurityException 
+	 * @throws NoSuchFieldException 
 	 */
-	public boolean changeSettings(Album album, Integer albumTemplateId, boolean unique, String[] extras, boolean pretty, boolean strict) throws SmugMugException {
+	public Album changeSettings(Album album, Integer albumTemplateId, boolean unique, String[] extras, boolean pretty, boolean strict) throws SmugMugException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		logger.debug("changeSettings() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
@@ -148,9 +152,13 @@ public class AlbumAPI extends AlbumBaseAPI{
 		}
 		this.setAlbumParameters(params, album);		
 		
-		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.albums.changeSettings", params, extras, pretty, false, strict, false);
+		AlbumResponse requestToken = SMResponse.callMethod(this.smugmug,AlbumResponse.class, "smugmug.albums.changeSettings", params, extras, pretty, false, strict, false);
 		logger.debug("changeSettings() result: "+(requestToken == null ? "null" : requestToken.toString()));
-		return true;
+		album.setKey(requestToken.getAlbum().getKey());
+		if(extras != null){
+			this.setExtras(album, requestToken.getAlbum(), extras);
+		}
+		return album;
 	}
 
 	/**
@@ -163,8 +171,12 @@ public class AlbumAPI extends AlbumBaseAPI{
 	 * @param pretty return formatted JSON that is easier to read
 	 * @param strict Enable strict error handling.
 	 * @return the added comment
+	 * @throws IllegalAccessException 
+	 * @throws IllegalArgumentException 
+	 * @throws SecurityException 
+	 * @throws NoSuchFieldException 
 	 */
-	public Comment commentAdd(Comment comment, int albumId, String albumKey, String[] extras, boolean pretty, boolean strict) throws SmugMugException{
+	public Comment commentAdd(Comment comment, int albumId, String albumKey, String[] extras, boolean pretty, boolean strict) throws SmugMugException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException{
 		logger.debug("commentAdd() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
@@ -178,6 +190,9 @@ public class AlbumAPI extends AlbumBaseAPI{
 		AlbumCommentResponse requestToken = SMResponse.callMethod(this.smugmug,AlbumCommentResponse.class, "smugmug.albums.comment.add", params, extras, pretty, false, strict, false);
 		logger.debug("commentAdd() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		comment.setId(requestToken.getComment().getId());
+		if(extras != null){
+			this.setExtras(comment, requestToken.getComment(), extras);
+		}
 		return comment;
 	}
 	
@@ -273,8 +288,12 @@ public class AlbumAPI extends AlbumBaseAPI{
 	 * @param strict Enable strict error handling.
 	 * @return the created album
 	 * @throws SmugMugException
+	 * @throws IllegalAccessException 
+	 * @throws IllegalArgumentException 
+	 * @throws SecurityException 
+	 * @throws NoSuchFieldException 
 	 */
-	public Album create(Album album, Integer albumTemplateId, boolean unique, String[] extras, boolean pretty, boolean strict) throws SmugMugException {
+	public Album create(Album album, Integer albumTemplateId, boolean unique, String[] extras, boolean pretty, boolean strict) throws SmugMugException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		logger.debug("create() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
@@ -289,6 +308,9 @@ public class AlbumAPI extends AlbumBaseAPI{
 		logger.debug("create() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		album.setId(requestToken.getAlbum().getId());
 		album.setKey(requestToken.getAlbum().getKey());
+		if(album != null){
+			this.setExtras(album, requestToken.getAlbum(), extras);
+		}
 		return album;
 	}
 	
