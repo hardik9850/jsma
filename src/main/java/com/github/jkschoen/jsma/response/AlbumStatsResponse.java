@@ -11,7 +11,7 @@ import com.github.jkschoen.jsma.model.AlbumStats;
 @XmlAccessorType(XmlAccessType.FIELD) 
 public class AlbumStatsResponse extends SMResponse {
 	
-	@XmlElement(name="Comment")
+	@XmlElement(name="Album")
 	private AlbumStats stats;
 
 	public AlbumStatsResponse() {

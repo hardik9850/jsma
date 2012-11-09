@@ -59,7 +59,7 @@ public abstract class BaseAPI {
 	 * @throws IllegalAccessException
 	 */
 	protected <T> void setExtras(T original, T result, String[] fields) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException{
-		if (original == null || result == null){
+		if (original == null || result == null || fields == null){
 			return;
 		}
 		

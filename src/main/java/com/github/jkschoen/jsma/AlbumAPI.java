@@ -190,9 +190,7 @@ public class AlbumAPI extends AlbumBaseAPI{
 		AlbumCommentResponse requestToken = SMResponse.callMethod(this.smugmug,AlbumCommentResponse.class, "smugmug.albums.comment.add", params, extras, pretty, false, strict, false);
 		logger.debug("commentAdd() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		comment.setId(requestToken.getComment().getId());
-		if(extras != null){
-			this.setExtras(comment, requestToken.getComment(), extras);
-		}
+		this.setExtras(comment, requestToken.getComment(), extras);
 		return comment;
 	}
 	
@@ -308,9 +306,7 @@ public class AlbumAPI extends AlbumBaseAPI{
 		logger.debug("create() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		album.setId(requestToken.getAlbum().getId());
 		album.setKey(requestToken.getAlbum().getKey());
-		if(album != null){
-			this.setExtras(album, requestToken.getAlbum(), extras);
-		}
+		this.setExtras(album, requestToken.getAlbum(), extras);
 		return album;
 	}
 	
