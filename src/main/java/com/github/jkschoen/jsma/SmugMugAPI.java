@@ -32,6 +32,7 @@ public class SmugMugAPI {
 	private PrintMarksAPI printmarks;
 	private ServiceAPI service;
 	private SubCategoryAPI subcategories;
+	private ThemeAPI themes;
 	
 	public SmugMugAPI(String appName, String consumerSecret, String cosumerKey) {
 		this.appName = appName;
@@ -190,6 +191,12 @@ public class SmugMugAPI {
 			this.subcategories = new SubCategoryAPI(this);
 		}
 		return this.subcategories;
-		
+	}
+	
+	public ThemeAPI themes(){
+		if (this.themes == null){
+			this.themes = new ThemeAPI(this);
+		}
+		return this.themes;
 	}
 }
