@@ -15,6 +15,9 @@ public class SubCategory {
 	@XmlElement(name="Name")
 	private String name;
 	
+	@XmlElement(name="Category")
+	private Category category;
+	
 	public SubCategory(){}
 
 	public Integer getId() {
@@ -32,11 +35,21 @@ public class SubCategory {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result
+				+ ((category == null) ? 0 : category.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
@@ -51,6 +64,11 @@ public class SubCategory {
 		if (getClass() != obj.getClass())
 			return false;
 		SubCategory other = (SubCategory) obj;
+		if (category == null) {
+			if (other.category != null)
+				return false;
+		} else if (!category.equals(other.category))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -66,6 +84,7 @@ public class SubCategory {
 
 	@Override
 	public String toString() {
-		return "SubCategory [id=" + id + ", name=" + name + "]";
-	}
+		return "SubCategory [id=" + id + ", name=" + name + ", category="
+				+ category + "]";
+	}	
 }

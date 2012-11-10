@@ -234,15 +234,6 @@ public class SharegroupsAPI extends BaseAPI{
 		return requestToken.getSharegroup();
 	}
 	
-//	AccessPassworded boolean
-//	Description string
-//	ShareGroupID integer (required)
-//	Name string
-//	Password string
-//	PasswordHint string
-//	Extras string
-//	Pretty boolean
-//	Strict boolean
 	/**
 	 * Create a modify.
 	 * 
