@@ -33,6 +33,8 @@ public class SmugMugAPI {
 	private ServiceAPI service;
 	private SubCategoryAPI subcategories;
 	private ThemeAPI themes;
+	private UserAPI users;
+	private WatermarkAPI watermarks;
 	
 	public SmugMugAPI(String appName, String consumerSecret, String cosumerKey) {
 		this.appName = appName;
@@ -198,5 +200,19 @@ public class SmugMugAPI {
 			this.themes = new ThemeAPI(this);
 		}
 		return this.themes;
+	}
+	
+	public UserAPI users(){
+		if (this.users == null){
+			this.users = new UserAPI(this);
+		}
+		return this.users;
+	}
+	
+	public WatermarkAPI watermarks(){
+		if (this.watermarks == null){
+			this.watermarks = new WatermarkAPI(this);
+		}
+		return this.watermarks;
 	}
 }

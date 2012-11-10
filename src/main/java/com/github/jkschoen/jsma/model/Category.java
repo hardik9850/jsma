@@ -1,5 +1,7 @@
 package com.github.jkschoen.jsma.model;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -20,6 +22,12 @@ public class Category {
 	
 	@XmlElement(name="Type")
 	private String type;
+	
+	@XmlElement(name="SubCategories")
+	private List<SubCategory> subCategories;
+	
+	@XmlElement(name="Albums")
+	private List<Album> albums;
 	
 	public Category(){
 	}
@@ -85,14 +93,33 @@ public class Category {
 		this.type = type;
 	}
 
+	public List<SubCategory> getSubCategories() {
+		return subCategories;
+	}
+
+	public void setSubCategories(List<SubCategory> subCategories) {
+		this.subCategories = subCategories;
+	}
+
+	public List<Album> getAlbums() {
+		return albums;
+	}
+
+	public void setAlbums(List<Album> albums) {
+		this.albums = albums;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((albums == null) ? 0 : albums.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result
 				+ ((niceName == null) ? 0 : niceName.hashCode());
+		result = prime * result
+				+ ((subCategories == null) ? 0 : subCategories.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
@@ -106,6 +133,11 @@ public class Category {
 		if (getClass() != obj.getClass())
 			return false;
 		Category other = (Category) obj;
+		if (albums == null) {
+			if (other.albums != null)
+				return false;
+		} else if (!albums.equals(other.albums))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -121,6 +153,11 @@ public class Category {
 				return false;
 		} else if (!niceName.equals(other.niceName))
 			return false;
+		if (subCategories == null) {
+			if (other.subCategories != null)
+				return false;
+		} else if (!subCategories.equals(other.subCategories))
+			return false;
 		if (type == null) {
 			if (other.type != null)
 				return false;
@@ -132,6 +169,7 @@ public class Category {
 	@Override
 	public String toString() {
 		return "Category [id=" + id + ", name=" + name + ", niceName="
-				+ niceName + ", type=" + type + "]";
+				+ niceName + ", type=" + type + ", subCategories="
+				+ subCategories + ", albums=" + albums + "]";
 	}
 }

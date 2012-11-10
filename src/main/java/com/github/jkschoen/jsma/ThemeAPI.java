@@ -10,7 +10,7 @@ import com.github.jkschoen.jsma.model.Theme;
 import com.github.jkschoen.jsma.response.SMResponse;
 import com.github.jkschoen.jsma.response.ThemesResponse;
 
-public class ThemeAPI   extends BaseAPI{
+public class ThemeAPI  extends BaseAPI{
 	static final Logger logger = LoggerFactory.getLogger(ThemeAPI.class);
 
 	private SmugMugAPI smugmug;
