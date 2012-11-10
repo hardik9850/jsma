@@ -13,7 +13,7 @@ import com.github.jkschoen.jsma.model.Friend;
 @XmlAccessorType(XmlAccessType.FIELD) 
 public class FriendsResponse  extends SMResponse {
 
-	@XmlElement(name="Family")
+	@XmlElement(name="Friends")
 	private List<Friend> friends;
 
 	public FriendsResponse() {

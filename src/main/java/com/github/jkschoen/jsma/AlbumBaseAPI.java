@@ -25,8 +25,8 @@ public class AlbumBaseAPI extends BaseAPI{
 		if(album.getColorCorrection() != null){
 			params.put("ColorCorrection", album.getColorCorrection().toString());
 		}
-		if(album.getComments() != null){
-			params.put("Comments", (album.getComments() ? "true" : "false"));
+		if(album.getCommentsAllowed() != null){
+			params.put("Comments", (album.getCommentsAllowed() ? "true" : "false"));
 		}
 		if(album.getCommunity() != null){
 			params.put("CommunityID", album.getCommunity().getId().toString());

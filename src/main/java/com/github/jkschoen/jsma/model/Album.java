@@ -1,5 +1,7 @@
 package com.github.jkschoen.jsma.model;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -47,6 +49,9 @@ public class Album extends AlbumBase{
 	
 	@XmlElement(name="URL")
 	private String url;
+	
+	@XmlElement(name="Comments")
+	private List<Comment> comments;
 	
 	public Album() {
 		super();
@@ -233,6 +238,14 @@ public class Album extends AlbumBase{
 	public void setUrl(String url) {
 		this.url = url;
 	}
+	
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
 
 	@Override
 	public int hashCode() {
@@ -240,6 +253,8 @@ public class Album extends AlbumBase{
 		int result = super.hashCode();
 		result = prime * result
 				+ ((category == null) ? 0 : category.hashCode());
+		result = prime * result
+				+ ((comments == null) ? 0 : comments.hashCode());
 		result = prime * result
 				+ ((description == null) ? 0 : description.hashCode());
 		result = prime * result
@@ -276,6 +291,11 @@ public class Album extends AlbumBase{
 			if (other.category != null)
 				return false;
 		} else if (!category.equals(other.category))
+			return false;
+		if (comments == null) {
+			if (other.comments != null)
+				return false;
+		} else if (!comments.equals(other.comments))
 			return false;
 		if (description == null) {
 			if (other.description != null)
@@ -342,13 +362,13 @@ public class Album extends AlbumBase{
 
 	@Override
 	public String toString() {
-		return "Album ["+super.toString()+", key=" + key + ", category=" + category
+		return "Album [key=" + key + ", category=" + category
 				+ ", description=" + description + ", highlight=" + highlight
 				+ ", imageCount=" + imageCount + ", keywords=" + keywords
 				+ ", lastUpdated=" + lastUpdated + ", niceName=" + niceName
 				+ ", passworded=" + passworded + ", subCategory=" + subCategory
 				+ ", theme=" + theme + ", title=" + title + ", url=" + url
-				+ "]";
+				+ ", comments=" + comments + "]";
 	}
 	
 }

@@ -54,6 +54,7 @@ public class AlbumTemplate extends AlbumBase{
 
 	@Override
 	public String toString() {
-		return "AlbumTemplates ["+super.toString()+", albumTemplateName=" + albumTemplateName + "]";
+		return "AlbumTemplate ["+super.toString()+", albumTemplateName=" + albumTemplateName + "]";
 	}
+	
 }

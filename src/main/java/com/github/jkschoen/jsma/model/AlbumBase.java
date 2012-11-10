@@ -29,9 +29,6 @@ public abstract class AlbumBase {
 	@XmlElement(name="ColorCorrection")
 	private Integer colorCorrection;
 	
-	@XmlElement(name="Comments")
-	private Boolean comments;
-	
 	@XmlElement(name="Community")
 	private Community community;
 	
@@ -149,6 +146,9 @@ public abstract class AlbumBase {
 	@XmlElement(name="XLarges")
 	private Boolean xLarges;
 	
+	@XmlElement(name="Comments")
+	private Boolean commentsAllowed;
+	
 	/***
 	 * The id for this album.
 	 */
@@ -261,20 +261,6 @@ public abstract class AlbumBase {
 	 */
 	public void setColorCorrection(Integer colorCorrection) {
 		this.colorCorrection = colorCorrection;
-	}
-
-	/**
-	 * Allow visitors to leave comments on this album.
-	 */
-	public Boolean getComments() {
-		return comments;
-	}
-
-	/**
-	 * Sets whether to allow visitors to leave comments on this album.
-	 */
-	public void setComments(Boolean comments) {
-		this.comments = comments;
 	}
 
 	/**
@@ -897,10 +883,26 @@ public abstract class AlbumBase {
 		this.xLarges = xLarges;
 	}
 
+	/**
+	 * Allow visitors to leave comments on this album.
+	 */
+	public Boolean getCommentsAllowed() {
+		return commentsAllowed;
+	}
+
+	/**
+	 * Sets whether to allow visitors to leave comments on this album.
+	 */
+	public void setCommentsAllowed(Boolean comments) {
+		this.commentsAllowed = comments;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result
+				+ ((albumTemplateID == null) ? 0 : albumTemplateID.hashCode());
 		result = prime * result
 				+ ((backPrinting == null) ? 0 : backPrinting.hashCode());
 		result = prime
@@ -912,7 +914,7 @@ public abstract class AlbumBase {
 		result = prime * result
 				+ ((colorCorrection == null) ? 0 : colorCorrection.hashCode());
 		result = prime * result
-				+ ((comments == null) ? 0 : comments.hashCode());
+				+ ((commentsAllowed == null) ? 0 : commentsAllowed.hashCode());
 		result = prime * result
 				+ ((community == null) ? 0 : community.hashCode());
 		result = prime * result + ((exif == null) ? 0 : exif.hashCode());
@@ -939,8 +941,10 @@ public abstract class AlbumBase {
 		result = prime * result + ((larges == null) ? 0 : larges.hashCode());
 		result = prime * result
 				+ ((originals == null) ? 0 : originals.hashCode());
-		result = prime * result
-				+ ((packagingBranding == null) ? 0 : packagingBranding.hashCode());
+		result = prime
+				* result
+				+ ((packagingBranding == null) ? 0 : packagingBranding
+						.hashCode());
 		result = prime * result
 				+ ((password == null) ? 0 : password.hashCode());
 		result = prime * result
@@ -1004,6 +1008,11 @@ public abstract class AlbumBase {
 		if (getClass() != obj.getClass())
 			return false;
 		AlbumBase other = (AlbumBase) obj;
+		if (albumTemplateID == null) {
+			if (other.albumTemplateID != null)
+				return false;
+		} else if (!albumTemplateID.equals(other.albumTemplateID))
+			return false;
 		if (backPrinting == null) {
 			if (other.backPrinting != null)
 				return false;
@@ -1029,10 +1038,10 @@ public abstract class AlbumBase {
 				return false;
 		} else if (!colorCorrection.equals(other.colorCorrection))
 			return false;
-		if (comments == null) {
-			if (other.comments != null)
+		if (commentsAllowed == null) {
+			if (other.commentsAllowed != null)
 				return false;
-		} else if (!comments.equals(other.comments))
+		} else if (!commentsAllowed.equals(other.commentsAllowed))
 			return false;
 		if (community == null) {
 			if (other.community != null)
@@ -1239,31 +1248,33 @@ public abstract class AlbumBase {
 
 	@Override
 	public String toString() {
-		return "id=" + id + ", backPrinting=" + backPrinting
-				+ ", boutiquePackaging=" + boutiquePackaging + ", canRank="
-				+ canRank + ", clean=" + clean + ", colorCorrection="
-				+ colorCorrection + ", comments=" + comments + ", community="
-				+ community + ", exif=" + exif + ", external=" + external
-				+ ", familyEdit=" + familyEdit + ", filenames=" + filenames
-				+ ", friendEdit=" + friendEdit + ", geography=" + geography
-				+ ", guestUploadURL=" + guestUploadURL + ", header=" + header
-				+ ", hideOwner=" + hideOwner + ", interceptShipping="
-				+ interceptShipping + ", larges=" + larges + ", originals="
-				+ originals + ", packagingBranding=" + packagingBranding
-				+ ", password=" + password + ", passwordHint=" + passwordHint
-				+ ", position=" + position + ", printable=" + printable
-				+ ", printmark=" + printmark + ", proofDays=" + proofDays
-				+ ", protectedRightClick=" + protectedRightClick
-				+ ", publicAlbum=" + publicAlbum + ", share=" + share
-				+ ", smugSearchable=" + smugSearchable + ", sortDirection="
-				+ sortDirection + ", sortMethod=" + sortMethod
-				+ ", squareThumbs=" + squareThumbs + ", template=" + template
-				+ ", unsharpAmount=" + unsharpAmount + ", unsharpRadius="
-				+ unsharpRadius + ", unsharpSigma=" + unsharpSigma
-				+ ", unsharpThreshold=" + unsharpThreshold + ", uploadKey="
-				+ uploadKey + ", watermark=" + watermark + ", watermarking="
-				+ watermarking + ", worldSearchable=" + worldSearchable
-				+ ", x2Larges=" + x2Larges + ", x3Larges=" + x3Larges
-				+ ", xLarges=" + xLarges;
+		return "AlbumBase [id=" + id + ", albumTemplateID=" + albumTemplateID
+				+ ", backPrinting=" + backPrinting + ", boutiquePackaging="
+				+ boutiquePackaging + ", canRank=" + canRank + ", clean="
+				+ clean + ", colorCorrection=" + colorCorrection
+				+ ", community=" + community + ", exif=" + exif + ", external="
+				+ external + ", familyEdit=" + familyEdit + ", filenames="
+				+ filenames + ", friendEdit=" + friendEdit + ", geography="
+				+ geography + ", guestUploadURL=" + guestUploadURL
+				+ ", header=" + header + ", hideOwner=" + hideOwner
+				+ ", interceptShipping=" + interceptShipping + ", larges="
+				+ larges + ", originals=" + originals + ", packagingBranding="
+				+ packagingBranding + ", password=" + password
+				+ ", passwordHint=" + passwordHint + ", position=" + position
+				+ ", printable=" + printable + ", printmark=" + printmark
+				+ ", proofDays=" + proofDays + ", protectedRightClick="
+				+ protectedRightClick + ", publicAlbum=" + publicAlbum
+				+ ", share=" + share + ", smugSearchable=" + smugSearchable
+				+ ", sortDirection=" + sortDirection + ", sortMethod="
+				+ sortMethod + ", squareThumbs=" + squareThumbs + ", template="
+				+ template + ", unsharpAmount=" + unsharpAmount
+				+ ", unsharpRadius=" + unsharpRadius + ", unsharpSigma="
+				+ unsharpSigma + ", unsharpThreshold=" + unsharpThreshold
+				+ ", uploadKey=" + uploadKey + ", watermark=" + watermark
+				+ ", watermarking=" + watermarking + ", worldSearchable="
+				+ worldSearchable + ", x2Larges=" + x2Larges + ", x3Larges="
+				+ x3Larges + ", xLarges=" + xLarges + ", comments=" + commentsAllowed
+				+ "]";
 	}
+	
 }

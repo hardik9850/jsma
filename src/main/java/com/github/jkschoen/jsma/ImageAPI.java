@@ -14,9 +14,8 @@ import com.github.jkschoen.jsma.model.Comment;
 import com.github.jkschoen.jsma.model.Image;
 import com.github.jkschoen.jsma.model.ImageEXIF;
 import com.github.jkschoen.jsma.model.ImageStats;
-import com.github.jkschoen.jsma.response.AlbumCommentResponse;
 import com.github.jkschoen.jsma.response.AlbumResponse;
-import com.github.jkschoen.jsma.response.ImageCommentsResponse;
+import com.github.jkschoen.jsma.response.CommentResponse;
 import com.github.jkschoen.jsma.response.ImageEXIFResponse;
 import com.github.jkschoen.jsma.response.ImageResponse;
 import com.github.jkschoen.jsma.response.ImageStatsResponse;
@@ -188,12 +187,10 @@ public class ImageAPI extends BaseAPI{
 			params.put("Rating", comment.getRating().toString());
 		}
 		
-		AlbumCommentResponse requestToken = SMResponse.callMethod(this.smugmug,AlbumCommentResponse.class, "smugmug.images.comment.add", params, extras, pretty, false, strict, false);
+		CommentResponse requestToken = SMResponse.callMethod(this.smugmug,CommentResponse.class, "smugmug.images.comment.add", params, extras, pretty, false, strict, false);
 		logger.debug("commentAdd() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		comment.setId(requestToken.getComment().getId());
-		if(comment != null){
-			this.setExtras(comment, requestToken.getComment(), extras);
-		}
+		this.setExtras(comment, requestToken.getComment(), extras);
 		return comment;
 	}
 	
@@ -210,7 +207,7 @@ public class ImageAPI extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public List<Comment> commentGet(int imageId, String imageKey, String password, String sitePassword, Date lastUpdated, boolean pretty, boolean strict) throws SmugMugException{
+	public List<Comment> commentsGet(int imageId, String imageKey, String password, String sitePassword, Date lastUpdated, boolean pretty, boolean strict) throws SmugMugException{
 		logger.debug("commentGet() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
@@ -227,9 +224,9 @@ public class ImageAPI extends BaseAPI{
 			params.put("LastUpdated", Long.toString(lastUpdated.getTime()));
 		}
 		
-		ImageCommentsResponse requestToken = SMResponse.callMethod(this.smugmug,ImageCommentsResponse.class, "smugmug.images.comments.get", params, null, pretty, false, strict, false);
+		ImageResponse requestToken = SMResponse.callMethod(this.smugmug,ImageResponse.class, "smugmug.images.comments.get", params, null, pretty, false, strict, false);
 		logger.debug("commentGet() result: "+(requestToken == null ? "null" : requestToken.toString()));
-		return requestToken.getComments();
+		return requestToken.getImage().getComments();
 	}
 
 	/**

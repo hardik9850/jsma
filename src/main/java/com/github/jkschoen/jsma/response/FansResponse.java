@@ -13,7 +13,7 @@ import com.github.jkschoen.jsma.model.Fan;
 @XmlAccessorType(XmlAccessType.FIELD) 
 public class FansResponse  extends SMResponse {
 
-	@XmlElement(name="Family")
+	@XmlElement(name="Fans")
 	private List<Fan> fans;
 
 	public FansResponse() {

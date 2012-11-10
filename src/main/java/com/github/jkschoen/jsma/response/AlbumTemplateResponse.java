@@ -11,7 +11,7 @@ import com.github.jkschoen.jsma.model.AlbumTemplate;
 @XmlAccessorType(XmlAccessType.FIELD) 
 public class AlbumTemplateResponse extends SMResponse {
 	
-	@XmlElement(name="Album")
+	@XmlElement(name="AlbumTemplate")
 	private AlbumTemplate albumTemplate;
 
 	public AlbumTemplateResponse() {

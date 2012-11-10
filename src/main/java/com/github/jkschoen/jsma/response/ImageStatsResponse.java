@@ -11,7 +11,7 @@ import com.github.jkschoen.jsma.model.ImageStats;
 @XmlAccessorType(XmlAccessType.FIELD) 
 public class ImageStatsResponse extends SMResponse {
 
-	@XmlElement(name="Comment")
+	@XmlElement(name="Image")
 	private ImageStats stats;
 
 	public ImageStatsResponse() {

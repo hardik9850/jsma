@@ -11,7 +11,7 @@ import com.github.jkschoen.jsma.model.Coupon;
 @XmlAccessorType(XmlAccessType.FIELD) 
 public class CouponResponse extends SMResponse {
 	
-	@XmlElement(name="Album")
+	@XmlElement(name="Coupon")
 	private Coupon coupon;
 
 	public CouponResponse() {

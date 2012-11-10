@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,11 +12,10 @@ import com.github.jkschoen.jsma.misc.SmugMugException;
 import com.github.jkschoen.jsma.model.Album;
 import com.github.jkschoen.jsma.model.AlbumStats;
 import com.github.jkschoen.jsma.model.Comment;
-import com.github.jkschoen.jsma.response.AlbumCommentResponse;
-import com.github.jkschoen.jsma.response.AlbumCommentsResponse;
 import com.github.jkschoen.jsma.response.AlbumResponse;
 import com.github.jkschoen.jsma.response.AlbumStatsResponse;
 import com.github.jkschoen.jsma.response.AlbumsResponse;
+import com.github.jkschoen.jsma.response.CommentResponse;
 import com.github.jkschoen.jsma.response.SMResponse;
 
 public class AlbumAPI extends AlbumBaseAPI{
@@ -187,7 +185,7 @@ public class AlbumAPI extends AlbumBaseAPI{
 			params.put("Rating", comment.getRating().toString());
 		}
 		
-		AlbumCommentResponse requestToken = SMResponse.callMethod(this.smugmug,AlbumCommentResponse.class, "smugmug.albums.comment.add", params, extras, pretty, false, strict, false);
+		CommentResponse requestToken = SMResponse.callMethod(this.smugmug,CommentResponse.class, "smugmug.albums.comment.add", params, extras, pretty, false, strict, false);
 		logger.debug("commentAdd() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		comment.setId(requestToken.getComment().getId());
 		this.setExtras(comment, requestToken.getComment(), extras);
@@ -224,10 +222,10 @@ public class AlbumAPI extends AlbumBaseAPI{
 			params.put("LastUpdated", Long.toString(lastUpdated.getTime()));
 		}
 		
-		AlbumCommentsResponse requestToken = SMResponse.callMethod(this.smugmug,AlbumCommentsResponse.class, "smugmug.albums.comment.get", params, null, pretty, false, strict, false);
+		AlbumResponse requestToken = SMResponse.callMethod(this.smugmug,AlbumResponse.class, "smugmug.albums.comment.get", params, null, pretty, false, strict, false);
 		logger.debug("commentGet() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		
-		return requestToken.getComments();
+		return requestToken.getAlbum().getComments();
 	}
 	
 	/**

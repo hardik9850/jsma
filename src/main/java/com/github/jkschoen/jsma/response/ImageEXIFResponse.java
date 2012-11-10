@@ -11,7 +11,7 @@ import com.github.jkschoen.jsma.model.ImageEXIF;
 @XmlAccessorType(XmlAccessType.FIELD) 
 public class ImageEXIFResponse extends SMResponse {
 
-	@XmlElement(name="image")
+	@XmlElement(name="Image")
 	private ImageEXIF image;
 	
 	public ImageEXIFResponse() {

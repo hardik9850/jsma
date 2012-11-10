@@ -1,5 +1,7 @@
 package com.github.jkschoen.jsma.model;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -131,6 +133,9 @@ public class Image {
 	
 	@XmlElement(name="XLargeURL ")
 	private String xLargeURL;
+	
+	@XmlElement(name="Comments")
+	private List<Comment> comments;
 
 	public Image() {
 		super();
@@ -723,6 +728,14 @@ public class Image {
 	public void setxLargeURL(String xLargeURL) {
 		this.xLargeURL = xLargeURL;
 	}
+	
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
 
 	@Override
 	public int hashCode() {
@@ -732,6 +745,8 @@ public class Image {
 		result = prime * result
 				+ ((altitude == null) ? 0 : altitude.hashCode());
 		result = prime * result + ((caption == null) ? 0 : caption.hashCode());
+		result = prime * result
+				+ ((comments == null) ? 0 : comments.hashCode());
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result
 				+ ((duration == null) ? 0 : duration.hashCode());
@@ -821,6 +836,11 @@ public class Image {
 			if (other.caption != null)
 				return false;
 		} else if (!caption.equals(other.caption))
+			return false;
+		if (comments == null) {
+			if (other.comments != null)
+				return false;
+		} else if (!comments.equals(other.comments))
 			return false;
 		if (date == null) {
 			if (other.date != null)
@@ -1036,6 +1056,7 @@ public class Image {
 				+ videoSMILURL + ", videoStreamingURL=" + videoStreamingURL
 				+ ", width=" + width + ", x2LargeURL=" + x2LargeURL
 				+ ", x3LargeURL=" + x3LargeURL + ", xLargeURL=" + xLargeURL
-				+ "]";
+				+ ", comments=" + comments + "]";
 	}
+	
 }
