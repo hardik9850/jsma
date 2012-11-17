@@ -32,6 +32,15 @@ public class SMResponse {
 		return stat;
 	}
 
+	public SMResponse(){	
+	}
+	
+	public SMResponse(String stat, String method) {
+		super();
+		this.stat = stat;
+		this.method = method;
+	}
+
 	public void setStat(String stat) {
 		this.stat = stat;
 	}

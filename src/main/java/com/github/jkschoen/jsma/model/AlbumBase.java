@@ -14,7 +14,7 @@ public abstract class AlbumBase {
 	@XmlElement(name="AlbumTemplateID")
 	private Integer albumTemplateID; 
 	
-	@XmlElement(name="BackPrinting")
+	@XmlElement(name="Backprinting")
 	private String backPrinting;
 	
 	@XmlElement(name="BoutiquePackaging")
@@ -32,7 +32,7 @@ public abstract class AlbumBase {
 	@XmlElement(name="Community")
 	private Community community;
 	
-	@XmlElement(name="Exif")
+	@XmlElement(name="EXIF")
 	private Boolean exif;
 	
 	@XmlElement(name="External")
@@ -68,7 +68,7 @@ public abstract class AlbumBase {
 	@XmlElement(name="Originals")
 	private Boolean originals;
 	
-	@XmlElement(name="PackingBranding")
+	@XmlElement(name="PackagingBranding")
 	private Boolean packagingBranding;
 	
 	@XmlElement(name="Password")
@@ -107,11 +107,11 @@ public abstract class AlbumBase {
 	@XmlElement(name="SortMethod")
 	private String sortMethod;
 	
-	@XmlElement(name="SquareThumbds")
+	@XmlElement(name="SquareThumbs")
 	private Boolean squareThumbs;
 	
-	@XmlElement(name="TemplateID")
-	private Integer template;
+	@XmlElement(name="Template")
+	private Template template;
 	
 	@XmlElement(name="UnsharpAmount")
 	private Float unsharpAmount;
@@ -149,6 +149,126 @@ public abstract class AlbumBase {
 	@XmlElement(name="Comments")
 	private Boolean commentsAllowed;
 	
+	public AlbumBase(){}
+	
+	public AlbumBase(Integer id){
+		this.id = id;
+	}
+	
+	public AlbumBase(Integer id, String backPrinting, Boolean canRank, 
+			Boolean clean, Integer colorCorrection,
+			Boolean commentsAllowed, Boolean exif,
+			Boolean external, Boolean familyEdit, Boolean friendEdit,
+			Boolean geography, Boolean header, Boolean hideOwner,
+			Boolean larges, Boolean originals,
+			String password, String passwordHint,Integer position, Boolean printable,
+			Integer proofDays, Boolean protectedRightClick, Boolean publicAlbum,
+			Boolean share, Boolean smugSearchable, Boolean sortDirection,
+			String sortMethod, Boolean squareThumbs, Template template, Float unsharpAmount,
+			Float unsharpRadius, Float unsharpSigma, Float unsharpThreshold, 
+			String uploadKey, Watermark watermark, Boolean watermarking, 
+			Boolean worldSearchable, Boolean xLarges,  Boolean x2Larges, 
+			Boolean x3Larges){
+		this.id = id;
+		this.backPrinting = backPrinting;
+		this.canRank = canRank;
+		this.clean = clean;
+		this.colorCorrection = colorCorrection;
+		this.exif = exif;
+		this.external = external;
+		this.familyEdit = familyEdit;
+		this.friendEdit = friendEdit;
+		this.geography = geography;
+		this.header = header;
+		this.hideOwner = hideOwner;
+		this.larges = larges;
+		this.originals = originals;
+		this.password = password;
+		this.passwordHint = passwordHint;
+		this.position = position;
+		this.printable = printable;
+		this.proofDays = proofDays;
+		this.protectedRightClick = protectedRightClick;
+		this.publicAlbum = publicAlbum;
+		this.share = share;
+		this.smugSearchable = smugSearchable;
+		this.sortDirection = sortDirection;
+		this.sortMethod = sortMethod;
+		this.squareThumbs = squareThumbs;
+		this.template = template;
+		this.unsharpAmount = unsharpAmount;
+		this.unsharpRadius = unsharpRadius;
+		this.unsharpSigma = unsharpSigma;
+		this.unsharpThreshold = unsharpThreshold;
+		this.uploadKey = uploadKey;
+		this.watermark = watermark;
+		this.watermarking = watermarking;
+		this.worldSearchable = worldSearchable;
+		this.x2Larges = x2Larges;
+		this.x3Larges = x3Larges;
+		this.xLarges = xLarges;
+		this.commentsAllowed = commentsAllowed;
+	}
+	
+	public AlbumBase(Integer id, String backPrinting, Boolean canRank,
+			Boolean clean, Integer colorCorrection, Boolean commentsAllowed,
+			Community community,
+			Boolean exif, Boolean external, Boolean familyEdit, Boolean filenames,
+			Boolean friendEdit, Boolean geography, Boolean header,
+			Boolean hideOwner, Integer interceptShipping, Boolean larges, Boolean originals,
+			Boolean packagingBranding, 
+			String password, String passwordHint, 
+			Boolean printable, Printmark printmark, Integer proofDays, Boolean protectedRightClick,
+			Boolean publicAlbum, Boolean share, Boolean smugSearchable,
+			Boolean sortDirection, String sortMethod, Boolean squareThumbs,
+			Template template, Float unsharpAmount, Float unsharpRadius,
+			Float unsharpSigma, Float unsharpThreshold, Watermark watermark,
+			Boolean watermarking, Boolean worldSearchable,
+			Boolean x2Larges, Boolean x3Larges, Boolean xLarges) {
+		this.id = id;
+		this.backPrinting = backPrinting;
+		this.canRank = canRank;
+		this.clean = clean;
+		this.colorCorrection = colorCorrection;
+		this.community = community;
+		this.exif = exif;
+		this.external = external;
+		this.familyEdit = familyEdit;
+		this.filenames = filenames;
+		this.friendEdit = friendEdit;
+		this.geography = geography;
+		this.header = header;
+		this.hideOwner = hideOwner;
+		this.interceptShipping = interceptShipping;
+		this.larges = larges;
+		this.originals = originals;
+		this.packagingBranding = packagingBranding;
+		this.password = password;
+		this.passwordHint = passwordHint;
+		this.printable = printable;
+		this.printmark = printmark;
+		this.proofDays = proofDays;
+		this.protectedRightClick = protectedRightClick;
+		this.publicAlbum = publicAlbum;
+		this.share = share;
+		this.smugSearchable = smugSearchable;
+		this.sortDirection = sortDirection;
+		this.sortMethod = sortMethod;
+		this.squareThumbs = squareThumbs;
+		this.template = template;
+		this.unsharpAmount = unsharpAmount;
+		this.unsharpRadius = unsharpRadius;
+		this.unsharpSigma = unsharpSigma;
+		this.unsharpThreshold = unsharpThreshold;
+		this.watermark = watermark;
+		this.watermarking = watermarking;
+		this.worldSearchable = worldSearchable;
+		this.x2Larges = x2Larges;
+		this.x3Larges = x3Larges;
+		this.xLarges = xLarges;
+		this.commentsAllowed = commentsAllowed;
+	}
+	
 	/***
 	 * The id for this album.
 	 */
@@ -156,17 +276,23 @@ public abstract class AlbumBase {
 		return id;
 	}
 
-	/***
+	/**
 	 * Set the id for this album.
 	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
 	
+	/**
+	 * Gets the album template id.
+	 */
 	public Integer getAlbumTemplateID() {
 		return albumTemplateID;
 	}
 
+	/**
+	 * Set the album template id.
+	 */
 	public void setAlbumTemplateID(Integer albumTemplateID) {
 		this.albumTemplateID = albumTemplateID;
 	}
@@ -710,14 +836,14 @@ public abstract class AlbumBase {
      * 16 - Journal
      * 17 - Thumbnails
 	 */
-	public Integer getTemplate() {
+	public Template getTemplate() {
 		return template;
 	}
 
 	/**
 	 * Sets the style template applied to this album.
 	 */
-	public void setTemplate(Integer template) {
+	public void setTemplate(Template template) {
 		this.template = template;
 	}
 
@@ -1248,7 +1374,7 @@ public abstract class AlbumBase {
 
 	@Override
 	public String toString() {
-		return "AlbumBase [id=" + id + ", albumTemplateID=" + albumTemplateID
+		return "id=" + id + ", albumTemplateID=" + albumTemplateID
 				+ ", backPrinting=" + backPrinting + ", boutiquePackaging="
 				+ boutiquePackaging + ", canRank=" + canRank + ", clean="
 				+ clean + ", colorCorrection=" + colorCorrection
@@ -1273,8 +1399,7 @@ public abstract class AlbumBase {
 				+ ", uploadKey=" + uploadKey + ", watermark=" + watermark
 				+ ", watermarking=" + watermarking + ", worldSearchable="
 				+ worldSearchable + ", x2Larges=" + x2Larges + ", x3Larges="
-				+ x3Larges + ", xLarges=" + xLarges + ", comments=" + commentsAllowed
-				+ "]";
+				+ x3Larges + ", xLarges=" + xLarges + ", comments=" + commentsAllowed;
 	}
 	
 }

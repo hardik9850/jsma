@@ -40,16 +40,29 @@ public abstract class Stats {
 	@XmlElement(name="Video960")
 	private Integer video960;
 	
-	@XmlElement(name="X2Large ")
+	@XmlElement(name="X2Large")
 	private Integer x2Large ;
 	
-	@XmlElement(name="X3Large ")
+	@XmlElement(name="X3Large")
 	private Integer x3Large ;
 	
-	@XmlElement(name="XLarge ")
+	@XmlElement(name="XLarge")
 	private Integer xLarge ;
-	
 
+	public Stats(){}
+	
+	public Stats(Integer bytes, Integer hits, Integer large, Integer medium,
+			Integer original, Integer small, Integer x2Large, Integer x3Large, Integer xLarge) {
+		this.bytes = bytes;
+		this.hits = hits;
+		this.large = large;
+		this.medium = medium;
+		this.original = original;
+		this.small = small;
+		this.x2Large = x2Large;
+		this.x3Large = x3Large;
+		this.xLarge = xLarge;
+	}
 
 	/**
 	 * The bytes transferred for this image (or video) for a given month.

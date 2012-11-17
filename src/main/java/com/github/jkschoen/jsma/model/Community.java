@@ -18,6 +18,10 @@ public class Community {
 	public Community() {
 	}
 
+	public Community(Integer id) {
+		this.id = id;
+	}
+
 	/**
 	 * The id for this community.
 	 */

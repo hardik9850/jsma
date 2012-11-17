@@ -26,6 +26,10 @@ public class Printmark {
 	
 	public Printmark(){
 	}
+	
+	public Printmark(Integer id){
+		this.id = id;
+	}
 
 	/**
 	 * The id for this printmark.

@@ -19,12 +19,42 @@ public class AlbumsResponse extends SMResponse {
 	public AlbumsResponse() {
 	}
 	
+	public AlbumsResponse(String stat, String method, List<Album> albums) {
+		super(stat, method);
+		this.albums = albums;
+	}
+
 	public List<Album> getAlbums() {
 		return albums;
 	}
 
 	public void setAlbums(List<Album> albums) {
 		this.albums = albums;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((albums == null) ? 0 : albums.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AlbumsResponse other = (AlbumsResponse) obj;
+		if (albums == null) {
+			if (other.albums != null)
+				return false;
+		} else if (!albums.equals(other.albums))
+			return false;
+		return true;
 	}
 
 	@Override

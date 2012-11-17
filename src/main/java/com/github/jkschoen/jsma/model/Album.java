@@ -6,12 +6,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
-@XmlRootElement
+@XmlRootElement(name="Album")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Album extends AlbumBase{
+public class Album extends AlbumBase {
 
-	@XmlElement(name="Key")
+	@XmlElement(name="Key", required=false, namespace="Key")
 	private String key;
 
 	@XmlElement(name="Category")
@@ -51,10 +52,55 @@ public class Album extends AlbumBase{
 	private String url;
 	
 	@XmlElement(name="Comments")
+	@XmlTransient
 	private List<Comment> comments;
+	
+	@XmlElement(name="Type")
+	private String type;
 	
 	public Album() {
 		super();
+	}
+	
+	public Album(Integer id, String key, Category category, String title) {
+		super(id);
+		this.key = key;
+		this.category = category;
+		this.title = title;
+	}
+	
+	public Album(Integer id, String key, String backPrinting, Boolean canRank, 
+			Category category, Boolean clean, Integer colorCorrection,
+			Boolean commentsAllowed, String description, Boolean exif,
+			Boolean external, Boolean familyEdit, Boolean friendEdit,
+			Boolean geography, Boolean header, Boolean hideOwner, Integer imageCount,
+			Boolean larges,String lastUpdated, String niceName,Boolean originals,
+			String password, String passwordHint,Integer position, Boolean printable,
+			Integer proofDays, Boolean protectedRightClick, Boolean publicAlbum,
+			Boolean share, Boolean smugSearchable, Boolean sortDirection,
+			String sortMethod, Boolean squareThumbs, Template template,
+			String title, String type, String url, Float unsharpAmount,
+			Float unsharpRadius, Float unsharpSigma, Float unsharpThreshold, 
+			String uploadKey, Watermark watermark, Boolean watermarking, 
+			Boolean worldSearchable, Boolean xLarges,  Boolean x2Larges, 
+			Boolean x3Larges) {
+		super(id, backPrinting, canRank, clean, colorCorrection,
+				commentsAllowed, exif, external, familyEdit, friendEdit, 
+				geography, header, hideOwner, larges, originals, password, 
+				passwordHint, position, printable, proofDays, protectedRightClick, 
+				publicAlbum, share, smugSearchable, sortDirection, sortMethod, 
+				squareThumbs, template, unsharpAmount, unsharpRadius, unsharpSigma, 
+				unsharpThreshold, uploadKey, watermark, watermarking, worldSearchable, 
+				xLarges,  x2Larges,x3Larges);
+		this.key = key;
+		this.category = category;
+		this.description = description;
+		this.imageCount = imageCount;
+		this.lastUpdated = lastUpdated;
+		this.niceName = niceName;
+		this.title = title;
+		this.url = url;
+		this.type = type;
 	}
 	
 	/***
@@ -239,6 +285,14 @@ public class Album extends AlbumBase{
 		this.url = url;
 	}
 	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public List<Comment> getComments() {
 		return comments;
 	}
@@ -246,6 +300,7 @@ public class Album extends AlbumBase{
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
+
 
 	@Override
 	public int hashCode() {
@@ -274,9 +329,11 @@ public class Album extends AlbumBase{
 				+ ((subCategory == null) ? 0 : subCategory.hashCode());
 		result = prime * result + ((theme == null) ? 0 : theme.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		result = prime * result + ((url == null) ? 0 : url.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -352,6 +409,11 @@ public class Album extends AlbumBase{
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
 		if (url == null) {
 			if (other.url != null)
 				return false;
@@ -360,15 +422,18 @@ public class Album extends AlbumBase{
 		return true;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Album [key=" + key + ", category=" + category
+		return "Album ["+super.toString()+", key=" + key + ", category=" + category
 				+ ", description=" + description + ", highlight=" + highlight
 				+ ", imageCount=" + imageCount + ", keywords=" + keywords
 				+ ", lastUpdated=" + lastUpdated + ", niceName=" + niceName
 				+ ", passworded=" + passworded + ", subCategory=" + subCategory
 				+ ", theme=" + theme + ", title=" + title + ", url=" + url
-				+ ", comments=" + comments + "]";
+				+ ", comments=" + comments + ", type=" + type + "]";
 	}
+	
+	
 	
 }

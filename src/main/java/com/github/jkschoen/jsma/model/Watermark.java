@@ -28,6 +28,16 @@ public class Watermark {
 	private Boolean thumbs;
 	
 	public Watermark(){}
+	
+	
+
+	public Watermark(Integer id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
+
 
 	/**
 	 * The id for this watermark.

@@ -19,6 +19,13 @@ public class Theme {
 	private String type;
 	
 	public Theme(){}
+	
+	public Theme(Integer id, String name, String type) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.type = type;
+	}
 
 	public Integer getId() {
 		return id;
