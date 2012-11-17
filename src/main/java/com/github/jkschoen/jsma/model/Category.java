@@ -32,9 +32,20 @@ public class Category {
 	public Category(){
 	}
 
+	public Category(Integer id) {
+		this.id = id;
+	}
+
 	public Category(Integer id, String name) {
 		this.id = id;
 		this.name = name;
+	}
+
+	public Category(Integer id, String name, String niceName, String type) {
+		this.id = id;
+		this.name = name;
+		this.niceName = niceName;
+		this.type = type;
 	}
 
 	/**

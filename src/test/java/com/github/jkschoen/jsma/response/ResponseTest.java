@@ -99,13 +99,26 @@ public class ResponseTest {
 	}
 	
 	@Test
-	public void testCategoriesResponse() {
-		fail("Not yet implemented");
+	public void testCategoryResponse() throws JsonParseException, JsonMappingException, IOException {
+		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.categories.create\",\"Category\": {\"id\": 1234}}";
+		CategoryResponse value = MAPPER.readValue(json, CategoryResponse.class);
+		CategoryResponse expected = new CategoryResponse("ok", "smugmug.categories.create", new Category(1234));
+		assertEquals(value, expected);
 	}
 	
 	@Test
-	public void testCategoryResponse() {
-		fail("Not yet implemented");
+	public void testCategoriesResponse() throws JsonParseException, JsonMappingException, IOException {
+		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.categories.get\",\"Categories\": [{\"id\": 0,\"Name\": \"Other\",\"NiceName\": \"Other\",\"Type\": \"SmugMug\"},{\"id\": 1,\"Name\": \"Animals\",\"NiceName\": \"Animals\",\"Type\": \"SmugMug\"},{\"id\": 2,\"Name\": \"Architecture\",\"NiceName\": \"Architecture\",\"Type\": \"SmugMug\"},{\"id\": 3,\"Name\": \"Art\",\"NiceName\": \"Art\",\"Type\": \"SmugMug\"},{\"id\": 4,\"Name\": \"Boats\",\"NiceName\": \"Boats\",\"Type\": \"SmugMug\"},{\"id\": 5,\"Name\": \"Business\",\"NiceName\": \"Business\",\"Type\": \"SmugMug\"}]}";
+		CategoriesResponse value = MAPPER.readValue(json, CategoriesResponse.class);
+		List<Category> list = new ArrayList<Category>();
+		list.add(new Category(0, "Other", "Other", "SmugMug"));
+		list.add(new Category(1, "Animals", "Animals", "SmugMug"));
+		list.add(new Category(2, "Architecture", "Architecture", "SmugMug"));
+		list.add(new Category(3, "Art", "Art", "SmugMug"));
+		list.add(new Category(4, "Boats", "Boats", "SmugMug"));
+		list.add(new Category(5, "Business", "Business", "SmugMug"));
+		CategoriesResponse expected = new CategoriesResponse("ok", "smugmug.categories.get", list);
+		assertEquals(value, expected);
 	}
 	
 	@Test

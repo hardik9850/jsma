@@ -19,12 +19,45 @@ public class CategoriesResponse  extends SMResponse {
 	public CategoriesResponse() {
 	}
 	
+	public CategoriesResponse(String stat, String method, List<Category> categories) {
+		super(stat, method);
+		this.categories = categories;
+	}
+
+
+
 	public  List<Category> getCategories() {
 		return categories;
 	}
 
 	public void setCategories( List<Category> category) {
 		this.categories = category;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ ((categories == null) ? 0 : categories.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CategoriesResponse other = (CategoriesResponse) obj;
+		if (categories == null) {
+			if (other.categories != null)
+				return false;
+		} else if (!categories.equals(other.categories))
+			return false;
+		return true;
 	}
 
 	@Override
