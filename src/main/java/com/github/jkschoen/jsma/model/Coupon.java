@@ -62,6 +62,10 @@ public class Coupon {
 
 	public Coupon() {
 	}
+	
+	public Coupon(Integer id){
+		this.id = id;
+	}
 
 	/**
 	 * The id for this coupon.

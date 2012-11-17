@@ -31,6 +31,10 @@ public class Comment {
 
 	public Comment() {
 	}
+	
+	public Comment(Integer id) {
+		this.id = id;
+	}
 
 	/**
 	 * The id for this comment.

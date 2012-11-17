@@ -22,6 +22,11 @@ public class Community {
 		this.id = id;
 	}
 
+	public Community(Integer id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
 	/**
 	 * The id for this community.
 	 */

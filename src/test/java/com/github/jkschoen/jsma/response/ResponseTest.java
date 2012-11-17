@@ -18,7 +18,9 @@ import com.github.jkschoen.jsma.model.Album;
 import com.github.jkschoen.jsma.model.AlbumStats;
 import com.github.jkschoen.jsma.model.AlbumTemplate;
 import com.github.jkschoen.jsma.model.Category;
+import com.github.jkschoen.jsma.model.Comment;
 import com.github.jkschoen.jsma.model.Community;
+import com.github.jkschoen.jsma.model.Coupon;
 import com.github.jkschoen.jsma.model.Printmark;
 import com.github.jkschoen.jsma.model.Template;
 import com.github.jkschoen.jsma.model.Watermark;
@@ -61,9 +63,9 @@ public class ResponseTest {
 	public void testAlbumsResponse() throws JsonParseException, JsonMappingException, IOException {
 		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.albums.get\",\"Albums\": [{\"id\": 1234,\"Key\": \"xCXXu\",\"Category\":{\"id\": 0,\"Name\": \"Other\"},\"Title\": \"My Birthday 2008\"}]}";
 		AlbumsResponse value = MAPPER.readValue(json, AlbumsResponse.class);
-		List<Album> albums = new ArrayList<Album>();
-		albums.add(new Album(1234, "xCXXu", new Category(0, "Other"),"My Birthday 2008" ));
-		AlbumsResponse expected = new AlbumsResponse("ok", "smugmug.albums.get", albums);
+		List<Album> list = new ArrayList<Album>();
+		list.add(new Album(1234, "xCXXu", new Category(0, "Other"),"My Birthday 2008" ));
+		AlbumsResponse expected = new AlbumsResponse("ok", "smugmug.albums.get", list);
 		assertEquals(value, expected);
 	}
 	
@@ -87,14 +89,14 @@ public class ResponseTest {
 	public void testAlbumTemplatesResponse() throws JsonParseException, JsonMappingException, IOException {
 		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.albumtemplates.get\",\"AlbumTemplates\": [{\"id\": 2,\"Name\": \"smugmug default\",\"Backprinting\": \"\",\"CanRank\": true,\"Clean\": false,\"ColorCorrection\": 2,\"Comments\": true,\"Community\": {\"id\": 0},\"EXIF\": true,\"External\": true,\"FamilyEdit\": false,\"Filenames\": false,\"FriendEdit\": false,\"Geography\": true,\"Header\": false,\"HideOwner\": false,\"InterceptShipping\": 2,\"Larges\": true,\"Originals\": true,\"PackagingBranding\": true,\"Password\": \"\",\"PasswordHint\": \"\",\"Printable\": true,\"Printmark\": {\"id\": 0},\"ProofDays\": 0,\"Protected\": false,\"Public\": true,\"Share\": true,\"SmugSearchable\": true,\"SortDirection\": false,\"SortMethod\": \"Position\",\"SquareThumbs\": true,\"Template\": {\"id\": 0},\"UnsharpAmount\": 0.2,\"UnsharpRadius\": 1,\"UnsharpSigma\": 1,\"UnsharpThreshold\": 0.05,\"Watermark\": {\"id\": 0,\"Name\": \"SmugMug\"},\"Watermarking\": false,\"WorldSearchable\": true,\"X2Larges\": true,\"X3Larges\": true,\"XLarges\": true}]}";
 		AlbumTemplatesResponse value = MAPPER.readValue(json, AlbumTemplatesResponse.class);
-		List<AlbumTemplate> templates = new ArrayList<AlbumTemplate>();
-		templates.add(new AlbumTemplate(2, "smugmug default", "", true, false, 2, true, 
+		List<AlbumTemplate> list = new ArrayList<AlbumTemplate>();
+		list.add(new AlbumTemplate(2, "smugmug default", "", true, false, 2, true, 
 				new Community(0), true, true, false, false, false, true, 
 				false, false, 2, true, true, true, "","", true, new Printmark(0),
 				0, false, true, true, true, false, "Position", true, new Template(0),
 				0.2f, 1f, 1f, 0.05f, new Watermark(0, "SmugMug"), false, true, 
 				true, true, true));
-		AlbumTemplatesResponse expected = new AlbumTemplatesResponse("ok", "smugmug.albumtemplates.get", templates);
+		AlbumTemplatesResponse expected = new AlbumTemplatesResponse("ok", "smugmug.albumtemplates.get", list);
 		assertEquals(value, expected);
 	}
 	
@@ -122,18 +124,30 @@ public class ResponseTest {
 	}
 	
 	@Test
-	public void testCommentResponse() {
-		fail("Not yet implemented");
+	public void testCommentResponse() throws JsonParseException, JsonMappingException, IOException {
+		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.albums.comments.add\",\"Comment\": {\"id\": 1234}}";
+		CommentResponse value = MAPPER.readValue(json, CommentResponse.class);
+		CommentResponse expected = new CommentResponse("ok", "smugmug.albums.comments.add", new Comment(1234));
+		assertEquals(value, expected);
 	}
 	
 	@Test
-	public void testCommunitiesResponse() {
-		fail("Not yet implemented");
+	public void testCommunitiesResponse() throws JsonParseException, JsonMappingException, IOException {
+		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.communities.get\",\"Communities\": [{\"id\": 712,\"Name\": \"Australia\"},{\"id\": 17,\"Name\": \"DigitalGrin\"}]}";
+		CommunitiesResponse value = MAPPER.readValue(json, CommunitiesResponse.class);
+		List<Community> list = new ArrayList<Community>();
+		list.add(new Community(712, "Australia"));
+		list.add(new Community(17, "DigitalGrin"));
+		CommunitiesResponse expected = new CommunitiesResponse("ok", "smugmug.communities.get", list);
+		assertEquals(value, expected);
 	}
 	
 	@Test
-	public void testCouponResponse() {
-		fail("Not yet implemented");
+	public void testCouponResponse() throws JsonParseException, JsonMappingException, IOException {
+		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.coupons.getInfo\",\"Coupon\": {\"id\": 1234}}";
+		CouponResponse value = MAPPER.readValue(json, CouponResponse.class);
+		CouponResponse expected = new CouponResponse("ok", "smugmug.coupons.getInfo", new Coupon(1234));
+		assertEquals(value, expected);
 	}
 	
 	@Test
