@@ -45,7 +45,7 @@ public class ImageEXIF {
 	@XmlElement(name="DigitalZoomRatio")
 	private String digitalZoomRatio;
 	
-	@XmlElement(name="ExposureBiasValue")
+	@XmlElement(name="ExposureBias")
 	private String exposureBiasValue;
 	
 	@XmlElement(name="ExposureMode")
@@ -100,6 +100,34 @@ public class ImageEXIF {
 	private Integer whiteBalance;
 	
 	public ImageEXIF(){}
+
+	public ImageEXIF(Integer id, String key, String aperture, String ccdWidth,
+			Integer colorSpace, String compressedBitsPerPixel, String dateTime,
+			String dateTimeDigitized, String dateTimeOriginal,
+			String digitalZoomRatio, String exposureBiasValue,
+			Integer exposureMode, String exposureTime, Integer flash,
+			String focalLength, String make, String model,
+			Integer sensingMethod, Integer whiteBalance) {
+		this.id = id;
+		this.key = key;
+		this.aperture = aperture;
+		this.ccdWidth = ccdWidth;
+		this.colorSpace = colorSpace;
+		this.compressedBitsPerPixel = compressedBitsPerPixel;
+		this.dateTime = dateTime;
+		this.dateTimeDigitized = dateTimeDigitized;
+		this.dateTimeOriginal = dateTimeOriginal;
+		this.digitalZoomRatio = digitalZoomRatio;
+		this.exposureBiasValue = exposureBiasValue;
+		this.exposureMode = exposureMode;
+		this.exposureTime = exposureTime;
+		this.flash = flash;
+		this.focalLength = focalLength;
+		this.make = make;
+		this.model = model;
+		this.sensingMethod = sensingMethod;
+		this.whiteBalance = whiteBalance;
+	}
 
 	public Integer getId() {
 		return id;

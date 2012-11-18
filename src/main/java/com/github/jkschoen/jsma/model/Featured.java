@@ -17,6 +17,10 @@ public class Featured {
 	public Featured() {
 	}
 
+	public Featured(List<Album> albums) {
+		this.albums = albums;
+	}
+
 	public List<Album> getAlbums() {
 		return albums;
 	}

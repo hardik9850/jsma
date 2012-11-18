@@ -18,6 +18,15 @@ public class ImageStats extends Stats{
 
 	public ImageStats() {
 	}
+	
+	public ImageStats(Integer id, String key, Integer bytes, 
+			Integer hits, Integer large, Integer medium, 
+			Integer original, Integer small, Integer x2Large, 
+			Integer x3Large, Integer xLarge) {
+		super(bytes, hits, large, medium, original, small, x2Large, x3Large, xLarge);
+		this.id = id;
+		this.key = key;
+	}
 
 	/**
 	 * The id for this image.

@@ -62,7 +62,7 @@ public class Image {
 	@XmlElement(name="Longitude")
 	private Float longitude;
 
-	@XmlElement(name="MD5Sum ")
+	@XmlElement(name="MD5Sum")
 	private String md5Sum;
 	
 	@XmlElement(name="MediumURL")
@@ -122,30 +122,72 @@ public class Image {
 	@XmlElement(name="VideoStreamingURL ")
 	private String videoStreamingURL;
 	
+	@XmlElement(name="Watermark")
+	private Boolean watermark;
+	
 	@XmlElement(name="Width")
 	private Integer width;
 	
-	@XmlElement(name="X2LargeURL ")
+	@XmlElement(name="X2LargeURL")
 	private String x2LargeURL;
 	
-	@XmlElement(name="X3LargeURL ")
+	@XmlElement(name="X3LargeURL")
 	private String x3LargeURL;
 	
-	@XmlElement(name="XLargeURL ")
+	@XmlElement(name="XLargeURL")
 	private String xLargeURL;
 	
 	@XmlElement(name="Comments")
 	private List<Comment> comments;
 
-	public Image() {
-		super();
-	}
+	public Image() {}
 
 	/**
 	 * The id for this image.
 	 */
 	public Integer getId() {
 		return id;
+	}
+
+	public Image(Integer id, String key, Album album, String caption,
+			String date, String fileName, String format, Integer height,
+			Boolean hidden, String keywords, String largeURL,
+			String lastUpdated, Float latitude, String lightboxURL,
+			Float longitude, String md5Sum, String mediumURL,
+			String originalURL, Integer position, Integer serial, Integer size,
+			String smallURL, String thumbURL, String tinyURL, String type,
+			Boolean watermark, Integer width, String x2LargeURL, String x3LargeURL,
+			String xLargeURL) {
+		this.id = id;
+		this.key = key;
+		this.album = album;
+		this.caption = caption;
+		this.date = date;
+		this.fileName = fileName;
+		this.format = format;
+		this.height = height;
+		this.hidden = hidden;
+		this.keywords = keywords;
+		this.largeURL = largeURL;
+		this.lastUpdated = lastUpdated;
+		this.latitude = latitude;
+		this.lightboxURL = lightboxURL;
+		this.longitude = longitude;
+		this.md5Sum = md5Sum;
+		this.mediumURL = mediumURL;
+		this.originalURL = originalURL;
+		this.position = position;
+		this.serial = serial;
+		this.size = size;
+		this.smallURL = smallURL;
+		this.thumbURL = thumbURL;
+		this.tinyURL = tinyURL;
+		this.type = type;
+		this.watermark = watermark;
+		this.width = width;
+		this.x2LargeURL = x2LargeURL;
+		this.x3LargeURL = x3LargeURL;
+		this.xLargeURL = xLargeURL;
 	}
 
 	/**
@@ -737,6 +779,14 @@ public class Image {
 		this.comments = comments;
 	}
 
+	public Boolean getWatermark() {
+		return watermark;
+	}
+
+	public void setWatermark(Boolean watermark) {
+		this.watermark = watermark;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -803,6 +853,8 @@ public class Image {
 				* result
 				+ ((videoStreamingURL == null) ? 0 : videoStreamingURL
 						.hashCode());
+		result = prime * result
+				+ ((watermark == null) ? 0 : watermark.hashCode());
 		result = prime * result + ((width == null) ? 0 : width.hashCode());
 		result = prime * result
 				+ ((x2LargeURL == null) ? 0 : x2LargeURL.hashCode());
@@ -1012,6 +1064,11 @@ public class Image {
 				return false;
 		} else if (!videoStreamingURL.equals(other.videoStreamingURL))
 			return false;
+		if (watermark == null) {
+			if (other.watermark != null)
+				return false;
+		} else if (!watermark.equals(other.watermark))
+			return false;
 		if (width == null) {
 			if (other.width != null)
 				return false;
@@ -1054,9 +1111,9 @@ public class Image {
 				+ video960URL + ", video1280URL=" + video1280URL
 				+ ", video1920URL=" + video1920URL + ", videoSMILURL="
 				+ videoSMILURL + ", videoStreamingURL=" + videoStreamingURL
-				+ ", width=" + width + ", x2LargeURL=" + x2LargeURL
-				+ ", x3LargeURL=" + x3LargeURL + ", xLargeURL=" + xLargeURL
-				+ ", comments=" + comments + "]";
+				+ ", watermark=" + watermark + ", width=" + width
+				+ ", x2LargeURL=" + x2LargeURL + ", x3LargeURL=" + x3LargeURL
+				+ ", xLargeURL=" + xLargeURL + ", comments=" + comments + "]";
 	}
 	
 }

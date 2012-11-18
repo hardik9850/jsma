@@ -62,6 +62,17 @@ public class Album extends AlbumBase {
 		super();
 	}
 	
+	public Album(Integer id, String key) {
+		super(id);
+		this.key = key;
+	}
+	
+	public Album(Integer id, String key, String url) {
+		super(id);
+		this.key = key;
+		this.url = url;
+	}
+	
 	public Album(Integer id, String key, Category category, String title) {
 		super(id);
 		this.key = key;

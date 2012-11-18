@@ -21,6 +21,12 @@ public class Fan {
 	public Fan() {
 	}
 
+	public Fan(String name, String nickName, String url) {
+		this.name = name;
+		this.nickName = nickName;
+		this.url = url;
+	}
+
 	/**
 	 * The Name for this user.
 	 */

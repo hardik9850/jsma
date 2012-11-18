@@ -17,12 +17,42 @@ public class ImageEXIFResponse extends SMResponse {
 	public ImageEXIFResponse() {
 	}
 	
+	public ImageEXIFResponse(String stat, String method, ImageEXIF image) {
+		super(stat, method);
+		this.image = image;
+	}
+
 	public ImageEXIF getImage() {
 		return image;
 	}
 
 	public void setImage(ImageEXIF image) {
 		this.image = image;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((image == null) ? 0 : image.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ImageEXIFResponse other = (ImageEXIFResponse) obj;
+		if (image == null) {
+			if (other.image != null)
+				return false;
+		} else if (!image.equals(other.image))
+			return false;
+		return true;
 	}
 
 	@Override

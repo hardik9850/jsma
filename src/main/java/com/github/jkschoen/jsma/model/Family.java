@@ -20,6 +20,12 @@ public class Family {
 
 	public Family() {
 	}
+	
+	public Family(String name, String nickName, String url) {
+		this.name = name;
+		this.nickName = nickName;
+		this.url = url;
+	}
 
 	/**
 	 * The Name for this user.
