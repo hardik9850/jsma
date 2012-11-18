@@ -1,7 +1,6 @@
 package com.github.jkschoen.jsma.response;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,6 +14,7 @@ import org.codehaus.jackson.xc.JaxbAnnotationIntrospector;
 import org.junit.Test;
 
 import com.github.jkschoen.jsma.model.Album;
+import com.github.jkschoen.jsma.model.AlbumComments;
 import com.github.jkschoen.jsma.model.AlbumStats;
 import com.github.jkschoen.jsma.model.AlbumTemplate;
 import com.github.jkschoen.jsma.model.Category;
@@ -32,6 +32,9 @@ import com.github.jkschoen.jsma.model.Printmark;
 import com.github.jkschoen.jsma.model.Sharegroup;
 import com.github.jkschoen.jsma.model.SubCategory;
 import com.github.jkschoen.jsma.model.Template;
+import com.github.jkschoen.jsma.model.Theme;
+import com.github.jkschoen.jsma.model.User;
+import com.github.jkschoen.jsma.model.UserStats;
 import com.github.jkschoen.jsma.model.Watermark;
 
 public class ResponseTest {
@@ -285,8 +288,11 @@ public class ResponseTest {
 	}
 	
 	@Test
-	public void testSubCategoryResponse() {
-		fail("Not yet implemented");
+	public void testSubCategoryResponse() throws JsonParseException, JsonMappingException, IOException {
+		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.subcategories.create\",\"SubCategory\": {\"id\": 1234}}";
+		SubCategoryResponse value = MAPPER.readValue(json, SubCategoryResponse.class);
+		SubCategoryResponse expected = new SubCategoryResponse("ok", "smugmug.subcategories.create", new SubCategory(1234)); 
+		assertEquals(value, expected);
 	}
 	
 	@Test
@@ -301,39 +307,58 @@ public class ResponseTest {
 	}
 	
 	@Test
-	public void testThemesResponse() {
-		fail("Not yet implemented");
+	public void testThemesResponse() throws JsonParseException, JsonMappingException, IOException {
+		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.themes.get\",\"Themes\": [{\"id\": 24,\"Name\": \"SmugMug Classic\",\"Type\": \"smugmug\"},{\"id\": 59,\"Name\": \"SmugMug Dashed\",\"Type\": \"smugmug\"},{\"id\": 96,\"Name\": \"SmugMug Gradient\",\"Type\": \"smugmug\"}]}";
+		ThemesResponse value = MAPPER.readValue(json, ThemesResponse.class);
+		List<Theme> list = new ArrayList<Theme>();
+		list.add(new Theme(24, "SmugMug Classic", "smugmug"));
+		list.add(new Theme(59, "SmugMug Dashed", "smugmug"));
+		list.add(new Theme(96, "SmugMug Gradient", "smugmug"));
+		ThemesResponse expected = new ThemesResponse("ok", "smugmug.themes.get", list);
+		assertEquals(value, expected);
 	}
 	
 	@Test
-	public void testUserResponse() {
-		fail("Not yet implemented");
+	public void testUserResponse() throws JsonParseException, JsonMappingException, IOException {
+		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.users.getInfo\",\"User\": {\"Name\": \"Joe Citizen\",\"NickName\": \"joe\",\"URL\": \"http://joe.smugmug.com\"}}";
+		UserResponse value = MAPPER.readValue(json, UserResponse.class);
+		UserResponse expected = new UserResponse("ok", "smugmug.users.getInfo", new User("Joe Citizen","joe","http://joe.smugmug.com")); 
+		assertEquals(value, expected);
 	}
 	
 	@Test
-	public void testUserStatsResponse() {
-		fail("Not yet implemented");
+	public void testUserStatsResponse() throws JsonParseException, JsonMappingException, IOException {
+		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.users.getStats\",\"User\": {\"Bytes\": 11583635,\"Hits\": 46,\"Large\": 10,\"Medium\": 15,\"Original\": 4,\"Small\": 10,\"X2Large\": 0,\"X3Large\": 3,\"XLarge\": 4}}";
+		UserStatsResponse value = MAPPER.readValue(json, UserStatsResponse.class);
+		UserStatsResponse expected = new UserStatsResponse("ok", "smugmug.users.getStats", new UserStats(11583635, 46, 10, 15, 4, 10, 0, 3, 4)); 
+		assertEquals(value, expected);
 	}
 	
 	@Test
-	public void testWatermarkResponse() {
-		fail("Not yet implemented");
+	public void testWatermarkResponse() throws JsonParseException, JsonMappingException, IOException {
+		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.watermarks.getInfo\",\"Watermark\": {\"id\": 1234,\"Name\": \"My Custom Watermark\",\"Dissolve\": 50,\"Image\": {\"id\": 12345,\"Key\": \"nrBE6\"},\"Pinned\": \"Center\",\"Thumbs\": false}}";
+		WatermarkResponse value = MAPPER.readValue(json, WatermarkResponse.class);
+		WatermarkResponse expected = new WatermarkResponse("ok", "smugmug.watermarks.getInfo", new Watermark(1234, "My Custom Watermark", 50, new Image(12345, "nrBE6"), "Center", false)); 
+		assertEquals(value, expected);
 	}
 	
 	@Test
-	public void testWatermarksResponse() {
-		fail("Not yet implemented");
+	public void testWatermarksResponse() throws JsonParseException, JsonMappingException, IOException {
+		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.watermarks.get\",\"Watermarks\": [{\"id\": 1234,\"Name\": \"My Custom Watermark\"}]}";
+		WatermarksResponse value = MAPPER.readValue(json, WatermarksResponse.class);
+		List<Watermark> list = new ArrayList<Watermark>();
+		list.add(new Watermark(1234, "My Custom Watermark"));
+		WatermarksResponse expected = new WatermarksResponse("ok", "smugmug.watermarks.get", list);
+		assertEquals(value, expected);
 	}
 	
 	@Test
-	public void testAlbumCommentsResponse() {
-		//we have to test album twice, since SmugMug decided to use the
-		//the attribute name 'Comments' twice. Once for the settings
-		//to allow comments, and once when returning a list of
-		//actual comments on an album
-		fail("Not yet implemented");
+	public void testAlbumCommentsResponse() throws JsonParseException, JsonMappingException, IOException {
+		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.albums.comments.get\",\"Album\": {\"id\": 1234,\"Key\": \"xCXXu\",\"Comments\": [{\"id\": 1234,\"Date\": \"2007-09-11 00:46:21\",\"Rating\": 5,\"Text\": \"Great photos, looks like a fun party\",\"Type\": \"SmugMug\",\"User\": {\"Name\": \"Fred Nerk\",\"URL\": \"http://fred.smugmug.com\"}}]}}";
+		AlbumCommentsResponse value = MAPPER.readValue(json, AlbumCommentsResponse.class);
+		List<Comment> comments = new ArrayList<Comment>();
+		comments.add(new Comment(1234, "2007-09-11 00:46:21", 5, "Great photos, looks like a fun party", "SmugMug", new User("Fred Nerk","http://fred.smugmug.com")));
+		AlbumCommentsResponse expected = new AlbumCommentsResponse("ok", "smugmug.albums.comments.get", new AlbumComments(1234, "xCXXu", comments)); 
+		assertEquals(value, expected);
 	}
-	
-	
-
 }

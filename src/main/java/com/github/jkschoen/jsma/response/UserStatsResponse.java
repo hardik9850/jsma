@@ -17,12 +17,43 @@ public class UserStatsResponse extends SMResponse {
 	public UserStatsResponse() {
 	}
 	
+	public UserStatsResponse(String stat, String method, UserStats userStats) {
+		super(stat, method);
+		this.userStats = userStats;
+	}
+
 	public UserStats getUserStats() {
 		return userStats;
 	}
 
 	public void setUserStats(UserStats userStats) {
 		this.userStats = userStats;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ ((userStats == null) ? 0 : userStats.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UserStatsResponse other = (UserStatsResponse) obj;
+		if (userStats == null) {
+			if (other.userStats != null)
+				return false;
+		} else if (!userStats.equals(other.userStats))
+			return false;
+		return true;
 	}
 
 	@Override

@@ -23,6 +23,10 @@ public class SubCategory {
 	
 	public SubCategory(){}
 
+	public SubCategory(Integer id) {
+		this.id = id;
+	}
+
 	public SubCategory(Integer id, String name, String niceName) {
 		this.id = id;
 		this.name = name;

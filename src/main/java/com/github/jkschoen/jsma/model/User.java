@@ -36,6 +36,17 @@ public class User {
 	public User() {
 	}
 
+	public User(String name, String url) {
+		this.name = name;
+		this.url = url;
+	}
+
+	public User(String name, String nickName, String url) {
+		this.name = name;
+		this.nickName = nickName;
+		this.url = url;
+	}
+
 	/**
 	 * The id for this user.
 	 */

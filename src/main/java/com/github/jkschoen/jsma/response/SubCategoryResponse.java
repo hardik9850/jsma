@@ -17,12 +17,43 @@ public class SubCategoryResponse  extends SMResponse {
 	public SubCategoryResponse() {
 	}
 	
+	public SubCategoryResponse(String stat, String method, SubCategory subCategory) {
+		super(stat, method);
+		this.subCategory = subCategory;
+	}
+
 	public SubCategory getSubCategory() {
 		return subCategory;
 	}
 
 	public void setSubCategory(SubCategory album) {
 		this.subCategory = album;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ ((subCategory == null) ? 0 : subCategory.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SubCategoryResponse other = (SubCategoryResponse) obj;
+		if (subCategory == null) {
+			if (other.subCategory != null)
+				return false;
+		} else if (!subCategory.equals(other.subCategory))
+			return false;
+		return true;
 	}
 
 	@Override

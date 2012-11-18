@@ -1,12 +1,9 @@
 package com.github.jkschoen.jsma.model;
 
-import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement(name="Album")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -50,10 +47,6 @@ public class Album extends AlbumBase {
 	
 	@XmlElement(name="URL")
 	private String url;
-	
-	@XmlElement(name="Comments")
-	@XmlTransient
-	private List<Comment> comments;
 	
 	@XmlElement(name="Type")
 	private String type;
@@ -304,23 +297,12 @@ public class Album extends AlbumBase {
 		this.type = type;
 	}
 
-	public List<Comment> getComments() {
-		return comments;
-	}
-
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
-	}
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result
 				+ ((category == null) ? 0 : category.hashCode());
-		result = prime * result
-				+ ((comments == null) ? 0 : comments.hashCode());
 		result = prime * result
 				+ ((description == null) ? 0 : description.hashCode());
 		result = prime * result
@@ -359,11 +341,6 @@ public class Album extends AlbumBase {
 			if (other.category != null)
 				return false;
 		} else if (!category.equals(other.category))
-			return false;
-		if (comments == null) {
-			if (other.comments != null)
-				return false;
-		} else if (!comments.equals(other.comments))
 			return false;
 		if (description == null) {
 			if (other.description != null)
@@ -442,7 +419,7 @@ public class Album extends AlbumBase {
 				+ ", lastUpdated=" + lastUpdated + ", niceName=" + niceName
 				+ ", passworded=" + passworded + ", subCategory=" + subCategory
 				+ ", theme=" + theme + ", title=" + title + ", url=" + url
-				+ ", comments=" + comments + ", type=" + type + "]";
+				+ ", type=" + type + "]";
 	}
 	
 	

@@ -28,12 +28,22 @@ public class Comment {
 	
 	@XmlElement(name="User")
 	private User user;
-
+	
 	public Comment() {
 	}
 	
 	public Comment(Integer id) {
 		this.id = id;
+	}
+
+	public Comment(Integer id, String date, Integer rating, String text,
+			String type, User user) {
+		this.id = id;
+		this.date = date;
+		this.rating = rating;
+		this.text = text;
+		this.type = type;
+		this.user = user;
 	}
 
 	/**

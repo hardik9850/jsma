@@ -12,6 +12,7 @@ import com.github.jkschoen.jsma.misc.SmugMugException;
 import com.github.jkschoen.jsma.model.Album;
 import com.github.jkschoen.jsma.model.AlbumStats;
 import com.github.jkschoen.jsma.model.Comment;
+import com.github.jkschoen.jsma.response.AlbumCommentsResponse;
 import com.github.jkschoen.jsma.response.AlbumResponse;
 import com.github.jkschoen.jsma.response.AlbumStatsResponse;
 import com.github.jkschoen.jsma.response.AlbumsResponse;
@@ -222,7 +223,7 @@ public class AlbumAPI extends AlbumBaseAPI{
 			params.put("LastUpdated", Long.toString(lastUpdated.getTime()));
 		}
 		
-		AlbumResponse requestToken = SMResponse.callMethod(this.smugmug,AlbumResponse.class, "smugmug.albums.comment.get", params, null, pretty, false, strict, false);
+		AlbumCommentsResponse requestToken = SMResponse.callMethod(this.smugmug,AlbumCommentsResponse.class, "smugmug.albums.comment.get", params, null, pretty, false, strict, false);
 		logger.debug("commentGet() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		
 		return requestToken.getAlbum().getComments();

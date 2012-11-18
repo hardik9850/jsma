@@ -17,6 +17,13 @@ public class UserStats extends Stats{
 	
 	public UserStats(){
 	}
+	
+	public UserStats(Integer bytes, 
+			Integer hits, Integer large, Integer medium, 
+			Integer original, Integer small, Integer x2Large, 
+			Integer x3Large, Integer xLarge) {
+		super(bytes, hits, large, medium, original, small, x2Large, x3Large, xLarge);
+	}
 
 	public List<AlbumStats> getAlbums() {
 		return albums;
