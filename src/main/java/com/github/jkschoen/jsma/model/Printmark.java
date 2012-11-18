@@ -31,6 +31,20 @@ public class Printmark {
 		this.id = id;
 	}
 
+	public Printmark(Integer id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
+	public Printmark(Integer id, String name, Integer dissolve, Image image,
+			String location) {
+		this.id = id;
+		this.name = name;
+		this.dissolve = dissolve;
+		this.image = image;
+		this.location = location;
+	}
+
 	/**
 	 * The id for this printmark.
 	 */

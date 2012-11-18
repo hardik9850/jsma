@@ -47,6 +47,30 @@ public class Sharegroup {
 	public Sharegroup() {
 	}
 
+	public Sharegroup(Integer id, String tag, Integer albumCount,
+			List<Album> albums, String description, String name,
+			Boolean passworded, String url) {
+		this.id = id;
+		this.tag = tag;
+		this.albumCount = albumCount;
+		this.albums = albums;
+		this.description = description;
+		this.name = name;
+		this.passworded = passworded;
+		this.url = url;
+	}
+	
+	public Sharegroup(Integer id, String tag, Integer albumCount,
+			String description, String name, Boolean passworded, String url) {
+		this.id = id;
+		this.tag = tag;
+		this.albumCount = albumCount;
+		this.description = description;
+		this.name = name;
+		this.passworded = passworded;
+		this.url = url;
+	}
+
 	public Integer getId() {
 		return id;
 	}

@@ -19,6 +19,11 @@ public class SubCategoriesResponse  extends SMResponse {
 	public SubCategoriesResponse() {
 	}
 	
+	public SubCategoriesResponse(String stat, String method, List<SubCategory> subCategories) {
+		super(stat, method);
+		this.subCategories = subCategories;
+	}
+	
 	public List<SubCategory> getSubCategories() {
 		return subCategories;
 	}

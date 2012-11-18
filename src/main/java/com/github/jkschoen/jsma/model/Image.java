@@ -142,11 +142,9 @@ public class Image {
 
 	public Image() {}
 
-	/**
-	 * The id for this image.
-	 */
-	public Integer getId() {
-		return id;
+	public Image(Integer id, String key) {
+		this.id = id;
+		this.key = key;
 	}
 
 	public Image(Integer id, String key, Album album, String caption,
@@ -188,6 +186,13 @@ public class Image {
 		this.x2LargeURL = x2LargeURL;
 		this.x3LargeURL = x3LargeURL;
 		this.xLargeURL = xLargeURL;
+	}
+
+	/**
+	 * The id for this image.
+	 */
+	public Integer getId() {
+		return id;
 	}
 
 	/**

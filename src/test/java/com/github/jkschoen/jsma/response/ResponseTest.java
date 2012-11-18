@@ -29,6 +29,8 @@ import com.github.jkschoen.jsma.model.Image;
 import com.github.jkschoen.jsma.model.ImageEXIF;
 import com.github.jkschoen.jsma.model.ImageStats;
 import com.github.jkschoen.jsma.model.Printmark;
+import com.github.jkschoen.jsma.model.Sharegroup;
+import com.github.jkschoen.jsma.model.SubCategory;
 import com.github.jkschoen.jsma.model.Template;
 import com.github.jkschoen.jsma.model.Watermark;
 
@@ -241,33 +243,61 @@ public class ResponseTest {
 	}
 	
 	@Test
-	public void testPrintmarkResponse() {
-		fail("Not yet implemented");
+	public void testPrintmarkResponse() throws JsonParseException, JsonMappingException, IOException {
+		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.printmarks.getInfo\",\"Printmark\": {\"id\": 1234,\"Name\": \"My Custom Printmark\",\"Dissolve\": 50,\"Image\": {\"id\": 12345,\"Key\": \"nrBE6\"},\"Location\": \"BottomRight\"}}";
+		PrintmarkResponse value = MAPPER.readValue(json, PrintmarkResponse.class);
+		PrintmarkResponse expected = new PrintmarkResponse("ok", "smugmug.printmarks.getInfo", new Printmark(1234, "My Custom Printmark", 50, new Image(12345, "nrBE6"), "BottomRight")); 
+		assertEquals(value, expected);
 	}
 	
 	@Test
-	public void testPrintmarksResponse() {
-		fail("Not yet implemented");
+	public void testPrintmarksResponse() throws JsonParseException, JsonMappingException, IOException {
+		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.printmarks.get\",\"Printmarks\": [{\"id\": 1234,\"Name\": \"My Custom Printmark\"}]}";
+		PrintmarksResponse value = MAPPER.readValue(json, PrintmarksResponse.class);
+		List<Printmark> list = new ArrayList<Printmark>();
+		list.add(new Printmark(1234, "My Custom Printmark"));
+		PrintmarksResponse expected = new PrintmarksResponse("ok", "smugmug.printmarks.get", list);
+		assertEquals(value, expected);
 	}
 	
 	@Test
-	public void testSharegroupResponse() {
-		fail("Not yet implemented");
+	public void testSharegroupResponse() throws JsonParseException, JsonMappingException, IOException {
+		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.sharegroups.getInfo\",\"ShareGroup\": {\"id\": 1234,\"Tag\": \"yZl6Z52YFiyc\",\"AlbumCount\": 1,\"Albums\": [{\"id\": 1234,\"Key\": \"xCXXu\",\"Title\": \"My Birthday 2008\"}],\"Description\": \"Private albums to share with family\",\"Name\": \"Family Photos\",\"Passworded\": false,\"URL\": \"http://fred.smugmug.com/share/yZl6Z52YFiyc\"}}";
+		SharegroupResponse value = MAPPER.readValue(json, SharegroupResponse.class);
+		List<Album> albums = new ArrayList<Album>();
+		Album album = new Album(1234, "xCXXu");
+		album.setTitle("My Birthday 2008");
+		albums.add(album);
+		SharegroupResponse expected = new SharegroupResponse("ok", "smugmug.sharegroups.getInfo", 
+				new Sharegroup(1234, "yZl6Z52YFiyc", 1, albums, "Private albums to share with family",
+						"Family Photos", false, "http://fred.smugmug.com/share/yZl6Z52YFiyc")); 
+		assertEquals(value, expected);
 	}
 	
 	@Test
-	public void testSharegroupsResponse() {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testSubCategoriesResponse() {
-		fail("Not yet implemented");
+	public void testSharegroupsResponse() throws JsonParseException, JsonMappingException, IOException {
+		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.sharegroups.get\",\"ShareGroups\": [{\"id\": 1234,\"Tag\": \"yZl6Z52YFiyc\",\"AlbumCount\": 1,\"Description\": \"Private albums to share with family\",\"Name\": \"Family Photos\",\"Passworded\": false,\"URL\": \"http://fred.smugmug.com/share/yZl6Z52YFiyc\"}]}";
+		SharegroupsResponse value = MAPPER.readValue(json, SharegroupsResponse.class);
+		List<Sharegroup> list = new ArrayList<Sharegroup>();
+		list.add(new Sharegroup(1234, "yZl6Z52YFiyc", 1, "Private albums to share with family", "Family Photos", false, "http://fred.smugmug.com/share/yZl6Z52YFiyc"));
+		SharegroupsResponse expected = new SharegroupsResponse("ok", "smugmug.sharegroups.get", list);
+		assertEquals(value, expected);
 	}
 	
 	@Test
 	public void testSubCategoryResponse() {
 		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testSubCategoriesResponse() throws JsonParseException, JsonMappingException, IOException {
+		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.subcategories.get\",\"SubCategories\": [{\"id\": 1234,\"Name\": \"Sunrise\",\"NiceName\": \"sunrise\"},{\"id\": 2345,\"Name\": \"Sunset\",\"NiceName\": \"sunset\"}]}";
+		SubCategoriesResponse value = MAPPER.readValue(json, SubCategoriesResponse.class);
+		List<SubCategory> list = new ArrayList<SubCategory>();
+		list.add(new SubCategory(1234, "Sunrise", "sunrise"));
+		list.add(new SubCategory(2345, "Sunset", "sunset"));
+		SubCategoriesResponse expected = new SubCategoriesResponse("ok", "smugmug.subcategories.get", list);
+		assertEquals(value, expected);
 	}
 	
 	@Test
