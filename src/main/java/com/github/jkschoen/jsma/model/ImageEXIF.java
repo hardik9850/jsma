@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ImageEXIF {
 
 	@XmlElement(name="id")
-	private Integer id;
+	private Long id;
 	
 	@XmlElement(name="Key")
 	private String key;
@@ -101,7 +101,7 @@ public class ImageEXIF {
 	
 	public ImageEXIF(){}
 
-	public ImageEXIF(Integer id, String key, String aperture, String ccdWidth,
+	public ImageEXIF(Long id, String key, String aperture, String ccdWidth,
 			Integer colorSpace, String compressedBitsPerPixel, String dateTime,
 			String dateTimeDigitized, String dateTimeOriginal,
 			String digitalZoomRatio, String exposureBiasValue,
@@ -129,11 +129,11 @@ public class ImageEXIF {
 		this.whiteBalance = whiteBalance;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

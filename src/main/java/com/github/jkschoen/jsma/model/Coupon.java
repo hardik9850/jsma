@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Coupon {
 	
 	@XmlElement(name="id")
-	private Integer id;
+	private Long id;
 	
 	@XmlElement(name="Amount")
 	private Float amount;
@@ -63,21 +63,21 @@ public class Coupon {
 	public Coupon() {
 	}
 	
-	public Coupon(Integer id){
+	public Coupon(Long id){
 		this.id = id;
 	}
 
 	/**
 	 * The id for this coupon.
 	 */
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * Set the id for this coupon.
 	 */
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

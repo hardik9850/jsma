@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class User {
 	
 	@XmlElement(name="id")
-	private Integer id;
+	private Long id;
 	
 	@XmlElement(name="AccountStatus")
 	private  String accountStatus;
@@ -50,14 +50,14 @@ public class User {
 	/**
 	 * The id for this user.
 	 */
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * Sets the id for this user.
 	 */
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

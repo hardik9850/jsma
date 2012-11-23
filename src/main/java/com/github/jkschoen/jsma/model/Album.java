@@ -55,25 +55,25 @@ public class Album extends AlbumBase {
 		super();
 	}
 	
-	public Album(Integer id, String key) {
+	public Album(Long id, String key) {
 		super(id);
 		this.key = key;
 	}
 	
-	public Album(Integer id, String key, String url) {
+	public Album(Long id, String key, String url) {
 		super(id);
 		this.key = key;
 		this.url = url;
 	}
 	
-	public Album(Integer id, String key, Category category, String title) {
+	public Album(Long id, String key, Category category, String title) {
 		super(id);
 		this.key = key;
 		this.category = category;
 		this.title = title;
 	}
 	
-	public Album(Integer id, String key, String backPrinting, Boolean canRank, 
+	public Album(Long id, String key, String backPrinting, Boolean canRank, 
 			Category category, Boolean clean, Integer colorCorrection,
 			Boolean commentsAllowed, String description, Boolean exif,
 			Boolean external, Boolean familyEdit, Boolean friendEdit,

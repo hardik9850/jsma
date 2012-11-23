@@ -133,11 +133,11 @@ public class WatermarkAPI extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public boolean delete(int watermarkId, Integer albumId, boolean pretty, boolean strict) throws SmugMugException {
+	public boolean delete(long watermarkId, Integer albumId, boolean pretty, boolean strict) throws SmugMugException {
 		logger.debug("delete() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("WatermarkID" , Integer.toString(watermarkId));
+		params.put("WatermarkID" , Long.toString(watermarkId));
 		
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.watermarks.delete", params, null, pretty, false, strict, false);
 		logger.debug("delete() result: "+(requestToken == null ? "null" : requestToken.toString()));
@@ -171,11 +171,11 @@ public class WatermarkAPI extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public Watermark getInfo(int warmarkId, boolean pretty, boolean strict) throws SmugMugException{
+	public Watermark getInfo(long warmarkId, boolean pretty, boolean strict) throws SmugMugException{
 		logger.debug("getInfo() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("WatermarkID", Integer.toString(warmarkId));
+		params.put("WatermarkID", Long.toString(warmarkId));
 		WatermarkResponse requestToken = SMResponse.callMethod(this.smugmug,WatermarkResponse.class, "smugmug.watermarks.getInfo", params, null, pretty, false, strict, false);
 		logger.debug("getInfo() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		return requestToken.getWatermark();

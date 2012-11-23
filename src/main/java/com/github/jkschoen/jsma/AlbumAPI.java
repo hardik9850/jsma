@@ -38,11 +38,11 @@ public class AlbumAPI extends AlbumBaseAPI{
 	 * @return returns true if watermark was set
 	 * @throws SmugMugException
 	 */
-	public boolean applyWatermark(int albumId, int watermarkId, boolean pretty, boolean strict) throws SmugMugException {
+	public boolean applyWatermark(long albumId, long watermarkId, boolean pretty, boolean strict) throws SmugMugException {
 		logger.debug("applyWatermark() called");
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("AlbumID", Integer.toString(albumId));
-		params.put("WatermarkID", Integer.toString(watermarkId));
+		params.put("AlbumID", Long.toString(albumId));
+		params.put("WatermarkID", Long.toString(watermarkId));
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.albums.applyWatermark", params, null, pretty, false, strict, false);
 		logger.debug("applyWatermark() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		//if it does not throw an exception than it worked, so return true
@@ -64,10 +64,10 @@ public class AlbumAPI extends AlbumBaseAPI{
 	 * @return true if successfully browsed to album
 	 * @throws SmugMugException
 	 */
-	public boolean browse(int albumId, String albumKey, String password, boolean pretty) throws SmugMugException {
+	public boolean browse(long albumId, String albumKey, String password, boolean pretty) throws SmugMugException {
 		logger.debug("browse() called");
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("AlbumID", Integer.toString(albumId));
+		params.put("AlbumID", Long.toString(albumId));
 		params.put("AlbumKey", albumKey);
 		if(password != null){
 			params.put("Password", password);
@@ -139,7 +139,7 @@ public class AlbumAPI extends AlbumBaseAPI{
 	 * @throws SecurityException 
 	 * @throws NoSuchFieldException 
 	 */
-	public Album changeSettings(Album album, Integer albumTemplateId, boolean unique, String[] extras, boolean pretty, boolean strict) throws SmugMugException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+	public Album changeSettings(Album album, Long albumTemplateId, boolean unique, String[] extras, boolean pretty, boolean strict) throws SmugMugException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		logger.debug("changeSettings() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
@@ -175,11 +175,11 @@ public class AlbumAPI extends AlbumBaseAPI{
 	 * @throws SecurityException 
 	 * @throws NoSuchFieldException 
 	 */
-	public Comment commentAdd(Comment comment, int albumId, String albumKey, String[] extras, boolean pretty, boolean strict) throws SmugMugException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException{
+	public Comment commentAdd(Comment comment, long albumId, String albumKey, String[] extras, boolean pretty, boolean strict) throws SmugMugException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException{
 		logger.debug("commentAdd() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("AlbumID" , Integer.toString(albumId));
+		params.put("AlbumID" , Long.toString(albumId));
 		params.put("AlbumKey" , albumKey);
 		params.put("Text", comment.getText());
 		if(comment.getRating() != null){
@@ -206,11 +206,11 @@ public class AlbumAPI extends AlbumBaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public List<Comment> commentGet(int albumId, String albumKey, String password, String sitePassword, Date lastUpdated, boolean pretty, boolean strict) throws SmugMugException{
+	public List<Comment> commentGet(long albumId, String albumKey, String password, String sitePassword, Date lastUpdated, boolean pretty, boolean strict) throws SmugMugException{
 		logger.debug("commentGet() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("AlbumID" , Integer.toString(albumId));
+		params.put("AlbumID" , Long.toString(albumId));
 		params.put("AlbumKey" , albumKey);
 		
 		if(password != null){
@@ -290,7 +290,7 @@ public class AlbumAPI extends AlbumBaseAPI{
 	 * @throws SecurityException 
 	 * @throws NoSuchFieldException 
 	 */
-	public Album create(Album album, Integer albumTemplateId, boolean unique, String[] extras, boolean pretty, boolean strict) throws SmugMugException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+	public Album create(Album album, Long albumTemplateId, boolean unique, String[] extras, boolean pretty, boolean strict) throws SmugMugException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		logger.debug("create() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
@@ -319,11 +319,11 @@ public class AlbumAPI extends AlbumBaseAPI{
 	 * @return true if the album is deleted successfully
 	 * @throws SmugMugException
 	 */
-	public boolean delete(int albumId, String albumKey, boolean pretty, boolean strict) throws SmugMugException {
+	public boolean delete(long albumId, String albumKey, boolean pretty, boolean strict) throws SmugMugException {
 		logger.debug("delete() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("AlbumID", Integer.toString(albumId));
+		params.put("AlbumID", Long.toString(albumId));
 		params.put("AlbumKey", albumKey);
 		
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.albums.delete", params, null, pretty, false, strict, false);
@@ -379,11 +379,11 @@ public class AlbumAPI extends AlbumBaseAPI{
 	 * @return the album details
 	 * @throws SmugMugException
 	 */
-	public Album getInfo(int albumId, String albumKey, String password, String sitePassword, boolean pretty, boolean sandboxed, boolean strict) throws SmugMugException{
+	public Album getInfo(long albumId, String albumKey, String password, String sitePassword, boolean pretty, boolean sandboxed, boolean strict) throws SmugMugException{
 		logger.debug("getInfo() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("AlbumID", Integer.toString(albumId));
+		params.put("AlbumID", Long.toString(albumId));
 		params.put("AlbumKey", albumKey);
 		
 		if(password != null){
@@ -409,11 +409,11 @@ public class AlbumAPI extends AlbumBaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public AlbumStats getStats(int albumId, int month, int year, boolean pretty, boolean strict, boolean heavy) throws SmugMugException {
+	public AlbumStats getStats(long albumId, int month, int year, boolean pretty, boolean strict, boolean heavy) throws SmugMugException {
 		logger.debug("getStats() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("AlbumID", Integer.toString(albumId));
+		params.put("AlbumID", Long.toString(albumId));
 		params.put("Month", Integer.toString(month));
 		params.put("Year", Integer.toString(year));
 		
@@ -431,10 +431,10 @@ public class AlbumAPI extends AlbumBaseAPI{
 	 * @return true if the watermarks are removed
 	 * @throws SmugMugException
 	 */
-	public boolean removeWatermark(int albumId, boolean pretty, boolean strict) throws SmugMugException {
+	public boolean removeWatermark(long albumId, boolean pretty, boolean strict) throws SmugMugException {
 		logger.debug("removeWatermark() called");
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("AlbumID", Integer.toString(albumId));
+		params.put("AlbumID", Long.toString(albumId));
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.albums.removeWatermark", params, null, pretty, false, strict, false);
 		logger.debug("removeWatermark() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		//if it does not throw an exception than it worked, so return true
@@ -451,10 +451,10 @@ public class AlbumAPI extends AlbumBaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public boolean reSort(int albumId, boolean pretty, boolean strict) throws SmugMugException {
+	public boolean reSort(long albumId, boolean pretty, boolean strict) throws SmugMugException {
 		logger.debug("reSort() called");
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("AlbumID", Integer.toString(albumId));
+		params.put("AlbumID", Long.toString(albumId));
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.albums.reSort", params, null, pretty, false, strict, false);
 		logger.debug("reSort() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		//if it does not throw an exception than it worked, so return true

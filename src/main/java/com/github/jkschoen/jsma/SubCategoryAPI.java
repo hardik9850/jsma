@@ -38,10 +38,10 @@ public class SubCategoryAPI  extends BaseAPI{
 	 * @throws IllegalArgumentException
 	 * @throws IllegalAccessException
 	 */
-	public SubCategory create(String name, int categoryId, boolean unique, String[] extras, boolean pretty, boolean strict) throws SmugMugException{
+	public SubCategory create(String name, long categoryId, boolean unique, String[] extras, boolean pretty, boolean strict) throws SmugMugException{
 		logger.debug("create() called");
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("CategoryID", Integer.toString(categoryId));
+		params.put("CategoryID", Long.toString(categoryId));
 		params.put("Name", name);
 		if(unique){
 			params.put("Unique", "true");
@@ -63,11 +63,11 @@ public class SubCategoryAPI  extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public boolean delete(int subCategoryId, boolean pretty, boolean strict) throws SmugMugException {
+	public boolean delete(long subCategoryId, boolean pretty, boolean strict) throws SmugMugException {
 		logger.debug("delete() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("SubCategoryID", Integer.toString(subCategoryId));
+		params.put("SubCategoryID", Long.toString(subCategoryId));
 		
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.subcategories.delete", params, null, pretty, false, strict, false);
 		logger.debug("delete() result: "+(requestToken == null ? "null" : requestToken.toString()));
@@ -85,11 +85,11 @@ public class SubCategoryAPI  extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public List<SubCategory> get(int categoryId, String nickName, String sitePassword, boolean pretty, boolean strict) throws SmugMugException{
+	public List<SubCategory> get(long categoryId, String nickName, String sitePassword, boolean pretty, boolean strict) throws SmugMugException{
 		logger.debug("get() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("CategoryID", Integer.toString(categoryId));
+		params.put("CategoryID", Long.toString(categoryId));
 		if(nickName != null){
 			params.put("NickName", nickName);
 		}
@@ -144,11 +144,11 @@ public class SubCategoryAPI  extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public boolean rename(int subCategoryId, String name, String[] extras, boolean pretty, boolean strict) throws SmugMugException{
+	public boolean rename(long subCategoryId, String name, String[] extras, boolean pretty, boolean strict) throws SmugMugException{
 		logger.debug("rename() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("SubCategoryID", Integer.toString(subCategoryId));
+		params.put("SubCategoryID", Long.toString(subCategoryId));
 		params.put("Name", name);
 		
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.subcategories.rename", params, null, pretty, false, strict, false);

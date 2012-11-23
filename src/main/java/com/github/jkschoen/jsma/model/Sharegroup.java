@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Sharegroup {
 	
 	@XmlElement(name="id")
-	private Integer id;
+	private Long id;
 	
 	@XmlElement(name="Tag")
 	private String tag;
@@ -47,7 +47,7 @@ public class Sharegroup {
 	public Sharegroup() {
 	}
 
-	public Sharegroup(Integer id, String tag, Integer albumCount,
+	public Sharegroup(Long id, String tag, Integer albumCount,
 			List<Album> albums, String description, String name,
 			Boolean passworded, String url) {
 		this.id = id;
@@ -60,7 +60,7 @@ public class Sharegroup {
 		this.url = url;
 	}
 	
-	public Sharegroup(Integer id, String tag, Integer albumCount,
+	public Sharegroup(Long id, String tag, Integer albumCount,
 			String description, String name, Boolean passworded, String url) {
 		this.id = id;
 		this.tag = tag;
@@ -71,11 +71,11 @@ public class Sharegroup {
 		this.url = url;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

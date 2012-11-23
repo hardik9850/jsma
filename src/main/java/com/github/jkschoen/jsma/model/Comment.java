@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Comment {
 	
 	@XmlElement(name="id")
-	private Integer id;
+	private Long id;
 	
 	//TODO: See what the format is, maybe we can convert this to a java.util.Date
 	@XmlElement(name="Date")
@@ -32,11 +32,11 @@ public class Comment {
 	public Comment() {
 	}
 	
-	public Comment(Integer id) {
+	public Comment(Long id) {
 		this.id = id;
 	}
 
-	public Comment(Integer id, String date, Integer rating, String text,
+	public Comment(Long id, String date, Integer rating, String text,
 			String type, User user) {
 		this.id = id;
 		this.date = date;
@@ -49,14 +49,14 @@ public class Comment {
 	/**
 	 * The id for this comment.
 	 */
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * Set the id for this comment.
 	 */
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

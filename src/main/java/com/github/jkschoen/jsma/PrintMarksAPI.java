@@ -76,11 +76,11 @@ public class PrintMarksAPI extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public boolean delete(int printmarkId, boolean pretty, boolean strict) throws SmugMugException{
+	public boolean delete(long printmarkId, boolean pretty, boolean strict) throws SmugMugException{
 		logger.debug("delete() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("PrintmarkID", Integer.toString(printmarkId));
+		params.put("PrintmarkID", Long.toString(printmarkId));
 		
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.printmarks.delete", params, null, pretty, false, strict, false);
 		logger.debug("delete() result: "+(requestToken == null ? "null" : requestToken.toString()));
@@ -115,11 +115,11 @@ public class PrintMarksAPI extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public Printmark getInfo(int printmarkId, boolean pretty, boolean strict) throws SmugMugException{
+	public Printmark getInfo(long printmarkId, boolean pretty, boolean strict) throws SmugMugException{
 		logger.debug("getInfo() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("PrintmarkID", Integer.toString(printmarkId));
+		params.put("PrintmarkID", Long.toString(printmarkId));
 		PrintmarkResponse requestToken = SMResponse.callMethod(this.smugmug,PrintmarkResponse.class, "smugmug.printmarks.getInfo", params, null, pretty, false, strict, false);
 		logger.debug("getInfo() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		return requestToken.getPrintmark();

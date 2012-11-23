@@ -66,11 +66,11 @@ public class CategoriesAPI extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public boolean delete(int categoryId, boolean pretty, boolean strict) throws SmugMugException {
+	public boolean delete(long categoryId, boolean pretty, boolean strict) throws SmugMugException {
 		logger.debug("delete() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("CategoryID", Integer.toString(categoryId));
+		params.put("CategoryID", Long.toString(categoryId));
 		
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.categories.delete", params, null, pretty, false, strict, false);
 		logger.debug("delete() result: "+(requestToken == null ? "null" : requestToken.toString()));
@@ -112,11 +112,11 @@ public class CategoriesAPI extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public boolean rename(int categoryId, String name, boolean pretty, boolean strict) throws SmugMugException{
+	public boolean rename(long categoryId, String name, boolean pretty, boolean strict) throws SmugMugException{
 		logger.debug("rename() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("CategoryID", Integer.toString(categoryId));
+		params.put("CategoryID", Long.toString(categoryId));
 		params.put("Name", name);
 		
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.categories.rename", null, null, pretty, false, strict, false);

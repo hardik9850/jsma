@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class SubCategory {
 
 	@XmlElement(name="id")
-	private Integer id;
+	private Long id;
 	
 	@XmlElement(name="Name")
 	private String name;
@@ -23,21 +23,21 @@ public class SubCategory {
 	
 	public SubCategory(){}
 
-	public SubCategory(Integer id) {
+	public SubCategory(Long id) {
 		this.id = id;
 	}
 
-	public SubCategory(Integer id, String name, String niceName) {
+	public SubCategory(Long id, String name, String niceName) {
 		this.id = id;
 		this.name = name;
 		this.niceName = niceName;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

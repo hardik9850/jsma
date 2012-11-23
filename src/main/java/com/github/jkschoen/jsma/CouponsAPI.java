@@ -151,11 +151,11 @@ public class CouponsAPI extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public Coupon getInfo(int couponId, boolean pretty, boolean strict) throws SmugMugException{
+	public Coupon getInfo(long couponId, boolean pretty, boolean strict) throws SmugMugException{
 		logger.debug("getInfo() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("CouponID", Integer.toString(couponId));
+		params.put("CouponID", Long.toString(couponId));
 		
 		CouponResponse requestToken = SMResponse.callMethod(this.smugmug,CouponResponse.class, "smugmug.coupons.getInfo", params, null, pretty, false, strict, false);
 		logger.debug("getInfo() result: "+(requestToken == null ? "null" : requestToken.toString()));
@@ -272,12 +272,12 @@ public class CouponsAPI extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public Coupon restrictionsAlbumAdd(int couponId, int albumId, String[] extras, boolean pretty, boolean strict) throws SmugMugException{
+	public Coupon restrictionsAlbumAdd(long couponId, long albumId, String[] extras, boolean pretty, boolean strict) throws SmugMugException{
 		logger.debug("restrictionsAlbumAdd() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("CouponID", Integer.toString(couponId));
-		params.put("AlbumID", Integer.toString(albumId));
+		params.put("CouponID", Long.toString(couponId));
+		params.put("AlbumID", Long.toString(albumId));
 		
 		CouponResponse requestToken = SMResponse.callMethod(this.smugmug,CouponResponse.class, "smugmug.coupons.restrictions.albums.add", params, extras, pretty, false, strict, false);
 		logger.debug("restrictionsAlbumAdd() result: "+(requestToken == null ? "null" : requestToken.toString()));
@@ -295,12 +295,12 @@ public class CouponsAPI extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public Coupon restrictionsAlbumRemove(int couponId, int albumId, String[] extras, boolean pretty, boolean strict) throws SmugMugException{
+	public Coupon restrictionsAlbumRemove(long couponId, long albumId, String[] extras, boolean pretty, boolean strict) throws SmugMugException{
 		logger.debug("restrictionsAlbumRemove() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("CouponID", Integer.toString(couponId));
-		params.put("AlbumID", Integer.toString(albumId));
+		params.put("CouponID", Long.toString(couponId));
+		params.put("AlbumID", Long.toString(albumId));
 		
 		CouponResponse requestToken = SMResponse.callMethod(this.smugmug,CouponResponse.class, "smugmug.coupons.restrictions.albums.remove", params, extras, pretty, false, strict, false);
 		logger.debug("restrictionsAlbumRemove() result: "+(requestToken == null ? "null" : requestToken.toString()));

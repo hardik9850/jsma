@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Category {
 
 	@XmlElement(name="id")
-	private Integer id;
+	private Long id;
 	
 	@XmlElement(name="Name")
 	private String name;
@@ -32,16 +32,16 @@ public class Category {
 	public Category(){
 	}
 
-	public Category(Integer id) {
+	public Category(Long id) {
 		this.id = id;
 	}
 
-	public Category(Integer id, String name) {
+	public Category(Long id, String name) {
 		this.id = id;
 		this.name = name;
 	}
 
-	public Category(Integer id, String name, String niceName, String type) {
+	public Category(Long id, String name, String niceName, String type) {
 		this.id = id;
 		this.name = name;
 		this.niceName = niceName;
@@ -51,14 +51,14 @@ public class Category {
 	/**
 	 * The id for this category.
 	 */
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * Set the id for this category.
 	 */
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

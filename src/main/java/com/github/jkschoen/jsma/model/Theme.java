@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Theme {
 
 	@XmlElement(name="id")
-	private Integer id;
+	private Long id;
 	
 	@XmlElement(name="Name")
 	private String name;
@@ -20,18 +20,18 @@ public class Theme {
 	
 	public Theme(){}
 	
-	public Theme(Integer id, String name, String type) {
+	public Theme(Long id, String name, String type) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.type = type;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

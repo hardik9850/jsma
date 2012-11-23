@@ -9,7 +9,7 @@ public class AlbumComments {
 
 	
 	@XmlElement(name="id")
-	private Integer id;
+	private Long id;
 	
 	@XmlElement(name="Key")
 	private String key;
@@ -20,17 +20,17 @@ public class AlbumComments {
 	public AlbumComments(){
 	}
 	
-	public AlbumComments(Integer id, String key, List<Comment> comments) {
+	public AlbumComments(Long id, String key, List<Comment> comments) {
 		this.id = id;
 		this.key = key;
 		this.comments = comments;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

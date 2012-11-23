@@ -16,11 +16,11 @@ public class AlbumTemplate extends AlbumBase{
 		super();
 	}
 	
-	public AlbumTemplate(Integer id){
+	public AlbumTemplate(Long id){
 		super(id);
 	}
 
-	public AlbumTemplate(Integer id, String albumTemplateName, String backPrinting, Boolean canRank,
+	public AlbumTemplate(Long id, String albumTemplateName, String backPrinting, Boolean canRank,
 			Boolean clean, Integer colorCorrection, Boolean commentsAllowed,
 			Community community,
 			Boolean exif, Boolean external, Boolean familyEdit, Boolean filenames,

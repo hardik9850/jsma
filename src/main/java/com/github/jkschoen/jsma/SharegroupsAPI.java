@@ -33,12 +33,12 @@ public class SharegroupsAPI extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public boolean albumsAdd(int shareGroupId, int albumId, boolean pretty, boolean strict) throws SmugMugException{
+	public boolean albumsAdd(long shareGroupId, long albumId, boolean pretty, boolean strict) throws SmugMugException{
 		logger.debug("albumsAdd() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("AlbumID" , Integer.toString(albumId));
-		params.put("ShareGroupID" , Integer.toString(shareGroupId));
+		params.put("AlbumID" , Long.toString(albumId));
+		params.put("ShareGroupID" , Long.toString(shareGroupId));
 		
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.sharegroups.albums.add", params, null, pretty, false, strict, false);
 		logger.debug("albumsAdd() result: "+(requestToken == null ? "null" : requestToken.toString()));
@@ -80,12 +80,12 @@ public class SharegroupsAPI extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public boolean albumsRemove(int shareGroupId, int albumId, boolean pretty, boolean strict) throws SmugMugException{
+	public boolean albumsRemove(long shareGroupId, long albumId, boolean pretty, boolean strict) throws SmugMugException{
 		logger.debug("albumsRemove() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("AlbumID" , Integer.toString(albumId));
-		params.put("ShareGroupID" , Integer.toString(shareGroupId));
+		params.put("AlbumID" , Long.toString(albumId));
+		params.put("ShareGroupID" , Long.toString(shareGroupId));
 		
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.sharegroups.albums.remove", params, null, pretty, false, strict, false);
 		logger.debug("albumsRemove() result: "+(requestToken == null ? "null" : requestToken.toString()));
@@ -174,11 +174,11 @@ public class SharegroupsAPI extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public boolean delete(int shareGroupId, boolean pretty, boolean strict) throws SmugMugException {
+	public boolean delete(long shareGroupId, boolean pretty, boolean strict) throws SmugMugException {
 		logger.debug("delete() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("ShareGroupID", Integer.toString(shareGroupId));
+		params.put("ShareGroupID", Long.toString(shareGroupId));
 		
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.sharegroups.delete", params, null, pretty, false, strict, false);
 		logger.debug("delete() result: "+(requestToken == null ? "null" : requestToken.toString()));
@@ -215,7 +215,7 @@ public class SharegroupsAPI extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public Sharegroup getInfo(Integer sharegroupId, String sharegroupTag, String password, String[] extras, boolean pretty, boolean strict) throws SmugMugException{
+	public Sharegroup getInfo(Long sharegroupId, String sharegroupTag, String password, String[] extras, boolean pretty, boolean strict) throws SmugMugException{
 		logger.debug("getInfo() called");
 		
 		Map<String, String> params = new HashMap<String, String>();

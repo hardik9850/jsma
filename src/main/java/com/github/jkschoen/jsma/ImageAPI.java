@@ -53,11 +53,11 @@ public class ImageAPI extends BaseAPI{
 	 * @return returns true if watermark was set
 	 * @throws SmugMugException
 	 */
-	public boolean applyWatermark(long imageId, int watermarkId, boolean pretty, boolean strict) throws SmugMugException {
+	public boolean applyWatermark(long imageId, long watermarkId, boolean pretty, boolean strict) throws SmugMugException {
 		logger.debug("applyWatermark() called");
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("ImageID", Long.toString(imageId));
-		params.put("WatermarkID", Integer.toString(watermarkId));
+		params.put("WatermarkID", Long.toString(watermarkId));
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.images.applyWatermark", params, null, pretty, false, strict, false);
 		logger.debug("applyWatermark() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		//if it does not throw an exception than it worked, so return true
@@ -285,7 +285,7 @@ public class ImageAPI extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public boolean delete(long imageId, Integer albumId, boolean pretty, boolean strict) throws SmugMugException {
+	public boolean delete(long imageId, Long albumId, boolean pretty, boolean strict) throws SmugMugException {
 		logger.debug("delete() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
@@ -317,11 +317,11 @@ public class ImageAPI extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public Album get(int albumId, String albumKey, String customSize, String password, String sitePassword, Date lastUpdated, String[] extras, boolean pretty, boolean sandboxed, boolean strict, boolean heavy) throws SmugMugException {
+	public Album get(long albumId, String albumKey, String customSize, String password, String sitePassword, Date lastUpdated, String[] extras, boolean pretty, boolean sandboxed, boolean strict, boolean heavy) throws SmugMugException {
 		logger.debug("get() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("AlbumID" , Integer.toString(albumId));
+		params.put("AlbumID" , Long.toString(albumId));
 		params.put("AlbumKey" , albumKey);
 		if(customSize != null){
 			params.put("CustomSize ", customSize);
@@ -539,10 +539,10 @@ public class ImageAPI extends BaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public Image uploadFromURL(int albumId, String downloadURL, Image imageSettings, String[] extras, boolean pretty, boolean strict) throws SmugMugException {
+	public Image uploadFromURL(long albumId, String downloadURL, Image imageSettings, String[] extras, boolean pretty, boolean strict) throws SmugMugException {
 		logger.debug("uploadFromURL() called");
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("ImageID", Integer.toString(albumId));
+		params.put("ImageID", Long.toString(albumId));
 		params.put("URL", downloadURL);
 		if (imageSettings != null){
 			if(imageSettings.getAltitude() != null){
@@ -630,7 +630,7 @@ public class ImageAPI extends BaseAPI{
 	 * @throws InvalidKeyException 
 	 * @throws SmugMugException 
 	 */
-	public Image upload(File image, int albumId, String caption, String keywords, 
+	public Image upload(File image, long albumId, String caption, String keywords, 
 			Boolean hidden, Long imageId, Integer altitude, Float latitude, 
 			Float longitude, boolean pretty) throws IOException, InvalidKeyException, NoSuchAlgorithmException, SmugMugException{
 		logger.debug("upload() called");
@@ -667,7 +667,7 @@ public class ImageAPI extends BaseAPI{
 		//X-Smug-FileName header
 		builder = builder.header("X-Smug-FileName", image.getName());
 		//X-Smug-AlbumID header
-		builder = builder.header("X-Smug-AlbumID", Integer.toString(albumId));
+		builder = builder.header("X-Smug-AlbumID", Long.toString(albumId));
 		//X-Smug-Caption header
 		if(caption != null){
 			builder = builder.header("X-Smug-Caption", caption);

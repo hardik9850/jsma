@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Highlight {
 	
 	@XmlElement(name="id")
-	private Integer id;
+	private Long id;
 	
 	@XmlElement(name="Key")
 	private String key;
@@ -25,14 +25,14 @@ public class Highlight {
 	/**
 	 * The id for this image.
 	 */
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * Set the id for this image.
 	 */
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Watermark {
 
 	@XmlElement(name="id")
-	private Integer id;
+	private Long id;
 	
 	@XmlElement(name="Name")
 	private String name;
@@ -29,13 +29,13 @@ public class Watermark {
 	
 	public Watermark(){}
 
-	public Watermark(Integer id, String name) {
+	public Watermark(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
 	
-	public Watermark(Integer id, String name, Integer dissolve, Image image,
+	public Watermark(Long id, String name, Integer dissolve, Image image,
 			String pinned, Boolean thumbs) {
 		super();
 		this.id = id;
@@ -49,14 +49,14 @@ public class Watermark {
 	/**
 	 * The id for this watermark.
 	 */
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * Set the id for this watermark.
 	 */
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ImageStats extends Stats{
 	
 	@XmlElement(name="id")
-	private Integer id;
+	private Long id;
 	
 	@XmlElement(name="Key")
 	private String key;
@@ -19,7 +19,7 @@ public class ImageStats extends Stats{
 	public ImageStats() {
 	}
 	
-	public ImageStats(Integer id, String key, Integer bytes, 
+	public ImageStats(Long id, String key, Integer bytes, 
 			Integer hits, Integer large, Integer medium, 
 			Integer original, Integer small, Integer x2Large, 
 			Integer x3Large, Integer xLarge) {
@@ -31,14 +31,14 @@ public class ImageStats extends Stats{
 	/**
 	 * The id for this image.
 	 */
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * Sets the id for this image.
 	 */
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

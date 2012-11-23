@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlElement;
 public abstract class AlbumBase {
 	
 	@XmlElement(name="id")
-	private Integer id;
+	private Long id;
 	
 	@XmlElement(name="AlbumTemplateID")
 	private Integer albumTemplateID; 
@@ -151,11 +151,11 @@ public abstract class AlbumBase {
 	
 	public AlbumBase(){}
 	
-	public AlbumBase(Integer id){
+	public AlbumBase(Long id){
 		this.id = id;
 	}
 	
-	public AlbumBase(Integer id, String backPrinting, Boolean canRank, 
+	public AlbumBase(Long id, String backPrinting, Boolean canRank, 
 			Boolean clean, Integer colorCorrection,
 			Boolean commentsAllowed, Boolean exif,
 			Boolean external, Boolean familyEdit, Boolean friendEdit,
@@ -210,7 +210,7 @@ public abstract class AlbumBase {
 		this.commentsAllowed = commentsAllowed;
 	}
 	
-	public AlbumBase(Integer id, String backPrinting, Boolean canRank,
+	public AlbumBase(Long id, String backPrinting, Boolean canRank,
 			Boolean clean, Integer colorCorrection, Boolean commentsAllowed,
 			Community community,
 			Boolean exif, Boolean external, Boolean familyEdit, Boolean filenames,
@@ -272,14 +272,14 @@ public abstract class AlbumBase {
 	/***
 	 * The id for this album.
 	 */
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * Set the id for this album.
 	 */
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	

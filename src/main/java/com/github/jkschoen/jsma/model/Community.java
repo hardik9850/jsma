@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Community {
 
 	@XmlElement(name="id")
-	private Integer id;
+	private Long id;
 	
 	@XmlElement(name="Name")
 	private String name;
@@ -18,11 +18,11 @@ public class Community {
 	public Community() {
 	}
 
-	public Community(Integer id) {
+	public Community(Long id) {
 		this.id = id;
 	}
 
-	public Community(Integer id, String name) {
+	public Community(Long id, String name) {
 		this.id = id;
 		this.name = name;
 	}
@@ -30,14 +30,14 @@ public class Community {
 	/**
 	 * The id for this community.
 	 */
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * Set the id for this community.
 	 */
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -10,19 +10,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Template {
 
 	@XmlElement(name="id")
-	private Integer id;
+	private Long id;
 
 	public Template(){}
 	
-	public Template(Integer id) {
+	public Template(Long id) {
 		this.id = id;
 	}
 
-	public Integer getTemplate() {
+	public Long getTemplate() {
 		return id;
 	}
 
-	public void setTemplate(Integer template) {
+	public void setTemplate(Long template) {
 		this.id = template;
 	}
 

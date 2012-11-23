@@ -119,11 +119,11 @@ public class AlbumTemplatesAPI extends AlbumBaseAPI{
 	 * @return
 	 * @throws SmugMugException
 	 */
-	public boolean delete(int albumTemplateId, boolean pretty, boolean strict) throws SmugMugException {
+	public boolean delete(long albumTemplateId, boolean pretty, boolean strict) throws SmugMugException {
 		logger.debug("delete() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("AlbumTemplateID", Integer.toString(albumTemplateId));
+		params.put("AlbumTemplateID", Long.toString(albumTemplateId));
 		
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.albumtemplates.delete", params, null, pretty, false, strict, false);
 		logger.debug("delete() result: "+(requestToken == null ? "null" : requestToken.toString()));

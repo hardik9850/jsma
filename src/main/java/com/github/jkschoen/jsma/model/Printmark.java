@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Printmark {
 
 	@XmlElement(name="id")
-	private Integer id;
+	private Long id;
 	
 	@XmlElement(name="Name")
 	private String name;
@@ -27,16 +27,16 @@ public class Printmark {
 	public Printmark(){
 	}
 	
-	public Printmark(Integer id){
+	public Printmark(Long id){
 		this.id = id;
 	}
 
-	public Printmark(Integer id, String name) {
+	public Printmark(Long id, String name) {
 		this.id = id;
 		this.name = name;
 	}
 
-	public Printmark(Integer id, String name, Integer dissolve, Image image,
+	public Printmark(Long id, String name, Integer dissolve, Image image,
 			String location) {
 		this.id = id;
 		this.name = name;
@@ -48,14 +48,14 @@ public class Printmark {
 	/**
 	 * The id for this printmark.
 	 */
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * Sets the id for this printmark.
 	 */
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
