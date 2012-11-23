@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Image {
 
 	@XmlElement(name="id")
-	private Integer id;
+	private Long id;
 	
 	@XmlElement(name="Key")
 	private String key;
@@ -142,12 +142,12 @@ public class Image {
 
 	public Image() {}
 
-	public Image(Integer id, String key) {
+	public Image(Long id, String key) {
 		this.id = id;
 		this.key = key;
 	}
 
-	public Image(Integer id, String key, Album album, String caption,
+	public Image(Long id, String key, Album album, String caption,
 			String date, String fileName, String format, Integer height,
 			Boolean hidden, String keywords, String largeURL,
 			String lastUpdated, Float latitude, String lightboxURL,
@@ -191,14 +191,14 @@ public class Image {
 	/**
 	 * The id for this image.
 	 */
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * Set the id for this image.
 	 */
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

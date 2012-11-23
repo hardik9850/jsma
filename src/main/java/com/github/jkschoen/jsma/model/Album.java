@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Album extends AlbumBase {
 
-	@XmlElement(name="Key", required=false, namespace="Key")
+	@XmlElement(name="Key")
 	private String key;
 
 	@XmlElement(name="Category")

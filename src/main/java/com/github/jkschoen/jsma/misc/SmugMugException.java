@@ -17,7 +17,7 @@ public class SmugMugException extends Exception {
 	}
 	
 	public SmugMugException(SMResponse response){
-		super (response.getMessage()+" [Error Code: "+response.getCode() +" Method: "+response.getMethod()+"]");
+		super (response.getMessage()+" [Method: "+response.getMethod()+" Error Code: "+response.getCode()+" Message: "+response.getMessage() +" ]");
 		this.code = response.getCode();
 		this.method = response.getMethod();
 	}

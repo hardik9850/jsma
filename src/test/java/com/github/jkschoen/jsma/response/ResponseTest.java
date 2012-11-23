@@ -226,7 +226,7 @@ public class ResponseTest {
 	public void testImageResponse() throws JsonParseException, JsonMappingException, IOException {
 		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.images.getInfo\",\"Image\": {\"id\": 12345,\"Key\": \"nrBE6\",\"Album\": {\"id\": 1234,\"Key\": \"xCXXu\",\"URL\": \"http://fred.smugmug.com/gallery/1234_xCXXu#12345_nrBE6\"},\"Caption\": \"\",\"Date\": \"2008-02-05 15:52:56\",\"FileName\": \"IMG_1234.JPG\",\"Format\": \"JPG\",\"Height\": 2304,\"Hidden\": false,\"Keywords\": \"\",\"LargeURL\": \"http://fred.smugmug.com/photos/12345_nrBE6-L.jpg\",\"LastUpdated\": \"2008-02-05 22:16:52\",\"Latitude\": -37.819706,\"LightboxURL\": \"http://fred.smugmug.com/gallery/1234_xCXXu#12345_nrBE6-A-LB\",\"Longitude\": 145.202974,\"MD5Sum\": \"b1f26944e2fa6e20e88532e471239574\",\"MediumURL\": \"http://fred.smugmug.com/photos/12345_nrBE6-M.jpg\",\"OriginalURL\": \"http://fred.smugmug.com/photos/12345_nrBE6-O.jpg\",\"Position\": 1,\"Serial\": 0,\"Size\": 7457753,\"SmallURL\": \"http://fred.smugmug.com/photos/12345_nrBE6-S.jpg\",\"ThumbURL\": \"http://fred.smugmug.com/photos/12345_nrBE6-Th.jpg\",\"TinyURL\": \"http://fred.smugmug.com/photos/12345_nrBE6-Ti.jpg\",\"Type\": \"Album\",\"Watermark\": false,\"Width\": 3072,\"X2LargeURL\": \"http://fred.smugmug.com/photos/12345_nrBE6-X2L.jpg\",\"X3LargeURL\": \"http://fred.smugmug.com/photos/12345_nrBE6-X3L.jpg\",\"XLargeURL\": \"http://fred.smugmug.com/photos/12345_nrBE6-XL.jpg\"}}";
 		ImageResponse value = MAPPER.readValue(json, ImageResponse.class);
-		ImageResponse expected = new ImageResponse("ok", "smugmug.images.getInfo",new Image(12345,"nrBE6", new Album(1234, "xCXXu", "http://fred.smugmug.com/gallery/1234_xCXXu#12345_nrBE6"),
+		ImageResponse expected = new ImageResponse("ok", "smugmug.images.getInfo",new Image(12345l,"nrBE6", new Album(1234, "xCXXu", "http://fred.smugmug.com/gallery/1234_xCXXu#12345_nrBE6"),
 				"","2008-02-05 15:52:56","IMG_1234.JPG", "JPG", 2304, false, "", "http://fred.smugmug.com/photos/12345_nrBE6-L.jpg", 
 				"2008-02-05 22:16:52", -37.819706f, "http://fred.smugmug.com/gallery/1234_xCXXu#12345_nrBE6-A-LB",
 				145.202974f, "b1f26944e2fa6e20e88532e471239574", "http://fred.smugmug.com/photos/12345_nrBE6-M.jpg",
@@ -249,7 +249,7 @@ public class ResponseTest {
 	public void testPrintmarkResponse() throws JsonParseException, JsonMappingException, IOException {
 		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.printmarks.getInfo\",\"Printmark\": {\"id\": 1234,\"Name\": \"My Custom Printmark\",\"Dissolve\": 50,\"Image\": {\"id\": 12345,\"Key\": \"nrBE6\"},\"Location\": \"BottomRight\"}}";
 		PrintmarkResponse value = MAPPER.readValue(json, PrintmarkResponse.class);
-		PrintmarkResponse expected = new PrintmarkResponse("ok", "smugmug.printmarks.getInfo", new Printmark(1234, "My Custom Printmark", 50, new Image(12345, "nrBE6"), "BottomRight")); 
+		PrintmarkResponse expected = new PrintmarkResponse("ok", "smugmug.printmarks.getInfo", new Printmark(1234, "My Custom Printmark", 50, new Image(12345l, "nrBE6"), "BottomRight")); 
 		assertEquals(value, expected);
 	}
 	
@@ -338,7 +338,7 @@ public class ResponseTest {
 	public void testWatermarkResponse() throws JsonParseException, JsonMappingException, IOException {
 		String json = "{\"stat\": \"ok\",\"method\": \"smugmug.watermarks.getInfo\",\"Watermark\": {\"id\": 1234,\"Name\": \"My Custom Watermark\",\"Dissolve\": 50,\"Image\": {\"id\": 12345,\"Key\": \"nrBE6\"},\"Pinned\": \"Center\",\"Thumbs\": false}}";
 		WatermarkResponse value = MAPPER.readValue(json, WatermarkResponse.class);
-		WatermarkResponse expected = new WatermarkResponse("ok", "smugmug.watermarks.getInfo", new Watermark(1234, "My Custom Watermark", 50, new Image(12345, "nrBE6"), "Center", false)); 
+		WatermarkResponse expected = new WatermarkResponse("ok", "smugmug.watermarks.getInfo", new Watermark(1234, "My Custom Watermark", 50, new Image(12345l, "nrBE6"), "Center", false)); 
 		assertEquals(value, expected);
 	}
 	

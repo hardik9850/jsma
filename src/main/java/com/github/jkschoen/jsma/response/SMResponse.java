@@ -163,8 +163,6 @@ public class SMResponse {
     		boolean heavy) throws SmugMugException {
     	WebResource resource = SmugMugAPI.CLIENT.resource(URL_API).queryParam("method", method);
     	
-    	resource.header("User-Agent", smugmug.getAppName());
-    	
     	MultivaluedMapImpl queryParams = new MultivaluedMapImpl();
     	
     	if (extras != null && extras.length > 0){
@@ -197,6 +195,9 @@ public class SMResponse {
     	}
     	
     	resource = resource.queryParams(queryParams);
+        
+        LoggingFilter logFilter = new LoggingFilter();
+        resource.addFilter(logFilter);
     	
     	OAuthSecrets secrets = new OAuthSecrets().consumerSecret(smugmug.getConsumerSecret());
         OAuthParameters oauthParams = new OAuthParameters().consumerKey(smugmug.getCosumerKey()).
@@ -209,11 +210,13 @@ public class SMResponse {
             oauthParams.token(smugmug.getToken().getId());
         }
         resource.addFilter(filter);
-        
-        LoggingFilter logFilter = new LoggingFilter();
-        resource.addFilter(logFilter);
-        
-        T response = resource.get(type);
+
+    	
+    	WebResource.Builder builder = resource.getRequestBuilder();
+    	//User agent
+		builder = builder.header("User-Agent", smugmug.getAppName());
+		
+        T response = builder.get(type);
         if (!"ok".equals(response.getStat())) {
             throw new SmugMugException(response);
         }
