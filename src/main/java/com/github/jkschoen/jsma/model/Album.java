@@ -112,6 +112,12 @@ public class Album extends AlbumBase {
 		this.type = type;
 	}
 	
+	public Album(String title, Category category) {
+		super();
+		this.category = category;
+		this.title = title;
+	}
+
 	/***
 	 * The key for this album.
 	 */

@@ -171,7 +171,7 @@ public class SMResponse {
     			if (extraString == null){
     				extraString = extra;
     			} else {
-    				extraString = ","+extra;
+    				extraString = extraString+","+extra;
     			}
     		}
     		queryParams.add("Extras", extraString);
