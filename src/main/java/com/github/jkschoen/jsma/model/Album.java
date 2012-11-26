@@ -1,5 +1,7 @@
 package com.github.jkschoen.jsma.model;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -50,6 +52,9 @@ public class Album extends AlbumBase {
 	
 	@XmlElement(name="Type")
 	private String type;
+	
+	@XmlElement(name="Images")
+	private List<Image> images;
 	
 	public Album() {
 		super();
@@ -297,6 +302,14 @@ public class Album extends AlbumBase {
 		this.type = type;
 	}
 
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -309,6 +322,7 @@ public class Album extends AlbumBase {
 				+ ((highlight == null) ? 0 : highlight.hashCode());
 		result = prime * result
 				+ ((imageCount == null) ? 0 : imageCount.hashCode());
+		result = prime * result + ((images == null) ? 0 : images.hashCode());
 		result = prime * result + ((key == null) ? 0 : key.hashCode());
 		result = prime * result
 				+ ((keywords == null) ? 0 : keywords.hashCode());
@@ -326,7 +340,6 @@ public class Album extends AlbumBase {
 		result = prime * result + ((url == null) ? 0 : url.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -356,6 +369,11 @@ public class Album extends AlbumBase {
 			if (other.imageCount != null)
 				return false;
 		} else if (!imageCount.equals(other.imageCount))
+			return false;
+		if (images == null) {
+			if (other.images != null)
+				return false;
+		} else if (!images.equals(other.images))
 			return false;
 		if (key == null) {
 			if (other.key != null)
@@ -410,7 +428,6 @@ public class Album extends AlbumBase {
 		return true;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Album ["+super.toString()+", key=" + key + ", category=" + category
@@ -419,9 +436,7 @@ public class Album extends AlbumBase {
 				+ ", lastUpdated=" + lastUpdated + ", niceName=" + niceName
 				+ ", passworded=" + passworded + ", subCategory=" + subCategory
 				+ ", theme=" + theme + ", title=" + title + ", url=" + url
-				+ ", type=" + type + "]";
+				+ ", type=" + type + ", images=" + images + "]";
 	}
-	
-	
 	
 }

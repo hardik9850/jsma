@@ -10,9 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.jkschoen.jsma.SmugMugAPI;
+import com.github.jkschoen.jsma.misc.JsmaLoggingFilter;
 import com.github.jkschoen.jsma.misc.SmugMugException;
 import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.api.client.filter.LoggingFilter;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 import com.sun.jersey.oauth.client.OAuthClientFilter;
 import com.sun.jersey.oauth.signature.OAuthParameters;
@@ -196,7 +196,7 @@ public class SMResponse {
     	
     	resource = resource.queryParams(queryParams);
         
-        LoggingFilter logFilter = new LoggingFilter();
+    	JsmaLoggingFilter logFilter = new JsmaLoggingFilter(logger);
         resource.addFilter(logFilter);
     	
     	OAuthSecrets secrets = new OAuthSecrets().consumerSecret(smugmug.getConsumerSecret());
