@@ -20,6 +20,7 @@ The current List of examples are:
 
 * [AuthExample](https://github.com/jkschoen/jsma/blob/master/src/test/java/com/github/jkschoen/jsma/examples/AuthExample.java) - Good starting point to see how to get your application authorized with a users account.  
 * [AlbumExample](https://github.com/jkschoen/jsma/blob/master/src/test/java/com/github/jkschoen/jsma/examples/AlbumExample.java) - Shows the basic functionality of working with the Albums API. 
+* [ImageExample](https://github.com/jkschoen/jsma/blob/master/src/test/java/com/github/jkschoen/jsma/examples/ImageExample.java) - Shows how to upload an image to SmugMug.
 
 Then you just can just run all the examples, and they will pull the values from [UserConfig.java](https://github.com/jkschoen/jsma/blob/master/src/test/java/com/github/jkschoen/jsma/examples/UserConfig.java).
 
