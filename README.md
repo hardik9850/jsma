@@ -9,7 +9,7 @@ JSMA is still a work in progress, and should be considered in an alpha state. As
 ### Dependencies
  Below are the list of the top level projects that JSMA uses along with a link to their respective licenses for those that are interested.
  
-* [Jersey](http://jersey.java.net/)
+* [Jersey](http://jersey.java.net/)  
   Provides the infrastructure to make the api calls to SmugMug and parse the JSON reposne into Java objects. ([License](http://glassfish.java.net/public/CDDL+GPL_1_1.html))
 * [Simple Logging Facade for Java (SLF4J)](http://www.slf4j.org/)  
   Used to handle logging in a way that will still allow you the freedom to pick whichever logging framework you would like. ([License](http://www.slf4j.org/license.html))
