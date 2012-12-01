@@ -292,7 +292,7 @@ public class ImageAPI extends BaseAPI{
 		params.put("ImageID" , Long.toString(imageId));
 		
 		if(albumId != null){
-			params.put("AlbumID ", albumId.toString());
+			params.put("AlbumID", albumId.toString());
 		}
 		
 		SMResponse requestToken = SMResponse.callMethod(this.smugmug,SMResponse.class, "smugmug.images.delete", params, null, pretty, false, strict, false);
@@ -652,7 +652,7 @@ public class ImageAPI extends BaseAPI{
 		
 		WebResource resource = SmugMugAPI.CLIENT.resource(UPLOAD_URL);
 		
-		JsmaLoggingFilter logFilter = new JsmaLoggingFilter(logger);
+		JsmaLoggingFilter logFilter = new JsmaLoggingFilter();
 	    resource.addFilter(logFilter);
 		
 		OAuthSecrets secrets = new OAuthSecrets().consumerSecret(smugmug.getConsumerSecret());

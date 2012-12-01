@@ -40,6 +40,19 @@ package com.github.jkschoen.jsma.misc;
  * holder.
  */
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.List;
+import java.util.Map;
+
+import javax.ws.rs.core.MultivaluedMap;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.sun.jersey.api.client.AbstractClientRequestAdapter;
 import com.sun.jersey.api.client.ClientHandlerException;
 import com.sun.jersey.api.client.ClientRequest;
@@ -48,26 +61,13 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.filter.ClientFilter;
 import com.sun.jersey.core.util.ReaderWriter;
 
-import javax.ws.rs.core.MultivaluedMap;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.util.List;
-import java.util.Map;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * A logging filter.
  * 
  * @author Paul.Sandoz@Sun.Com
  */
 public class JsmaLoggingFilter extends ClientFilter {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(JsmaLoggingFilter.class);
+	static final Logger logger = LoggerFactory.getLogger(JsmaLoggingFilter.class);
 
     private static final String NOTIFICATION_PREFIX = "* ";
     
@@ -127,9 +127,6 @@ public class JsmaLoggingFilter extends ClientFilter {
         }
     }
 
-    private final PrintStream loggingStream;
-
-    private final Logger logger;
 
     private long _id = 0;
 
@@ -139,37 +136,11 @@ public class JsmaLoggingFilter extends ClientFilter {
      * class.
      */
     public JsmaLoggingFilter() {
-        this(LOGGER);
-    }
-
-    /**
-     * Create a logging filter logging the request and response to
-     * a JDK logger.
-     * 
-     * @param logger the logger to log requests and responses.
-     */
-    public JsmaLoggingFilter(Logger logger) {
-        this.loggingStream = null;
-        this.logger = logger;
-    }
-
-    /**
-     * Create a logging filter logging the request and response to
-     * print stream.
-     *
-     * @param loggingStream the print stream to log requests and responses.
-     */
-    public JsmaLoggingFilter(PrintStream loggingStream) {
-        this.loggingStream = loggingStream;
-        this.logger = null;
+    	super();
     }
 
     private void log(StringBuilder b) {
-        if (logger != null) {
-            logger.debug(b.toString());
-        } else {
-            loggingStream.print(b);
-        }
+        logger.debug(b.toString());
     }
 
     private StringBuilder prefixId(StringBuilder b, long id) {
@@ -244,8 +215,8 @@ public class JsmaLoggingFilter extends ClientFilter {
             printEntity(b, requestEntity);
             response.setEntityInputStream(new ByteArrayInputStream(requestEntity));
         } catch (IOException ex) {
-        	this.logger.error(b.toString());
-        	this.logger.error(response.toString());
+        	logger.error(b.toString());
+        	logger.error(response.toString());
             throw new ClientHandlerException(ex);
         }
         log(b);

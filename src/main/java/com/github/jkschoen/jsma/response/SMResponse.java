@@ -197,7 +197,7 @@ public class SMResponse {
     	
     	resource = resource.queryParams(queryParams);
         
-    	JsmaLoggingFilter logFilter = new JsmaLoggingFilter(logger);
+    	JsmaLoggingFilter logFilter = new JsmaLoggingFilter();
         resource.addFilter(logFilter);
     	
     	OAuthSecrets secrets = new OAuthSecrets().consumerSecret(smugmug.getConsumerSecret());
