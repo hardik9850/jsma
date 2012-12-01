@@ -10,10 +10,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.github.jkschoen.jsma.misc.JSMAUtils;
 import com.github.jkschoen.jsma.misc.JsmaLoggingFilter;
 import com.github.jkschoen.jsma.misc.SmugMugException;
 import com.github.jkschoen.jsma.model.Album;
@@ -652,7 +652,7 @@ public class ImageAPI extends BaseAPI{
 	        oauthParams.token(smugmug.getToken().getId());
 	    }
 	    resource.addFilter(filter);
-	    
+	    String md5 = JSMAUtils.md5(imageBytes);
 		WebResource.Builder builder = resource.getRequestBuilder();
 		//User agent
 		builder = builder.header("User-Agent", smugmug.getAppName());
@@ -663,7 +663,7 @@ public class ImageAPI extends BaseAPI{
 		//Content-Length header
 		builder = builder.header("Content-Length", Long.toString(image.length()));
 		//Content-MD5 header
-		builder = builder.header("Content-MD5", DigestUtils.md5Hex(imageBytes));
+		builder = builder.header("Content-MD5", md5);
 		//X-Smug-FileName header
 		builder = builder.header("X-Smug-FileName", image.getName());
 		//X-Smug-AlbumID header
