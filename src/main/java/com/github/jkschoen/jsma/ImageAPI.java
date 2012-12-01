@@ -14,6 +14,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.github.jkschoen.jsma.misc.JsmaLoggingFilter;
 import com.github.jkschoen.jsma.misc.SmugMugException;
 import com.github.jkschoen.jsma.model.Album;
 import com.github.jkschoen.jsma.model.Comment;
@@ -27,7 +28,6 @@ import com.github.jkschoen.jsma.response.ImageResponse;
 import com.github.jkschoen.jsma.response.ImageStatsResponse;
 import com.github.jkschoen.jsma.response.SMResponse;
 import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.api.client.filter.LoggingFilter;
 import com.sun.jersey.oauth.client.OAuthClientFilter;
 import com.sun.jersey.oauth.signature.OAuthParameters;
 import com.sun.jersey.oauth.signature.OAuthSecrets;
@@ -638,7 +638,7 @@ public class ImageAPI extends BaseAPI{
 		
 		WebResource resource = SmugMugAPI.CLIENT.resource(UPLOAD_URL);
 		
-	    LoggingFilter logFilter = new LoggingFilter();
+		JsmaLoggingFilter logFilter = new JsmaLoggingFilter(logger);
 	    resource.addFilter(logFilter);
 		
 		OAuthSecrets secrets = new OAuthSecrets().consumerSecret(smugmug.getConsumerSecret());

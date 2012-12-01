@@ -139,15 +139,13 @@ public class AlbumAPI extends AlbumBaseAPI{
 	 * @throws SecurityException 
 	 * @throws NoSuchFieldException 
 	 */
-	public Album changeSettings(Album album, Long albumTemplateId, boolean unique, String[] extras, boolean pretty, boolean strict) throws SmugMugException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+	public Album changeSettings(Album album, Long albumTemplateId, String[] extras, boolean pretty, boolean strict) throws SmugMugException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		logger.debug("changeSettings() called");
 		
 		Map<String, String> params = new HashMap<String, String>();
+		params.put("AlbumID", album.getId().toString());
 		if(albumTemplateId != null){
 			params.put("AlbumID", albumTemplateId.toString());
-		}
-		if(unique){
-			params.put("Unique", "true");
 		}
 		this.setAlbumParameters(params, album);		
 		

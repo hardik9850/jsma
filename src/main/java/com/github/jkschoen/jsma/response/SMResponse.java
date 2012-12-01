@@ -111,7 +111,7 @@ public class SMResponse {
 	}
 
 
-	private static final String URL_API = "https://api.smugmug.com/services/api/json/1.3.0/";
+	private static final String URL_API = "http://api.smugmug.com/services/api/json/1.3.0/";
 
     /**
      * Makes the actual API request against the SmugMug API. It will return an instance
@@ -190,6 +190,7 @@ public class SMResponse {
     	}
     	if (params != null){
     		for (String key : params.keySet()){
+    			logger.debug("Adding Query Param: '"+key+"' with Value: '"+params.get(key)+"'");
     			queryParams.add(key, params.get(key));
     		}
     	}

@@ -97,7 +97,7 @@ public class CategoriesAPI extends BaseAPI{
 			params.put("SitePassword ", sitePassword);
 		}
 		
-		CategoriesResponse requestToken = SMResponse.callMethod(this.smugmug,CategoriesResponse.class, "smugmug.categories.create", params, null, pretty, false, strict, false);
+		CategoriesResponse requestToken = SMResponse.callMethod(this.smugmug,CategoriesResponse.class, "smugmug.categories.get", params, null, pretty, false, strict, false);
 		logger.debug("get() result: "+(requestToken == null ? "null" : requestToken.toString()));
 		return requestToken.getCategories();
 	}

@@ -244,6 +244,8 @@ public class JsmaLoggingFilter extends ClientFilter {
             printEntity(b, requestEntity);
             response.setEntityInputStream(new ByteArrayInputStream(requestEntity));
         } catch (IOException ex) {
+        	this.logger.error(b.toString());
+        	this.logger.error(response.toString());
             throw new ClientHandlerException(ex);
         }
         log(b);
