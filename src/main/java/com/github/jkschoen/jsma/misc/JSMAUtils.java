@@ -8,6 +8,16 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class JSMAUtils {
+	
+	public static String uncapitalize(String input){
+		if (input == null){
+			return null;
+		}
+		if (input.length()==1){
+			return input.toLowerCase();
+		}
+		return input.substring(0, 1).toUpperCase() + input.substring(1);
+	}
 
 	public static String md5(File file) throws NoSuchAlgorithmException,
 			IOException {

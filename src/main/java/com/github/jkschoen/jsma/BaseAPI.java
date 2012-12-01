@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.lang3.StringUtils;
+import com.github.jkschoen.jsma.misc.JSMAUtils;
 
 public abstract class BaseAPI {
 
@@ -69,7 +69,7 @@ public abstract class BaseAPI {
 			//need to convert the json field to the field in the class name
 			//most of the time it is a matter of making the first letter 
 			//lowercase
-			String uncapField = StringUtils.uncapitalize(jsonField);
+			String uncapField = JSMAUtils.uncapitalize(jsonField);
 			//for special cases we will maintain a map and swap them out.
 			if (BaseAPI.FIELD_NAME_MAP.containsKey(uncapField)){
 				uncapField = BaseAPI.FIELD_NAME_MAP.get(uncapField);

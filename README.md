@@ -13,9 +13,7 @@ JSMA is still a work in progress, and should be considered in an alpha state. As
   Provides the infrastructure to make the api calls to SmugMug and parse the JSON response into Java objects. ([License](http://glassfish.java.net/public/CDDL+GPL_1_1.html))
 * [Simple Logging Facade for Java (SLF4J)](http://www.slf4j.org/)  
   Used to handle logging in a way that will still allow you the freedom to pick whichever logging framework you would like. ([License](http://www.slf4j.org/license.html))
-* [Apache Commons Lang](http://commons.apache.org/lang/)  
-  TODO: Find what I use this for. ([License](http://www.apache.org/licenses/)).
-  
+
 ### Examples
 
 Example code can be found in the [test directory](https://github.com/jkschoen/jsma/tree/master/src/test/java/com/github/jkschoen/jsma/examples). In order to run the examples you need to [Apply for an API Key](http://www.smugmug.com/hack/apikeys) with SmugMug.
