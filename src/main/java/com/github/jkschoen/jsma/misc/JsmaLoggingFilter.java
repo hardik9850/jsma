@@ -166,7 +166,7 @@ public class JsmaLoggingFilter extends ClientFilter {
 
     private void log(StringBuilder b) {
         if (logger != null) {
-            logger.error(b.toString());
+            logger.debug(b.toString());
         } else {
             loggingStream.print(b);
         }

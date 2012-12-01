@@ -614,6 +614,20 @@ public class ImageAPI extends BaseAPI{
 	 * it will upload the image in place of the image with the 
 	 * corresponding imageId.
 	 * 
+	 * The MD5 calculated by us will be set in the returned image. This can be
+	 * useful if the caller wants to then do a second call getInfo() to see if
+	 * SmugMug made some modifications to the image changed it. While it does
+	 * not seem intuitive that they would make changes, it seems to happen
+	 * consistently with photo's that have the Orientation bit set. They alter
+	 * the image they store, which changes the MD5Sum. This causes an issue
+	 * if you are wanting to check if an image exists before you upload. 
+	 * 
+	 * The only solution that seems fool proof is to check the MD5Sum against
+	 * SmugMug's and if different download from SmugMug overwriting the one 
+	 * on the file system.
+	 * 
+	 * See http://www.dgrin.com/showthread.php?t=205411 for more.
+	 * 
 	 * @param image (Required) The image file to be uploaded.
 	 * @param albumId (Required) The id of the album to upload the photo (or video) to.
 	 * @param caption The caption for the image (or video).
@@ -624,7 +638,7 @@ public class ImageAPI extends BaseAPI{
 	 * @param latitude The latitude at which the image (or video) was taken.
 	 * @param longitude The longitude at which the image (or video) was taken.
 	 * @param pretty Return a more human friendly response.
-	 * @return
+	 * @return the details of the uploaded image
 	 * @throws IOException 
 	 * @throws NoSuchAlgorithmException 
 	 * @throws InvalidKeyException 
@@ -705,6 +719,7 @@ public class ImageAPI extends BaseAPI{
 	    if (!"ok".equals(response.getStat())) {
 	        throw new SmugMugException(response);
 	    }
+	    response.getImage().setMd5Sum(md5);
 		return response.getImage();
 	}
 
