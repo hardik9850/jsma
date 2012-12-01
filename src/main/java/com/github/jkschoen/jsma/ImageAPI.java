@@ -720,6 +720,7 @@ public class ImageAPI extends BaseAPI{
 	        throw new SmugMugException(response);
 	    }
 	    response.getImage().setMd5Sum(md5);
+	    logger.debug("upload() result: "+response.toString());
 		return response.getImage();
 	}
 
