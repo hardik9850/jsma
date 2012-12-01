@@ -16,7 +16,7 @@ public class JSMAUtils {
 		if (input.length()==1){
 			return input.toLowerCase();
 		}
-		return input.substring(0, 1).toUpperCase() + input.substring(1);
+		return input.substring(0, 1).toLowerCase() + input.substring(1);
 	}
 
 	public static String md5(File file) throws NoSuchAlgorithmException,
