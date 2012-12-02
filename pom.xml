@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.jkschoen.jsma</groupId>
   <artifactId>jsma</artifactId>
-  <version>0.9.1-SNAPSHOT</version>
+  <version>0.9.1</version>
   <name>Java SmugMug API</name>
   <description>A Java Library to simplify working against the JSON SmugMug API.</description>
   <url>https://github.com/jkschoen/jsma</url>
@@ -84,7 +84,7 @@
       </testResource>
     </testResources>
     <directory>target</directory>
-    <finalName>jsma-0.9.1-SNAPSHOT</finalName>
+    <finalName>jsma-0.9.1</finalName>
     <pluginManagement>
       <plugins>
         <plugin>

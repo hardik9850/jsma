@@ -4,7 +4,7 @@ The Java SmugMug API is a library written to wrap the [SmugMug API 1.3.0](http:/
 
 ## Project Setup
 
-JSMA is still a work in progress, and should be considered in an alpha state. As such currently you need to use get the source from the git repo and compile it yourself.
+You can download the latest release in the [Downloads](https://github.com/jkschoen/jsma/downloads) section. The download includes the required libraries for the project also.
 
 ### Dependencies
  Below are the list of the top level projects that JSMA uses along with a link to their respective licenses for those that are interested.
