@@ -691,7 +691,7 @@ public class ImageAPI extends BaseAPI{
 			builder = builder.header("X-Smug-Keywords", keywords);
 		}
 		//X-Smug-Hidden header
-		if(hidden != null){
+		if(hidden != null && hidden){
 			builder = builder.header("X-Smug-Hidden", hidden.toString());
 		}
 		//X-Smug-ImageID header
