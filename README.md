@@ -49,8 +49,6 @@ When writing your commit messages on your branch try to use a decent commit mess
 
 ### Unit Tests and Examples
 
-If you have some spare time and wish to contribute, it will very much appreciated.
-
 The current unit tests cover the Sample Responses given in the API documentation. It does not currently cover all possible mappings. Ideally I would eventually include unit tests to test all these mappings across the classes in the model pacakage. 
 
 It would be nice to provide a few examples of working with the api for each of the API classes. If you happen to to struggle with some aspect of using the library, it would be great to provide a solution via an example for others to learn from. I am not sure it is necessary to have an example of every possible call, but if someone wanted to do that or even just a few it would welcomed. 
