@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Jsma : Java SmugMug API" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Jsma</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/jkschoen/jsma">View on GitHub</a>
+
+          <h1 id="project_title">Jsma</h1>
+          <h2 id="project_tagline">Java SmugMug API</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/jkschoen/jsma/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/jkschoen/jsma/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>Java SmugMug API</h1>
+
+<p>The Java SmugMug API is a library written to wrap the <a href="http://wiki.smugmug.net/display/API/API+1.3.0">SmugMug API 1.3.0</a>. It is essentially designed to be as intuitive as possible, making it easy to include in your own project and quickly work with the api. </p>
+
+<h2>Project Setup</h2>
+
+<p>You can download the latest release in the <a href="https://github.com/jkschoen/jsma/downloads">Downloads</a> section. The download includes the required libraries for the project also.</p>
+
+<h3>Dependencies</h3>
+
+<p>Below are the list of the top level projects that JSMA uses along with a link to their respective licenses for those that are interested.</p>
+
+<ul>
+<li>
+<a href="http://jersey.java.net/">Jersey</a><br>
+Provides the infrastructure to make the api calls to SmugMug and parse the JSON response into Java objects. (<a href="http://glassfish.java.net/public/CDDL+GPL_1_1.html">License</a>)</li>
+<li>
+<a href="http://www.slf4j.org/">Simple Logging Facade for Java (SLF4J)</a><br>
+Used to handle logging in a way that will still allow you the freedom to pick whichever logging framework you would like. (<a href="http://www.slf4j.org/license.html">License</a>)</li>
+</ul><h3>Examples</h3>
+
+<p>Example code can be found in the <a href="https://github.com/jkschoen/jsma/tree/master/src/test/java/com/github/jkschoen/jsma/examples">test directory</a>. In order to run the examples you need to <a href="http://www.smugmug.com/hack/apikeys">Apply for an API Key</a> with SmugMug.</p>
+
+<p>To run the examples you need to edit <a href="https://github.com/jkschoen/jsma/blob/master/src/test/java/com/github/jkschoen/jsma/examples/UserConfig.java">UserConfig.java</a> and set <code>APP_NAME</code>, <code>CONSUMER_SECRET</code>, <code>CONSUMER_KEY</code>, <code>OAUTH_TOKEN_ID</code>, and <code>OAUTH_TOKEN_SECRET</code> with the appropriate values for your application and account. <strong>NOTE</strong>: You can get the values for <code>OAUTH_TOKEN_ID</code> and <code>OAUTH_TOKEN_SECRET</code> by settting the other three and running the <a href="https://github.com/jkschoen/jsma/blob/master/src/test/java/com/github/jkschoen/jsma/examples/AuthExample.java">AuthExample</a>. </p>
+
+<p>The current List of examples are:</p>
+
+<ul>
+<li>
+<a href="https://github.com/jkschoen/jsma/blob/master/src/test/java/com/github/jkschoen/jsma/examples/AuthExample.java">AuthExample</a> - Good starting point to see how to get your application authorized with a users account.<br>
+</li>
+<li>
+<a href="https://github.com/jkschoen/jsma/blob/master/src/test/java/com/github/jkschoen/jsma/examples/AlbumExample.java">AlbumExample</a> - Shows the basic functionality of working with the Albums API. </li>
+<li>
+<a href="https://github.com/jkschoen/jsma/blob/master/src/test/java/com/github/jkschoen/jsma/examples/ImageExample.java">ImageExample</a> - Shows how to upload an image to SmugMug.</li>
+</ul><p>Then you just can just run all the examples, and they will pull the values from <a href="https://github.com/jkschoen/jsma/blob/master/src/test/java/com/github/jkschoen/jsma/examples/UserConfig.java">UserConfig.java</a>.</p>
+
+<h2>Bug Reports/Issues/Feature Requests</h2>
+
+<p>If you encounter a bug or issue please create a <a href="https://github.com/jkschoen/jsma/issues/new">New Issue here on Github</a> after checking looking through the <a href="https://github.com/jkschoen/jsma/issues">Other Issues</a> to see if it has been reported already. If it has then feel free to comment on the existing issue with any additional information. </p>
+
+<p>If you are creating a new issue, I request you put as much information as possible. Method called, with what parameters, if an exception is thrown then include the stacktrace. Basically all the info someone would need to debug the problem.</p>
+
+<p>If there is a feature you want, pretty much follow the same procedure. Check if there is already an issue for it, if so feel free to comment, if not make one with as much detail of what you want as possible. </p>
+
+<h2>Contributing changes</h2>
+
+<p>I will gladly accept pull requests for just about all aspects of the project. It you have a something you would like to contribute here is the general workflow at the moment (this may change as I become more familar with git): </p>
+
+<ul>
+<li>fork the project</li>
+<li>create a new branch</li>
+<li>make your additions/changes/fixes in the new branch</li>
+<li>submit a pull request with a fairly decent description of what it is about.</li>
+</ul><p>When writing your commit messages on your branch try to use a decent commit message. I am horrible about this myself. But basically enough that if someone else read it they would know the point of the changes. Feel free to call me out on this also, as I am trying to break my habit of writing commit messages that read "Fixed stuff" and "Really fixed stuff this time". </p>
+
+<h3>Unit Tests and Examples</h3>
+
+<p>The current unit tests cover the Sample Responses given in the API documentation. It does not currently cover all possible mappings. Ideally I would eventually include unit tests to test all these mappings across the classes in the model pacakage. </p>
+
+<p>It would be nice to provide a few examples of working with the api for each of the API classes. If you happen to to struggle with some aspect of using the library, it would be great to provide a solution via an example for others to learn from. I am not sure it is necessary to have an example of every possible call, but if someone wanted to do that or even just a few it would welcomed. </p>
+
+<h2>License</h2>
+
+<p>JSMA is released under the MIT License which is simple and easy to understand, while placing almost no restrictions on what you can do with the project.</p>
+
+<p><a href="https://github.com/jkschoen/jsma/blob/master/LICENSE">MIT License</a> (<a href="http://en.wikipedia.org/wiki/MIT_License">More Information</a>)</p>
+
+<blockquote>
+<p>Copyright (c) 2012 Jacob K. Schoen<br><a href="http://github.com/jkschoen/jsma">http://github.com/jkschoen/jsma</a></p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+</blockquote>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Jsma maintained by <a href="https://github.com/jkschoen">jkschoen</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
