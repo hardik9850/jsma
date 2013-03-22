@@ -138,6 +138,12 @@ public class JsmaLoggingFilter extends ClientFilter {
     public JsmaLoggingFilter() {
     	super();
     }
+    private boolean logRequestEntity = true;
+    
+    public JsmaLoggingFilter(boolean logRequestEntity) {
+    	super();
+    	this.logRequestEntity = logRequestEntity;
+    }
 
     private void log(StringBuilder b) {
         logger.debug(b.toString());
@@ -167,7 +173,7 @@ public class JsmaLoggingFilter extends ClientFilter {
         printRequestLine(b, id, request);
         printRequestHeaders(b, id, request.getHeaders());
 
-        if (request.getEntity() != null) {
+        if (request.getEntity() != null && this.logRequestEntity) {
             request.setAdapter(new Adapter(request.getAdapter(), b));
         } else {
             log(b);

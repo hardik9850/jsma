@@ -1,10 +1,11 @@
 package com.github.jkschoen.jsma.misc;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.ProcessBuilder.Redirect;
-import java.nio.file.Files;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Map;
@@ -16,7 +17,7 @@ public class JSMAUtils {
 	
 	static final Logger logger = LoggerFactory.getLogger(JSMAUtils.class);
 	
-	private static boolean JHEAD_EXISTS = false;
+	public static boolean JHEAD_EXISTS = false;
 	
 	static {
 		ProcessBuilder pb = new ProcessBuilder("jhead","-h");
@@ -33,7 +34,7 @@ public class JSMAUtils {
 		}
 	}
 	
-	private static boolean JPEGTRAN_EXISTS = false;
+	public static boolean JPEGTRAN_EXISTS = false;
 	
 	static {
 		ProcessBuilder pb = new ProcessBuilder("jpegtran","-h");
@@ -65,7 +66,38 @@ public class JSMAUtils {
 		if (!file.exists() || !file.isFile()) {
 			return null;
 		}
-		return md5(Files.readAllBytes(file.toPath()));
+		
+		InputStream fis =  null;
+		try {
+			fis = new FileInputStream(file);
+			byte[] buffer = new byte[1024];
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			int numRead;
+	
+		    do {
+		    	numRead = fis.read(buffer);
+		    	if (numRead > 0) {
+		    		md.update(buffer, 0, numRead);
+		    	}
+		    } while (numRead != -1);
+		    buffer = null;
+		    
+		    byte byteData[] = md.digest();
+	
+			StringBuffer hexString = new StringBuffer();
+			for (int i = 0; i < byteData.length; i++) {
+				String hex = Integer.toHexString(0xff & byteData[i]);
+				if (hex.length() == 1)
+					hexString.append('0');
+				hexString.append(hex);
+			}
+			byteData = null;
+			return hexString.toString();
+		} finally {
+			if (fis != null){
+				fis.close();
+			}
+		}
 	}
 
 	public static String md5(String md5Me) throws NoSuchAlgorithmException,

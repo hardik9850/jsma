@@ -646,13 +646,13 @@ public class ImageAPI extends BaseAPI{
 	 */
 	public Image upload(File image, long albumId, String caption, String keywords, 
 			Boolean hidden, Long imageId, Integer altitude, Float latitude, 
-			Float longitude, boolean pretty) throws IOException, InvalidKeyException, NoSuchAlgorithmException, SmugMugException{
+			Float longitude, boolean pretty) throws IOException, NoSuchAlgorithmException, SmugMugException {
 		logger.debug("upload() called");
-		byte[] imageBytes = Files.readAllBytes(image.toPath());
+//		byte[] imageBytes = Files.readAllBytes(image.toPath());
 		
 		WebResource resource = SmugMugAPI.CLIENT.resource(UPLOAD_URL);
 		
-		JsmaLoggingFilter logFilter = new JsmaLoggingFilter();
+		JsmaLoggingFilter logFilter = new JsmaLoggingFilter(false);
 	    resource.addFilter(logFilter);
 		
 		OAuthSecrets secrets = new OAuthSecrets().consumerSecret(smugmug.getConsumerSecret());
@@ -666,7 +666,7 @@ public class ImageAPI extends BaseAPI{
 	        oauthParams.token(smugmug.getToken().getId());
 	    }
 	    resource.addFilter(filter);
-	    String md5 = JSMAUtils.md5(imageBytes);
+	    String md5 = JSMAUtils.md5(image);
 		WebResource.Builder builder = resource.getRequestBuilder();
 		//User agent
 		builder = builder.header("User-Agent", smugmug.getAppName());
@@ -715,7 +715,9 @@ public class ImageAPI extends BaseAPI{
 			builder = builder.header("X-Smug-Pretty", Boolean.toString(pretty));
 		}
 	    
-		ImageResponse response = builder.post(ImageResponse.class, imageBytes);
+		ImageResponse response = builder.post(ImageResponse.class, Files.readAllBytes(image.toPath()));
+		//attempt to free that memory up for gc.
+//		imageBytes = null;
 	    if (!"ok".equals(response.getStat())) {
 	        throw new SmugMugException(response);
 	    }
